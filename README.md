@@ -1,1 +1,1 @@
-# Horizon
+# This is Java Web homework.
