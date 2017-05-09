@@ -1,0 +1,20 @@
+.list {
+	position: relative;
+	height: auto;
+	width: 160px;
+	float: left;
+}
+.topBar {
+	position: relative;
+}
+.shopTitle {
+	position: relative;
+}
+.tabBar {
+	position: relative;
+}
+
+
+.commodityArea {
+	position: relative;
+}
