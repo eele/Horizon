@@ -28,6 +28,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div align="right" class="mallTitle">
 		  <img src="/Horizon/Front/img/mallTitle.PNG" alt="Horizon购物商城" width="173" height="72">
 		</div>
+		<li>
+		  <div align="center">aa</div>
+		</li>
+		<li>
+		  <div align="center">aa</div>
+		</li>
+		<li>
+		  <div align="center">aa</div>
+		</li>
+		<li>
+		  <div align="center">aa</div>
+		</li>
+		<li>
+		  <div align="center">aa</div>
+		</li>
+		
 	</div>
 	<div align="center" class="commodityArea">
 	  <div class="mallTitle">
