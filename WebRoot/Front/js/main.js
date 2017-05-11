@@ -1,17 +1,11 @@
 /**
  * 打开网页时加载
  */
-function load() {
-	var h = $(window).height();
-	$(".list").height(h-55);
-	$(".commodityArea").height(h-55);
+$(document).ready(function(){ 
+	//$(document).scrollTop(0);
 	
 	// 当浏览器窗口变化时自适应网页大小
 	window.onresize = function() {
-		var h = $(window).height();
-		$(".list").height(h-55);
-		$(".commodityArea").height(h-55);
-		
 		var w=$(window).width();
 		var changeWidth = 900;
 		if(w < 1200) {
@@ -27,8 +21,17 @@ function load() {
 			$(".bodyArea").css("left","50%");
 			$(".bodyArea").css("margin-left","-600px");
 		}
+		if($(".searchArea").css("position")=="fixed") {
+			$(".searchArea").css("left", $(".bodyArea").css("left"));
+			$(".listContent").height($(window).height()-115);
+		}
 	};
-	
+}); 
+
+/**
+ * 设置搜索类型切换样式
+ */
+$(document).ready(function(){
 	// 搜索选择默认为“商品”
 	$("#select2").css("background-color","#FF6600");
 	$("#select2").css("color","white");
@@ -47,4 +50,100 @@ function load() {
 		$("#select1").css("background-color","white");
 		$("#select1").css("color","black");
 	});
-}
+});
+
+/**
+ * 滚动时搜索框和列表切换悬浮样式
+ */
+$(document).ready(function(){
+	$(document).scroll(function() {
+		if($("#scrollFlag").offset().top-$("body").scrollTop() < 30) {
+			if($(".searchArea").css("position")=="relative") {
+				$(".searchArea").css("position", "fixed");
+				$(".searchArea").css("top", "-10px");
+				$(".searchArea").css("left", $(".bodyArea").css("left"));
+				$(".searchArea").css("margin-left", -210);
+				
+				$(".list").css("position", "fixed");
+				$(".list").css("top", "10px");
+				$("#imgTitle").attr("src","/Horizon/Front/img/mallTitle_small.PNG");
+				$("#imgTitle").attr("height","36");
+				$("#imgTitle").attr("width","163");
+				$(".mallTitle").height(40);
+				
+				$(".listContent").height($(window).height()-115);
+				$(".listContent").css("overflow", "hidden");
+			}
+		} else {
+			if($(".searchArea").css("position")=="fixed") {
+				$(".searchArea").css("position", "relative");
+				$(".searchArea").css("top", "");
+				$(".searchArea").css("left", "");
+				$(".searchArea").css("margin-left", "");
+				
+				$(".list").css("position", "relative");
+				$(".list").css("top", "");
+				$("#imgTitle").attr("src","/Horizon/Front/img/mallTitle.PNG");
+				$("#imgTitle").attr("height","72");
+				$("#imgTitle").attr("width","173");
+				$(".mallTitle").height(100);
+				
+				$(".listContent").css("overflow", "visible");
+				$(".listContent").css("height","");
+			}
+		}
+	});
+});
+
+/**
+ * 加载列表滚动条
+ */
+(function($){
+	$(document).scrollTop(0);
+    $(document).ready(function(){
+        $(".listContent").mCustomScrollbar({
+            theme: "minimal",
+            advanced: { autoExpandHorizontalScroll: true }
+        });
+        $(".mCSB_dragger_bar").css({ "background-color": "#FF6600" });
+    });
+})(jQuery);
+
+/**
+ * 排行榜按钮样式
+ */
+$(document).ready(function(){
+	$(".listItem1").css({ "background-color": "#FF4646" });
+	$(".listLayer2").click(function(){
+		$(".listItem1").css({ "background-color": "#FF9D5B" });
+	});
+	$(".listItem1").click(function(){
+		$(".listItem1").css({ "background-color": "#FF4646" });
+	});
+});
+
+/**
+ * 获取列表项
+ */
+$(document).ready(function() {
+	var l1Num = 30, l2Num = 30;
+	
+	$(".listContent").append("<ul></ul>");
+	for(var i=0; i<30; i++)
+	
+	//列表项滑动样式
+	for(var i=0; i<30; i++) {
+		(function(){
+			var index = i;
+			$("#l1_"+i).click(function(){
+				for(var i2=0; i2<30; i2++) {
+					if(i2 == index) {
+						$("#l2_"+i2).slideToggle(250);
+					} else {
+						$("#l2_"+i2).slideUp(250);
+					}
+				}
+			});
+		})();
+	}
+});

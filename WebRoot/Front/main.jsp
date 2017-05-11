@@ -16,34 +16,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
     <link href="/Horizon/Front/css/main.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/Horizon/jQuery//jquery-3.2.1.js"></script>
+    <link href="/Horizon/Front/css/jquery.mCustomScrollbar.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/Horizon/jQuery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/Horizon/jQuery/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="/Horizon/Front/js/main.js"></script>
 </head>
   
-  <body onLoad="load()">
+  <body>
   <div class="topBar">帐号区</div>
   
   <div class="bodyArea">
 	<div class="list">
 		<div align="right" class="mallTitle">
-		  <img src="/Horizon/Front/img/mallTitle.PNG" alt="Horizon购物商城" width="173" height="72">
+		  <img id="imgTitle" src="/Horizon/Front/img/mallTitle.PNG" alt="Horizon购物商城" width="173" height="72">
 		</div>
-		<li>
-		  <div align="center">aa</div>
-		</li>
-		<li>
-		  <div align="center">aa</div>
-		</li>
-		<li>
-		  <div align="center">aa</div>
-		</li>
-		<li>
-		  <div align="center">aa</div>
-		</li>
-		<li>
-		  <div align="center">aa</div>
-		</li>
-		
+		<div align="center" class="listItem1">排行榜</div>
+		<div align="center" class="listCategory">商品分类</div>
+		<div class="listContent">
+<!-- 		<ul> -->
+<!-- 		<%for(int i=0;i<30;i++){ %> -->
+<!-- 			<li> -->
+<!-- 			  	<div id="l1_<%=i %>" align="center" class="listLayer1">aa</div> -->
+<!-- 			  	<div id="l2_<%=i %>" style="display:none;" > -->
+<!-- 				<ul> -->
+<!-- 					<li> -->
+<!-- 					  <div align="center" class="listLayer2">ab</div> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 					  <div align="center" class="listLayer2">ab</div> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 					  <div align="center" class="listLayer2">ab</div> -->
+<!-- 					</li> -->
+<!-- 				</ul> -->
+<!-- 				</div> -->
+<!-- 			</li> -->
+<!-- 			<%} %> -->
+<!-- 		</ul> -->
+		</div>
 	</div>
 	<div align="center" class="commodityArea">
 	  <div class="mallTitle">
@@ -58,6 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		  </div>
 	  </div>
+	  <div id="scrollFlag"></div>
 		商品区
 	</div>
   </div>
