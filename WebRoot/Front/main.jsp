@@ -33,26 +33,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div align="center" class="listItem1">排行榜</div>
 		<div align="center" class="listCategory">商品分类</div>
 		<div class="listContent">
-<!-- 		<ul> -->
-<!-- 		<%for(int i=0;i<30;i++){ %> -->
-<!-- 			<li> -->
-<!-- 			  	<div id="l1_<%=i %>" align="center" class="listLayer1">aa</div> -->
-<!-- 			  	<div id="l2_<%=i %>" style="display:none;" > -->
-<!-- 				<ul> -->
-<!-- 					<li> -->
-<!-- 					  <div align="center" class="listLayer2">ab</div> -->
-<!-- 					</li> -->
-<!-- 					<li> -->
-<!-- 					  <div align="center" class="listLayer2">ab</div> -->
-<!-- 					</li> -->
-<!-- 					<li> -->
-<!-- 					  <div align="center" class="listLayer2">ab</div> -->
-<!-- 					</li> -->
-<!-- 				</ul> -->
-<!-- 				</div> -->
-<!-- 			</li> -->
-<!-- 			<%} %> -->
-<!-- 		</ul> -->
+		<ul>
+		<%for(int i=0;i<30;i++){ %>
+			<li>
+			  	<div id="l1_<%=i %>" align="center" class="listLayer1">aa</div>
+			  	<div id="l2_<%=i %>" style="display:none;" >
+				<ul>
+					<li>
+					  <div align="center" class="listLayer2">
+						  <div style="position: absolute;background-color:#FF9D5B;width:10px;height:30px"></div>
+						  ab
+					  </div>
+					</li>
+					<li>
+					  <div align="center" class="listLayer2">ab</div>
+					</li>
+					<li>
+					  <div align="center" class="listLayer2">ab</div>
+					</li>
+				</ul>
+				</div>
+			</li>
+			<%} %>
+		</ul>
 		</div>
 	</div>
 	<div align="center" class="commodityArea">

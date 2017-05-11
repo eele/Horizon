@@ -109,17 +109,29 @@ ul{
 	position: relative;
 	height: 30px;
 	width: auto;
-	background-color: #FF9D5B;
+	background-color: #FFB482;
 	font-weight: bold;
 	color: #FFFFFF;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #FFB482;
+	border-left-color: #FFB482;
 }
 .listCategory {
 	position: relative;
 	height: 30px;
 	width: auto;
 	font-weight: bold;
-	color: #FFFFFF;
-	background-color: #FF6600;
+	color: #FF0000;
+	background-color: #FFE4D2;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #FFE4D2;
+	border-left-color: #FFE4D2;
 }
 .listContent {
 	position: relative;
@@ -131,4 +143,7 @@ ul{
 	position: relative;
 	height: 30px;
 	width: auto;
+	background-color: #FFFFFF;
+	color: #000000;
+	border: 1px solid #FFDDC6;
 }

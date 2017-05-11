@@ -1,10 +1,7 @@
 /**
- * 打开网页时加载
+ * // 当浏览器窗口变化时元素位置自适应
  */
 $(document).ready(function(){ 
-	//$(document).scrollTop(0);
-	
-	// 当浏览器窗口变化时自适应网页大小
 	window.onresize = function() {
 		var w=$(window).width();
 		var changeWidth = 900;
@@ -12,6 +9,7 @@ $(document).ready(function(){
 			$(".bodyArea").width(changeWidth);
 			if(w < changeWidth) {
 				$(".bodyArea").css("left",(changeWidth/2)+"px");
+				$(".bodyArea").css("margin-left",(-changeWidth/2)+"px");
 			} else {
 				$(".bodyArea").css("left","50%");
 				$(".bodyArea").css("margin-left",(-changeWidth/2)+"px");
@@ -99,7 +97,6 @@ $(document).ready(function(){
  * 加载列表滚动条
  */
 (function($){
-	$(document).scrollTop(0);
     $(document).ready(function(){
         $(".listContent").mCustomScrollbar({
             theme: "minimal",
@@ -115,10 +112,11 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$(".listItem1").css({ "background-color": "#FF4646" });
 	$(".listLayer2").click(function(){
-		$(".listItem1").css({ "background-color": "#FF9D5B" });
+		$(".listItem1").css({ "background-color": "#FFB482" });
 	});
 	$(".listItem1").click(function(){
 		$(".listItem1").css({ "background-color": "#FF4646" });
+		$("div[id^='l2']").slideUp(200);
 	});
 });
 
@@ -126,10 +124,12 @@ $(document).ready(function(){
  * 获取列表项
  */
 $(document).ready(function() {
-	var l1Num = 30, l2Num = 30;
-	
-	$(".listContent").append("<ul></ul>");
-	for(var i=0; i<30; i++)
+//	var layer1Num = 30, layer2Num = 30;
+//	
+//	$(".listContent").append("<ul></ul>");
+//	for(var i=0; i<layer1Num; i++) {
+//		$("ul").append("<li></li>");
+//	}
 	
 	//列表项滑动样式
 	for(var i=0; i<30; i++) {
@@ -138,9 +138,9 @@ $(document).ready(function() {
 			$("#l1_"+i).click(function(){
 				for(var i2=0; i2<30; i2++) {
 					if(i2 == index) {
-						$("#l2_"+i2).slideToggle(250);
+						$("#l2_"+i2).slideToggle(200);
 					} else {
-						$("#l2_"+i2).slideUp(250);
+						$("#l2_"+i2).slideUp(200);
 					}
 				}
 			});
