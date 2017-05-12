@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>Horizon运营管理登录</title>
+    <title>Horizon运营商管理平台</title>
 	<link rel="stylesheet" type="text/css" href="/Horizon/Back_Admin/css/login.css"/>
   </head>
   
@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <div class="loginArea">
 	<div id="login">  
-	<h1>运营管理平台</h1>  
+	<h1>运营商管理平台</h1><br><br>
 	<form method="post">  
 		<input type="text" required oninvalid="setCustomValidity('请输入用户名')" oninput="setCustomValidity('')" placeholder="用户名" name="u"></input>  
 		<input type="password" required oninvalid="setCustomValidity('请输入密码')" oninput="setCustomValidity('')" placeholder="密码" name="p"></input>  
