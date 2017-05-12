@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body{
 	margin:0;
 }
@@ -61,25 +60,4 @@ body{
 }
 .tabStyle:hover {
 	background-color: #1D74CB;
-=======
-.list {
-	position: relative;
-	height: auto;
-	width: 160px;
-	float: left;
-}
-.topBar {
-	position: relative;
-}
-.shopTitle {
-	position: relative;
-}
-.tabBar {
-	position: relative;
-}
-
-
-.commodityArea {
-	position: relative;
->>>>>>> 11ebdc2c0eccfb7c073187a53969d8fbce391341
 }

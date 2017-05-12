@@ -11,13 +11,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <title>运营管理后台</title>
 
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+    <link href="/Horizon/Back_Admin/css/main.css" rel="stylesheet" type="text/css">
   </head>
   
   <body>
-    This is my JSP page. <br>
+  <div class="top">此处显示  class "top" 的内容</div>
   </body>
 </html>

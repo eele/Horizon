@@ -30,8 +30,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
     <div class="mainArea"></div>
   </div>
-  <div class="tabBar">功能标签栏</div>
-  <div class="list">列表</div>
-  <div class="commodityArea">商品区</div>
   </body>
 </html>
