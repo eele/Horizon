@@ -15,6 +15,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <div class="top">此处显示  class "top" 的内容</div>
+  	<div class="top">
+		此处显示  class "top" 的内容
+		<div class="tabBar">此处显示  class "tabBar" 的内容</div>
+	</div>
   </body>
 </html>
