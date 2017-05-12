@@ -1,5 +1,5 @@
 /**
- * 当浏览器窗口变化时元素位置自适应
+ * // 当浏览器窗口变化时元素位置自适应
  */
 $(document).ready(function(){ 
 	window.onresize = function() {
@@ -29,7 +29,7 @@ $(document).ready(function(){
 /**
  * 设置搜索类型切换样式
  */
-/*$(document).ready(function(){
+$(document).ready(function(){
 	// 搜索选择默认为“商品”
 	$("#select2").css("background-color","#FF6600");
 	$("#select2").css("color","white");
@@ -48,12 +48,12 @@ $(document).ready(function(){
 		$("#select1").css("background-color","white");
 		$("#select1").css("color","black");
 	});
-});*/
+});
 
 /**
  * 滚动时搜索框和列表切换悬浮样式
  */
-/*$(document).ready(function(){
+$(document).ready(function(){
 	$(document).scroll(function() {
 		if($("#scrollFlag").offset().top-$("body").scrollTop() < 30) {
 			if($(".searchArea").css("position")=="relative") {
@@ -64,7 +64,7 @@ $(document).ready(function(){
 				
 				$(".list").css("position", "fixed");
 				$(".list").css("top", "10px");
-				$("#imgTitle").attr("src","/Horizon/Back_Shop/img/mallTitle_small.PNG");
+				$("#imgTitle").attr("src","/Horizon/Front/img/mallTitle_small.PNG");
 				$("#imgTitle").attr("height","36");
 				$("#imgTitle").attr("width","163");
 				$(".mallTitle").height(40);
@@ -81,7 +81,7 @@ $(document).ready(function(){
 				
 				$(".list").css("position", "relative");
 				$(".list").css("top", "");
-				$("#imgTitle").attr("src","/Horizon/Back_Shop/img/mallTitle.PNG");
+				$("#imgTitle").attr("src","/Horizon/Front/img/mallTitle.PNG");
 				$("#imgTitle").attr("height","72");
 				$("#imgTitle").attr("width","173");
 				$(".mallTitle").height(100);
@@ -91,7 +91,7 @@ $(document).ready(function(){
 			}
 		}
 	});
-});*/
+});
 
 /**
  * 加载列表滚动条

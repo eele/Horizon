@@ -8,9 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
+    <title>店铺首页</title>
     
-    <title>Horizon店铺首页</title>
-
     <link href="/Horizon/Back_Shop/css/main.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="/Horizon/jQuery/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="/Horizon/Back_Shop/js/main.js"></script>
@@ -31,5 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
     <div class="mainArea"></div>
   </div>
+  <div class="tabBar">功能标签栏</div>
+  <div class="list">列表</div>
+  <div class="commodityArea">商品区</div>
   </body>
 </html>

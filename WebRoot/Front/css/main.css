@@ -24,7 +24,7 @@ body{
 .mallTitle {
 	position: relative;
 	width: auto;
-	height: auto;
+	height: 100px;
 }
 
 
@@ -37,7 +37,7 @@ body{
 .searchArea {
 	position: relative;
 	height: 65px;
-	width: 540px;
+	width: 600px;
 }
 
 .searchSelect {
@@ -48,15 +48,16 @@ body{
 	line-height: 38px;
 	text-align: center;
 	overflow: hidden;
-	background-color: #68A9EA;
+	background-color: white;
 	font-weight: bold;
-	color: #FFFFFF;
+	color: black;
+	cursor:pointer;
 }
 
 .searchBox {
 	position: absolute;
-	border: 3px solid #68A9EA;
-	width: 540px;
+	border: 3px solid #FF6600;
+	width: 600px;
 	height: 38px;
 	left: 0px;
 	top: 20px;
@@ -64,7 +65,7 @@ body{
 .searchInput {
 	position: absolute;
 	height: 32px;
-	width: 440px;
+	width: 443px;
 	top: 3px;
 	font-size: 16px;
 	background:transparent;
@@ -104,25 +105,37 @@ ul{
 	color: #FFFFFF;
 	background-color: #FF9D5B;
 }
-.listCategory {
+.listItem1 {
 	position: relative;
-	height: 35px;
-	line-height: 35px;
-	text-align: center;
+	height: 30px;
 	width: auto;
+	background-color: #FFB482;
 	font-weight: bold;
 	color: #FFFFFF;
-	background-color: #68A9EA;
 	border-right-width: 1px;
 	border-left-width: 1px;
 	border-right-style: solid;
 	border-left-style: solid;
-	border-right-color: #68A9EA;
-	border-left-color: #68A9EA;
+	border-right-color: #FFB482;
+	border-left-color: #FFB482;
+}
+.listCategory {
+	position: relative;
+	height: 30px;
+	width: auto;
+	font-weight: bold;
+	color: #FF0000;
+	background-color: #FFE4D2;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #FFE4D2;
+	border-left-color: #FFE4D2;
 }
 .listContent {
 	position: relative;
-	overflow: auto;
+	overflow: visible;
 }
 
 
