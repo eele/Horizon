@@ -9,15 +9,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>运营管理后台</title>
+    <title>Horizon运营商管理平台</title>
 
     <link href="/Horizon/Back_Admin/css/main.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/Horizon/jQuery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/Horizon/Back_Admin/js/main.js"></script>
   </head>
   
   <body>
-  	<div class="top">
-		此处显示  class "top" 的内容
-		<div class="tabBar">此处显示  class "tabBar" 的内容</div>
-	</div>
+  <div class="left">
+		<div style="background-color:#354457;height:70px">
+			<div style="margin-left:20px"><img src="/Horizon/Back_Admin/img/logo.PNG" alt="Horizon运营商管理平台"></div>
+		</div>
+		
+        <div class="itemTitle" style="margin-top:30px">店铺管理</div>
+			<div class="itemStyle">店铺开通审核</div>
+			<div class="itemStyle">店铺类别管理</div>
+		<div class="itemTitle">顾客管理</div>
+			<div class="itemStyle">查看顾客信息</div>
+			<div class="itemStyle">修改顾客信息</div>
+		<div class="itemTitle">商品类别</div>
+			<div class="itemStyle">商品类别管理</div>
+		<div class="itemTitle">个人帐号</div>
+			<div class="itemStyle">修改个人密码</div>
+  </div>
+	
+    <div class="topBar">此处显示  class "topBar" 的内容</div>
+	<div class="mainArea">此处内容</div>
   </body>
 </html>

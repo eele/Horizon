@@ -2,18 +2,49 @@ body{
 	margin:0;
 }
 
-.top {
+.left {
+	position: relative;
+	height: 900px;
+	width: 200px;
+	background-color: #1B4876;
+	float: left;
+}
+.mainArea {
+	position: relative;
+	height: 830px;
+	width: auto;
+	margin-left: 200px;
+}
+.itemTitle {
+	font-weight: bold;
+	color: #828e9a;
+	position: relative;
+	height: 40px;
+	width: auto;
+	padding-left: 20px;
+	font-size: 16px;
+	line-height: 40px;
+	margin-top:20px
+}
+.itemStyle {
+	position: relative;
+	height: 40px;
+	width: auto;
+	border-right-width: 0px;
+	border-right-style: solid;
+	border-right-color: #647f9d;
+	padding-left: 30px;
+	color: #CCCCCC;
+	font-size: 18px;
+	line-height: 40px;
+	font-weight: bold;
+	cursor: pointer
+}
+
+.topBar {
+	background-color: #EFF3F6;
 	position: relative;
 	height: 70px;
 	width: auto;
-	color: #FFFFFF;
-	background-color: #1B4876;
-}
-.tabBar {
-	color: #FFFFFF;
-	position: absolute;
-	height: 30px;
-	width: 100%;
-	top: 40px;
-	left: 0px;
+	margin-left: 200px;
 }
