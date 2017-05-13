@@ -17,7 +17,7 @@
 	type="text/css" media="all" />
 <link href="/Horizon/Front/css/demo.css" rel="stylesheet" rev="stylesheet"
 	type="text/css" media="all" />
-<script type="text/javascript" src="/Horizon/jQuery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
 <script type="text/javascript" src="/Horizon/Front/js/jquery.SuperSlide.js"></script>
 <script type="text/javascript" src="/Horizon/Front/js/Validform_v5.3.2_min.js"></script>
 <script>
@@ -77,7 +77,7 @@
 		<div class="login-aside">
 			<div id="o-box-up"></div>
 			<div id="o-box-down" style="table-layout:fixed;">
-				<div class="error-box"></div>
+				<div class="error-box" style="height: 15px;"></div>
 
 				<form class="registerform" action="demo/ajax_post.jsp">
 					<div class="fm-item">
