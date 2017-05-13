@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>Horizon运营商管理平台</title>
 
     <link href="/Horizon/Back_Admin/css/main.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/Horizon/jQuery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
     <script type="text/javascript" src="/Horizon/Back_Admin/js/main.js"></script>
   </head>
   
