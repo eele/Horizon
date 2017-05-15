@@ -12,7 +12,7 @@ import cn.edu.zhk.jsj144.liao.entity.category.product.Category;
  *
  */
 public class CategoryService {
-	private CategoryDao categoryDao;// = new CategoryDao();
+	private CategoryDao categoryDao = new CategoryDao();
 	
 	/**
 	 * 查询指定一级分类下二级分类的个数
