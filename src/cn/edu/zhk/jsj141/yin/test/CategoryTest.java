@@ -8,13 +8,12 @@ import java.util.List;
 import org.junit.Test;
 
 import cn.edu.zhk.jsj141.yin.dao.category.product.CategoryDao;
-import cn.edu.zhk.jsj141.yin.dao.category.product.CategoryDaoImpl;
 import cn.edu.zhk.jsj141.yin.entity.category.product.Category;
 
 public class CategoryTest {
-	private CategoryDao categoryDao = new CategoryDaoImpl();
+	private CategoryDao categoryDao = new CategoryDao();
 	
-	//@Test
+	@Test
 	public void testFindAll() {
 		try {
 			List<Category> list = categoryDao.findAll();
