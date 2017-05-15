@@ -13,77 +13,97 @@ $(document).ready(function(){
 		$(".pop_up").css("display","block");
 		$("#popTitle").text("添加一级分类");
 		$("#selectCate").css("display","none");
+		$("#caName").val("");
+		$("#desc").val("");
 	});
 	$(".AddTwoLevel,this").click(function(){
 		$(".pop_up").css("display","block");
 		$("#popTitle").text("添加二级分类");
 		$("#selectCate").css("display","none");
-		$("#currentID").val($(this).parents("tr").find(".pid").attr("id"));
+		$("#currentID").val($(this).attr("id"));
+		$("#caName").val("");
+		$("#desc").val("");
 	});
 	$(".modify1,this").click(function(){
 		$(".pop_up").css("display","block");
 		$("#popTitle").text("修改一级分类");
 		$("#selectCate").css("display","none");
+		$("#caName").val($(this).parents("tr").children("td:nth-child(2)").text());
+		$("#desc").val($(this).parents("tr").children("td:nth-child(3)").text());
 		$("#currentID").val($(this).parents("tr").attr("id"));
 	});
 	$(".modify2,this").click(function(){
 		$(".pop_up").css("display","block");
 		$("#popTitle").text("修改二级分类");
 		$("#selectCate").css("display","block");
+		$("#caName").val($(this).parents("tr").children("td:nth-child(2)").text());
+		$("#desc").val($(this).parents("tr").children("td:nth-child(3)").text());
+		var vpid=$(this).parents("tr").children("td:nth-child(1)").attr("id");
+		$("option[value="+vpid+"]").attr("selected",true);
 		$("#currentID").val($(this).parents("tr").attr("id"));
 	});
 	$(".del1,this").click(function(){
-		if(confirm('是否删除该一级分类？')) {
+		var cname=$(this).parents("tr").children("td:nth-child(2)").text();
+		if(confirm("是否删除一级分类 "+cname+" ？")) {
 			$.ajax({
 				type: "POST",
 				dataType: "json",
 				data: {id: $(this).parents("tr").attr("id")},
 				url: "/Horizon/category_product/DelParentCategoryCtrl",
-				success: function() {
-					$(".pop_up").css("display","none");
-					$("#caName").val("");
-					$("#desc").val("");
-					$.ajax({
-						method: "get",
-						url: "/Horizon/category_product/FindAllCategoryCtrl",
-						success: function(data){
-							$(".mainArea").html(data);
-						},
-						error: function(data){
-							$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-						}
-					});
+				success: function(data) {
+					if(eval(data).msg=="ok") {
+						$(".pop_up").css("display","none");
+						$("#caName").val("");
+						$("#desc").val("");
+						$.ajax({
+							method: "get",
+							url: "/Horizon/category_product/FindAllCategoryCtrl",
+							success: function(data){
+								$(".mainArea").html(data);
+							},
+							error: function(data){
+								$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
+							}
+						});
+					} else {
+						alert("该分类下还有二级分类，不能删除。");
+					}
 				},
 				error: function() {
-					alert("数据删除异常，无法删除。");
+					alert("操作异常，无法删除。");
 				}
 			});
 		}
 	});
 	$(".del2,this").click(function(){
-		if(confirm('是否删除该二级分类？')) {
+		var cname=$(this).parents("tr").children("td:nth-child(2)").text();
+		if(confirm("是否删除二级分类 "+cname+" ？")) {
 			$.ajax({
 				type: "POST",
 				dataType: "json",
 				data: {id: $(this).parents("tr").attr("id")},
 				url: "/Horizon/category_product/DelChildCategoryCtrl",
-				success: function() {
-					$(".pop_up").css("display","none");
-					$("#caName").val("");
-					$("#desc").val("");
-					$.ajax({
-						method: "get",
-						url: "/Horizon/category_product/FindAllCategoryCtrl",
-						success: function(data){
-							$(".mainArea").html(data);
-						},
-						error: function(data){
-							$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-						}
-					});
+				success: function(data) {
+					if(eval(data).msg=="ok") {
+						$(".pop_up").css("display","none");
+						$("#caName").val("");
+						$("#desc").val("");
+						$.ajax({
+							method: "get",
+							url: "/Horizon/category_product/FindAllCategoryCtrl",
+							success: function(data){
+								$(".mainArea").html(data);
+							},
+							error: function(data){
+								$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
+							}
+						});
+					} else {
+						alert("该二级分类下还有商品，不能删除。");
+					}
 				},
 				error: function() {
-					alert("数据删除异常，无法删除。");
+					alert("操作异常，无法删除。");
 				}
 			});
 		}
@@ -111,7 +131,8 @@ $(document).ready(function(){
 				type: "POST",
 				dataType: "json",
 				data: {
-						id: $("#currentID").attr("id"),
+						id: $("#currentID").val(),
+						pid: $("#pid").val(),
 						caName: $("#caName").val(),
 						desc: $("#desc").val()
 					},

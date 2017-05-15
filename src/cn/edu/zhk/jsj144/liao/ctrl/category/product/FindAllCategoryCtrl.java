@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zhk.jsj144.liao.service.category.product.CategoryService;
-
+/**
+ * 查询所有分类
+ * @author ele
+ *
+ */
 public class FindAllCategoryCtrl extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

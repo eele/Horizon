@@ -34,13 +34,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		<td align="center">${parent.cname }</td>
 	    		<td align="center">${parent.desc }</td>
 	    		<td width="113">
-	    		  <div align="center" class="AddTwoLevel"><a style="cursor:pointer">添加二级分类</a></div></td>
+	    		  <div align="center" id="${parent.cid }" class="AddTwoLevel"><a style="cursor:pointer">添加二级分类</a></div></td>
 	    	    <td width="55"><div align="center" class="modify1"><a style="cursor:pointer">修改</a></div></td>
 	    	    <td width="48"><div align="center" class="del1"><a style="cursor:pointer">删除</a></div></td>
 	    	</tr>
 	   <c:forEach items="${parent.children }" var="child">
 	    	<tr class="trTwoLevel" id="${child.cid }">
-	    	  <td id="${parent.cid }" class="pid">&nbsp;</td>
+	    	  <td id="${parent.cid }" align="right">二级分类</td>
 	    		<td align="center">${child.cname }</td>
 	    		<td align="center">${child.desc }</td>
 	    		<td colspan="2">

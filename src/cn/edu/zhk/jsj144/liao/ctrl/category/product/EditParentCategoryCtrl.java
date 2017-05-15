@@ -6,6 +6,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.edu.zhk.jsj144.liao.entity.category.product.Category;
+import cn.edu.zhk.jsj144.liao.service.category.product.CategoryService;
+
+/**
+ * 修改一级分类
+ * @author ele
+ *
+ */
 public class EditParentCategoryCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,8 +39,13 @@ public class EditParentCategoryCtrl extends HttpServlet {
 
 		response.setContentType("text/html");
 		request.setCharacterEncoding("utf-8");
-		System.out.println(request.getParameter("caName"));
-		System.out.println(request.getParameter("desc"));
+		
+		CategoryService categoryService = new CategoryService();
+		Category parent = new Category();
+		parent.setCid(request.getParameter("id"));
+		parent.setCname(request.getParameter("caName"));
+		parent.setDesc(request.getParameter("desc"));
+		categoryService.edit(parent);
 	}
 
 	/**

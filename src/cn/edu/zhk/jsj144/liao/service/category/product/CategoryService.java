@@ -15,7 +15,7 @@ public class CategoryService {
 	private CategoryDao categoryDao = new CategoryDao();
 	
 	/**
-	 * 查询指定一级分类下二级分类的个数
+	 * 返回指定一级分类下二级分类的个数
 	 * @param pid
 	 * @return
 	 */
@@ -25,6 +25,20 @@ public class CategoryService {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	/**
+	 * 返回当前分类下商品个数
+	 * @param cid
+	 * @return
+	 */
+	public int findProductCountByCategory(String cid) {
+		return 0;
+//		try {
+//			return productDao.findproductCountByCategory(cid);
+//		} catch(SQLException e) {
+//			throw new RuntimeException(e);
+//		}
 	}
 	
 	/**
@@ -46,19 +60,6 @@ public class CategoryService {
 	public void edit(Category category) {
 		try {
 			categoryDao.edit(category);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
-	/**
-	 * 加载分类
-	 * @param cid
-	 * @return
-	 */
-	public Category load(String cid) {
-		try {
-			return categoryDao.load(cid);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

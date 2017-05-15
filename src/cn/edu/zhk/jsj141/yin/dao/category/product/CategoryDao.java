@@ -110,18 +110,6 @@ public class CategoryDao {
 	}
 	
 	/**
-	 * 加载分类
-	 * 即可加载一级分类，也可加载二级分类
-	 * @param cid
-	 * @return
-	 * @throws SQLException 
-	 */
-	public Category load(String cid) throws SQLException {
-		String sql = "select * from category where cid=?";
-		return toCategory(qr.query(sql, new MapHandler(), cid));
-	}
-	
-	/**
 	 * 修改分类
 	 * 即可修改一级分类，也可修改二级分类
 	 * @param category

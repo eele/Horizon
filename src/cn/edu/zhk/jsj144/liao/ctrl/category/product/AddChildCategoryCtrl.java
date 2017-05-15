@@ -1,13 +1,21 @@
 package cn.edu.zhk.jsj144.liao.ctrl.category.product;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.edu.zhk.jsj144.liao.entity.category.product.Category;
+import cn.edu.zhk.jsj144.liao.service.category.product.CategoryService;
+
+/**
+ * 添加二级分类
+ * @author ele
+ *
+ */
 public class AddChildCategoryCtrl extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -34,8 +42,20 @@ public class AddChildCategoryCtrl extends HttpServlet {
 
 		response.setContentType("text/html");
 		request.setCharacterEncoding("utf-8");
-		System.out.println(request.getParameter("caName"));
-		System.out.println(request.getParameter("desc"));
+		
+		CategoryService categoryService = new CategoryService();
+		Category child = new Category();
+		child.setCname(request.getParameter("caName"));
+		child.setDesc(request.getParameter("desc"));
+		child.setCid(UUID.randomUUID().toString());//设置cid
+		
+		// 映射pid为当前一级分类cid
+		String pid = request.getParameter("id");
+		Category parent = new Category();
+		parent.setCid(pid);
+		child.setParent(parent);
+		
+		categoryService.add(child);
 	}
 
 	/**

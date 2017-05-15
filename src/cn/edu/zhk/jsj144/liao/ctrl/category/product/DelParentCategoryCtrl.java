@@ -1,29 +1,26 @@
 package cn.edu.zhk.jsj144.liao.ctrl.category.product;
 
 import java.io.IOException;
-import java.util.UUID;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.edu.zhk.jsj144.liao.entity.category.product.Category;
 import cn.edu.zhk.jsj144.liao.service.category.product.CategoryService;
-
 /**
- * 添加一级分类
+ * 删除一级分类
  * @author ele
  *
  */
-public class AddParentCategoryCtrl extends HttpServlet {
-
+public class DelParentCategoryCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Constructor of the object.
 	 */
-	public AddParentCategoryCtrl() {
+	public DelParentCategoryCtrl() {
 		super();
 	}
 
@@ -42,13 +39,16 @@ public class AddParentCategoryCtrl extends HttpServlet {
 
 		response.setContentType("text/html");
 		request.setCharacterEncoding("utf-8");
-		
+		PrintWriter out = response.getWriter();
 		CategoryService categoryService = new CategoryService();
-		Category parent = new Category();
-		parent.setCname(request.getParameter("caName"));
-		parent.setDesc(request.getParameter("desc"));
-		parent.setCid(UUID.randomUUID().toString());//设置cid
-		categoryService.add(parent);
+		String cid = request.getParameter("id");
+		int cnt = categoryService.findChildrenCountByParent(cid);
+		if(cnt > 0) {
+			out.write("{\"msg\":\"err\"}"); // 提示该分类下还有二级分类，不能删除
+		} else {
+			categoryService.delete(cid);
+			out.write("{\"msg\":\"ok\"}");
+		}
 	}
 
 	/**
