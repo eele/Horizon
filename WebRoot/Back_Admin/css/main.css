@@ -4,14 +4,12 @@ body{
 
 .left {
 	position: relative;
-	height: 900px;
 	width: 200px;
 	background-color: #1B4876;
 	float: left;
 }
 .mainArea {
 	position: relative;
-	height: 830px;
 	width: auto;
 	margin-left: 200px;
 }

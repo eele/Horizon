@@ -25,16 +25,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="itemTitle" style="margin-top:30px">店铺管理</div>
 			<div class="itemStyle">店铺开通审核</div>
 			<div class="itemStyle">店铺类别管理</div>
-		<div class="itemTitle">顾客管理</div>
-			<div class="itemStyle">查看顾客信息</div>
-			<div class="itemStyle">修改顾客信息</div>
-		<div class="itemTitle">商品类别</div>
 			<div class="itemStyle">商品类别管理</div>
+		<div class="itemTitle">顾客管理</div>
+			<div class="itemStyle">顾客个人信息</div>
+			<div class="itemStyle">顾客交易记录</div>
+			<div class="itemStyle">顾客问题反馈</div>
 		<div class="itemTitle">个人帐号</div>
 			<div class="itemStyle">修改个人密码</div>
   </div>
 	
     <div class="topBar">此处显示  class "topBar" 的内容</div>
-	<div class="mainArea">此处内容</div>
+	<div class="mainArea"></div>
   </body>
 </html>
