@@ -8,17 +8,21 @@ import java.util.List;
 import org.junit.Test;
 
 import cn.edu.zhk.jsj141.yin.dao.category.product.CategoryDao;
+import cn.edu.zhk.jsj141.yin.dao.category.product.CategoryDaoImpl;
 import cn.edu.zhk.jsj141.yin.entity.category.product.Category;
 
 public class CategoryTest {
-	private CategoryDao categoryDao = new CategoryDao();
+	private CategoryDao categoryDao = new CategoryDaoImpl();
 	
-	@Test
+	//@Test
 	public void testFindAll() {
 		try {
 			List<Category> list = categoryDao.findAll();
 			for(Category c:list) {
-				System.out.println(c.getCid()+" "+c.getCname()+" "+c.getDesc()+" "+c.getDesc());
+				System.out.println(c.getCid()+" "+c.getCname()+" "+c.getDesc());
+				for(Category c1:c.getChildren()) {
+					System.out.println("  " +c1.getCid()+" "+c1.getCname()+" "+c1.getDesc());
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
