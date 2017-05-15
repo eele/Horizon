@@ -3,7 +3,7 @@ package cn.edu.zhk.jsj144.liao.service.category.product;
 import java.sql.SQLException;
 import java.util.List;
 
-import cn.edu.zhk.jsj144.liao.dao_Interface.category.product.CategoryDao;
+import cn.edu.zhk.jsj141.yin.dao.category.product.CategoryDao;
 import cn.edu.zhk.jsj144.liao.entity.category.product.Category;
 
 /**

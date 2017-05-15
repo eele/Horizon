@@ -10,8 +10,8 @@ import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
-import cn.edu.zhk.jsj141.yin.entity.category.product.Category;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
+import cn.edu.zhk.jsj144.liao.entity.category.product.Category;
 
 //商品分类dao层
 public class CategoryDao {
