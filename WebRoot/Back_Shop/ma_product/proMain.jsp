@@ -16,38 +16,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
     <link href="/Horizon/Back_Shop/css/proMain.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="/Horizon/jQuery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
 	<script type="text/javascript" src="/Horizon/Back_Shop/js/proMain.js"></script>
 </head>
   
   <body>
 	<div class="list">
 		<div align="center" class="listCategory">商品分类</div>
-		<div class="listContent">
-		<ul>
-		<%for(int i=0;i<30;i++){ %>
-			<li>
-			  	<div id="l1_<%=i %>" align="center" class="listLayer1">aa</div>
-			  	<div id="l2_<%=i %>" style="display:none;" >
-				<ul>
-					<li>
-					  <div align="center" class="listLayer2">
-						  <div style="position: absolute;background-color:#68A9EA;width:10px;height:30px"></div>
-						  ab
-					  </div>
-					</li>
-					<li>
-					  <div align="center" class="listLayer2">ab</div>
-					</li>
-					<li>
-					  <div align="center" class="listLayer2">ab</div>
-					</li>
-				</ul>
-				</div>
-			</li>
-			<%} %>
-		</ul>
-		</div>
+		<div class="listContent"></div>
 	</div>
 	<div align="center" class="commodityArea">
 	  <div class="mallTitle">

@@ -33,6 +33,11 @@
     <servlet-name>DelChildCategoryCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.category.product.DelChildCategoryCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GetCategoryListCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.category.product.GetCategoryListCtrl</servlet-class>
+  </servlet>
+
 
 
 
@@ -67,6 +72,10 @@
   <servlet-mapping>
     <servlet-name>DelChildCategoryCtrl</servlet-name>
     <url-pattern>/category_product/DelChildCategoryCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetCategoryListCtrl</servlet-name>
+    <url-pattern>/category_product/GetCategoryListCtrl</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
