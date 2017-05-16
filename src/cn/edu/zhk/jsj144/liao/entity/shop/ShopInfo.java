@@ -4,7 +4,7 @@ public class ShopInfo {
 	private String shopid = null; // 店铺id
 	private String sellerid = null; // 卖家id
 	private String shopName = null; // 店铺名
-	private String shoCid = null; // 店铺类别id
+	private String shopCid = null; // 店铺类别id
 	private String desc = null; // 店铺简介
 	private String pro_src = null; // 主要货源
 	private boolean phy_store = false; // 是否有实体店
@@ -32,11 +32,11 @@ public class ShopInfo {
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
 	}
-	public String getShoCid() {
-		return shoCid;
+	public String getshopCid() {
+		return shopCid;
 	}
-	public void setShoCid(String shoCid) {
-		this.shoCid = shoCid;
+	public void setshopCid(String shopCid) {
+		this.shopCid = shopCid;
 	}
 	public String getDesc() {
 		return desc;
@@ -85,6 +85,15 @@ public class ShopInfo {
 	}
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
+	}
+	//@Override
+	public String toString() {
+		return "ShopInfo [shopid=" + shopid + ", sellerid=" + sellerid
+				+ ", shopName=" + shopName + ", shopCid=" + shopCid + ", desc="
+				+ desc + ", pro_src=" + pro_src + ", phy_store=" + phy_store
+				+ ", fac_rep=" + fac_rep + ", sellerName=" + sellerName
+				+ ", telNumber=" + telNumber + ", address=" + address
+				+ ", postcode=" + postcode + "]";
 	}
 	
 }
