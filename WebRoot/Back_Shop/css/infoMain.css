@@ -6,6 +6,7 @@
 }
 .desc {
 	position: relative;
+	font-size: 17px;
 	width: 300px;
 	height: 70px;
 }

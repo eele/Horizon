@@ -1,4 +1,4 @@
-package cn.edu.zhk.jsj144.liao.ctrl.category.product;
+package cn.edu.zhk.jsj144.liao.ctrl.shop;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -10,19 +10,15 @@ import javax.servlet.http.HttpSession;
 
 import cn.edu.zhk.jsj144.liao.service.category.product.CategoryService;
 import cn.edu.zhk.jsj144.liao.service.shop.ShopService;
+
 /**
- * 查询所有分类
+ * 获取店铺信息
  * @author ele
  *
  */
-public class FindAllCategoryCtrl extends HttpServlet {
-
+public class GetShopInfoCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Constructor of the object.
-	 */
-	public FindAllCategoryCtrl() {
+	public GetShopInfoCtrl() {
 		super();
 	}
 
@@ -39,10 +35,12 @@ public class FindAllCategoryCtrl extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		CategoryService categoryService = new CategoryService();
-        request.setAttribute("parents", categoryService.findAll());
-        RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_shop/category_product.jsp");
+        response.setContentType("text/html");
+		ShopService shopService = new ShopService();
+		HttpSession session = request.getSession();
+		String uid = (String)session.getAttribute("uid");
+        request.setAttribute("shopInfo", shopService.getShopInfo(uid));
+        RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_shopInfo/infoMain.jsp");
         rd.forward(request,response);
 	}
 

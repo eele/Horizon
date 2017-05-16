@@ -44,7 +44,7 @@ $(document).ready(function(){
  * 加载默认嵌套页面
  */
 $(document).ready(function(){ 
-	$(".mainArea").load("/Horizon/Back_Shop/ma_shopInfo/infoMain.jsp");
+	$(".mainArea").load("/Horizon/shopInfo/GetShopInfoCtrl");
 }); 
 
 /**
@@ -53,7 +53,7 @@ $(document).ready(function(){
 $(document).ready(function(){ 
 	$("#tab1").click(function() {
 		$(".mainArea").html("");
-		$(".mainArea").load("/Horizon/Back_Shop/ma_shopInfo/infoMain.jsp");
+		$(".mainArea").load("/Horizon/shopInfo/GetShopInfoCtrl");
 	});
 	$("#tab2").click(function() {
 		$(".mainArea").html("");
