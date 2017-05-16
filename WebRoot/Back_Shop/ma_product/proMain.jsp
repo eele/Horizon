@@ -16,7 +16,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
     <link href="/Horizon/Back_Shop/css/proMain.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
 	<script type="text/javascript" src="/Horizon/Back_Shop/js/proMain.js"></script>
 </head>
   
@@ -27,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<div align="center" class="commodityArea">
 	  <div class="mallTitle">
-		  <div class="searchArea">
+	    <div class="searchArea">
 			<div class="searchBox">
 			  <div class="searchSelect" style="left:0px;">商品</div>
 			  <input name="inputBox" type="text" class="searchInput">
@@ -35,9 +34,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="/Horizon/Back_Shop/img/searchButton.png" alt="搜索" width="26" height="26">
 			  </div>
 			</div>
+			
+		    <div class="newProduct">添加商品</div>
 		  </div>
 	  </div>
-		商品区
+	  <div class="productList"></div>
 	</div>
   </body>
 </html>

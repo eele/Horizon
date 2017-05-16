@@ -4,7 +4,7 @@
 $(document).ready(function() {
 	var num = 0;
 	$.ajax({
-		type: "POST",
+		type: "get",
 		url: "/Horizon/category_product/GetCategoryListCtrl",
 		success: function(html) {
 			$(".listContent").html(html);
@@ -43,8 +43,8 @@ $(document).ready(function(){
 	if($(".commodityArea").height()+70 > $(window).height()) {
 		$(".list").height($(".commodityArea").height()+70);
 	} else {
-		if($(window).height() < 600){
-			$(".list").height(600);
+		if($(window).height() < 500){
+			$(".list").height(500);
 		} else {
 			$(".list").height($(window).height());
 		}
@@ -53,11 +53,45 @@ $(document).ready(function(){
 		if($(".commodityArea").height() > $(window).height()) {
 			$(".commodityArea").height($(".commodityArea").height()+70);
 		} else {
-			if($(window).height() < 600){
-				$(".list").height(600);
+			if($(window).height() < 500){
+				$(".list").height(500);
 			} else {
 				$(".list").height($(window).height());
 			}
 		}
+	});
+});
+
+/**
+ * 显示商品区列表
+ */
+$(document).ready(function(){ 
+	$.ajax({
+		type: "get",
+		url: "/Horizon/product/GetProductListCtrl",
+		success: function(html) {
+			$(".productList").html(html);
+		},
+		error: function() {
+			$(".productList").html("<h2 align='center'><b>网页加载异常</b><h3>");
+		}
+	});
+});
+
+/**
+ * 添加商品
+ */
+$(document).ready(function(){ 
+	$(".newProduct").click(function() {
+		$.ajax({
+			type: "get",
+			url: "/Horizon/Back_Shop/ma_product/addProduct.jsp",
+			success: function(html) {
+				$(".mainArea").html(html);
+			},
+			error: function() {
+				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
+			}
+		});
 	});
 });
