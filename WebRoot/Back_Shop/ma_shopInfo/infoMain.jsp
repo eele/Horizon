@@ -21,7 +21,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <div class="modifyBtn" id="btn2" style="left:100px"><strong>取消</strong></div>
   	</div>
   </div>
+  
   <input type="hidden" name="shopID" value="${shopInfo.shopid}">
+  <input type="hidden" id="pro_srcVal" value="${shopInfo.pro_src}">
+  <input type="hidden" id="phy_storeVal" value="${shopInfo.phy_store}">
+  <input type="hidden" id="fac_repVal" value="${shopInfo.fac_rep}">
+  
 <table width="719" border="0" align="center">
       <tr>
         <td width="162" align="right">店铺名：</td>
@@ -36,36 +41,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
         <td align="right" valign="top">店铺简介：</td>
         <td height="73" align="right" valign="top">&nbsp;</td>
-        <td height="70" colspan="2"><textarea name="desc" class="desc">${shopInfo.desc}</textarea></td>
+        <td height="70" colspan="2"><textarea name="desc" class="desc">${shopInfo.descr}</textarea></td>
       </tr>
       <tr class="modifyTr">
         <td height="30" rowspan="2" align="right">主要货源：</td>
         <td height="30" rowspan="2" align="right">&nbsp;</td>
-        <td height="30"><input type="radio" name="proSrc" value="radiobutton">
+        <td height="30"><input type="radio" name="proSrc" value="1">
         	线下批发市场</td>
-        <td height="30"><input type="radio" name="proSrc" value="radiobutton">
+        <td height="30"><input type="radio" name="proSrc" value="2">
 			实体店拿货</td>
       </tr>
       <tr class="modifyTr">
-        <td height="30"><input type="radio" name="proSrc" value="radiobutton">
+        <td height="30"><input type="radio" name="proSrc" value="3">
 			自己生产</td>
-        <td height="30"><input type="radio" name="proSrc" value="radiobutton">
+        <td height="30"><input type="radio" name="proSrc" value="4">
 			代工生产</td>
       </tr>
       <tr class="modifyTr">
         <td align="right">是否有实体店：</td>
         <td height="40" align="right">&nbsp;</td>
-        <td width="138" height="40"><input type="radio" name="phy" value="radiobutton">
+        <td width="138" height="40"><input type="radio" id="phy" name="phy" value="true">
         是</td>
-        <td width="391" height="40"><input type="radio" name="phy" value="radiobutton">
+        <td width="391" height="40"><input type="radio" name="phy" value="false">
         否</td>
       </tr>
       <tr class="modifyTr">
         <td align="right">是否有工厂或仓库：</td>
         <td height="40" align="right">&nbsp;</td>
-        <td width="138" height="40"><input type="radio" name="fac" value="radiobutton">
+        <td width="138" height="40"><input type="radio" id="fac" name="fac" value="true">
         是</td>
-        <td width="391" height="40"><input type="radio" name="fac" value="radiobutton">
+        <td width="391" height="40"><input type="radio" name="fac" value="false">
         否</td>
       </tr>
       

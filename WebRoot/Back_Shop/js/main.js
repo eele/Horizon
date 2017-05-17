@@ -43,8 +43,17 @@ $(document).ready(function(){
 /**
  * 加载默认嵌套页面
  */
-$(document).ready(function(){ 
-	$(".mainArea").load("/Horizon/shopInfo/GetShopInfoCtrl");
+$(document).ready(function(){
+	$.ajax({
+		type: "get",
+		url: "/Horizon/shopInfo/GetShopInfoCtrl",
+		success: function(html) {
+			$(".mainArea").html(html);
+		},
+		error: function() {
+			$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
+		}
+	});
 }); 
 
 /**
@@ -52,15 +61,39 @@ $(document).ready(function(){
  */
 $(document).ready(function(){ 
 	$("#tab1").click(function() {
-		$(".mainArea").html("");
-		$(".mainArea").load("/Horizon/shopInfo/GetShopInfoCtrl");
+		$.ajax({
+			type: "get",
+			url: "/Horizon/shopInfo/GetShopInfoCtrl",
+			success: function(html) {
+				$(".mainArea").html(html);
+			},
+			error: function() {
+				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
+			}
+		});
 	});
 	$("#tab2").click(function() {
-		$(".mainArea").html("");
-		$(".mainArea").load("/Horizon/Back_Shop/ma_product/proMain.jsp");
+		$.ajax({
+			type: "get",
+			url: "/Horizon/Back_Shop/ma_product/proMain.jsp",
+			success: function(html) {
+				$(".mainArea").html(html);
+			},
+			error: function() {
+				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
+			}
+		});
 	});
 	$("#tab3").click(function() {
-		$(".mainArea").html("");
-		$(".mainArea").load("/Horizon/Back_Shop/ma_order/orderMain.jsp");
+		$.ajax({
+			type: "get",
+			url: "/Horizon/Back_Shop/ma_order/orderMain.jsp",
+			success: function(html) {
+				$(".mainArea").html(html);
+			},
+			error: function() {
+				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
+			}
+		});
 	});
 }); 

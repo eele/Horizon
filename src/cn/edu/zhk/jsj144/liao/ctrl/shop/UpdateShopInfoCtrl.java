@@ -1,23 +1,28 @@
 package cn.edu.zhk.jsj144.liao.ctrl.shop;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.InputStreamReader;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONObject;
+
+import cn.edu.zhk.jsj141.yin.util.JsonUtil;
+import cn.edu.zhk.jsj144.liao.entity.shop.ShopInfo;
 import cn.edu.zhk.jsj144.liao.service.shop.ShopService;
 
-/**
- * 获取店铺信息
- * @author ele
- *
- */
-public class GetShopInfoCtrl extends HttpServlet {
+public class UpdateShopInfoCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public GetShopInfoCtrl() {
+
+	/**
+	 * Constructor of the object.
+	 */
+	public UpdateShopInfoCtrl() {
 		super();
 	}
 
@@ -38,12 +43,21 @@ public class GetShopInfoCtrl extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		ShopService shopService = new ShopService();
 		
+		BufferedReader reader = new BufferedReader(
+				new InputStreamReader(request.getInputStream(), "utf-8"));  
+		String data = "", str = "";
+		while ((str = reader.readLine()) != null) {  //读取前端数据
+			data = data + str;
+		}
+		JSONObject jsonObject = JSONObject.fromObject(JsonUtil.urlToJson(data));
+		
+		ShopInfo shopInfo = (ShopInfo) JSONObject.toBean(jsonObject, ShopInfo.class);
 		HttpSession session = request.getSession();
-		session.setAttribute("uid","123"); /////////////////////////////////
-		String uid = (String)session.getAttribute("uid");
-        request.setAttribute("shopInfo", shopService.getShopInfo(uid));
-        RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_shopInfo/infoMain.jsp");
-        rd.forward(request,response);
+		shopInfo.setSellerid((String) session.getAttribute("uid"));
+		shopService.editShopInfo(shopInfo);
+		
+		GetShopInfoCtrl ctrl = new GetShopInfoCtrl();
+		ctrl.doGet(request, response);
 	}
 
 	/**

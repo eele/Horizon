@@ -41,6 +41,11 @@
     <servlet-name>GetShopInfoCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.shop.GetShopInfoCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UpdateShopInfoCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.shop.UpdateShopInfoCtrl</servlet-class>
+  </servlet>
+
 
 
 
@@ -85,6 +90,10 @@
   <servlet-mapping>
     <servlet-name>GetShopInfoCtrl</servlet-name>
     <url-pattern>/shopInfo/GetShopInfoCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateShopInfoCtrl</servlet-name>
+    <url-pattern>/shopInfo/UpdateShopInfoCtrl</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
