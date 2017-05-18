@@ -69,7 +69,7 @@ dt {
 	width: 99.8%;
 }
 
-td .bookname {
+td .Productname {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-break: keep-all;

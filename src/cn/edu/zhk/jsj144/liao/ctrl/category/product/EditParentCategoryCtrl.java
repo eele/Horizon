@@ -38,7 +38,6 @@ public class EditParentCategoryCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		request.setCharacterEncoding("utf-8");
 		
 		CategoryService categoryService = new CategoryService();
 		Category parent = new Category();

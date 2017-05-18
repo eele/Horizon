@@ -11,7 +11,7 @@
   </head>
   
   <body>
-<div class="divBook">
+<div class="divProduct">
 <ul>
 
 
@@ -32,10 +32,10 @@
 		<c:param name="method" value="findByPress"/>
 		<c:param name="press" value="${product.press }"/>
 	</c:url>
-	<p><a id="bookname" title="${product.bname }" href="<c:url value='/admin/AdminProServlet?method=load&bid=${product.bid }'/>">${product.bname }</a></p>
+	<p><a id="Productname" title="${product.bname }" href="<c:url value='/admin/AdminProServlet?method=load&bid=${product.bid }'/>">${product.bname }</a></p>
 	<p><a href="${authorUrl }" name='P_zz' title='${product.author }'>${product.author }</a></p>
 	<p class="publishing">
-		<span>店铺：</span><a href="${pressUrl }">${product.press }</a>
+		<span>销量：</span><a href="${pressUrl }">${product.press }</a>
 	</p>
   </div>
  </li>

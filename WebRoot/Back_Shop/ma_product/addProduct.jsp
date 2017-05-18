@@ -44,7 +44,7 @@ $(function () {
 		}
 		
 		if(isNaN(currPrice) || isNaN(price) || isNaN(discount)) {
-			alert("当前价、定价、折扣必须是合法的小数！");
+			alert("定价、促销价必须是合法的小数！");
 			return false;
 		}
 		$("#form").submit();
@@ -93,9 +93,8 @@ function loadChildren() {
 	    	<li class="addProLi">商品名：　<input id="bname" type="text" name="bname" value="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" style="width:500px;"/></li>
 	    	<li class="addProLi">大图：　<input id="image_w" type="file" name="image_w"/></li>
 	    	<li class="addProLi">小图：　<input id="image_b" type="file" name="image_b"/></li>
-	    	<li class="addProLi">当前价：<input id="currPrice" type="text" name="currPrice" value="40.7" style="width:50px;"/></li>
-	    	<li class="addProLi">定价：　<input id="price" type="text" name="price" value="59.0" style="width:50px;"/>
-	    	折扣：<input id="discount" type="text" name="discount" value="6.9" style="width:30px;"/>折</li>
+	    	<li class="addProLi">定&nbsp;价：　<input id="currPrice" type="text" name="currPrice" value="40.7" style="width:50px;"/>	元</li>
+	    	<li class="addProLi">促销价：　<input id="price" type="text" name="price" value="59.0" style="width:50px;"/>	元</li>
 	    </ul>
 		<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
 		<table>
@@ -111,6 +110,9 @@ function loadChildren() {
 			</tr>
 			<tr>
 				<td colspan="3">生产日期：<input type="text" id="publishtime" name="publishtime" value="2013-6-1" style="width:100px;"/></td>
+			</tr>
+			<tr>
+				<td colspan="3">进货日期：<input type="text" id="publishtime" name="publishtime" value="2013-6-1" style="width:100px;"/></td>
 			</tr>
 			<tr>
 				<td>

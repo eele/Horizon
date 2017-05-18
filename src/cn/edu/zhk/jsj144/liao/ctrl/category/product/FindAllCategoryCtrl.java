@@ -42,6 +42,7 @@ public class FindAllCategoryCtrl extends HttpServlet {
 		response.setContentType("text/html");
 		CategoryService categoryService = new CategoryService();
         request.setAttribute("parents", categoryService.findAll());
+        
         RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_shop/category_product.jsp");
         rd.forward(request,response);
 	}

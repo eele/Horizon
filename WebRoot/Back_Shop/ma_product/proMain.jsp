@@ -8,12 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
-    <title>Horizon店铺首页</title>
-
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 
     <link href="/Horizon/Back_Shop/css/proMain.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="/Horizon/Back_Shop/js/proMain.js"></script>

@@ -41,7 +41,6 @@ public class AddChildCategoryCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		request.setCharacterEncoding("utf-8");
 		
 		CategoryService categoryService = new CategoryService();
 		Category child = new Category();

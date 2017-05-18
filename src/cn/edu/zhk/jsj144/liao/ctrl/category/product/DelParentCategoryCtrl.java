@@ -38,7 +38,6 @@ public class DelParentCategoryCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		request.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		CategoryService categoryService = new CategoryService();
 		String cid = request.getParameter("id");

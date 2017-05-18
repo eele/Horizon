@@ -40,7 +40,6 @@ public class UpdateShopInfoCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		request.setCharacterEncoding("utf-8");
 		ShopService shopService = new ShopService();
 		
 		BufferedReader reader = new BufferedReader(

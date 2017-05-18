@@ -1,27 +1,19 @@
-package cn.edu.zhk.jsj144.liao.ctrl.category.product;
+package cn.edu.zhk.jsj144.liao.ctrl.product;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.edu.zhk.jsj144.liao.service.category.product.CategoryService;
-
-/**
- * 删除二级分类
- * @author ele
- *
- */
-public class DelChildCategoryCtrl extends HttpServlet {
+public class GetProductListCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Constructor of the object.
 	 */
-	public DelChildCategoryCtrl() {
+	public GetProductListCtrl() {
 		super();
 	}
 
@@ -39,16 +31,21 @@ public class DelChildCategoryCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		CategoryService categoryService = new CategoryService();
-		String cid = request.getParameter("id");
-		int cnt = categoryService.findProductCountByCategory(cid);
-		if(cnt > 0) {
-			out.write("{\"msg\":\"err\"}"); // 提示该二级分类下还有商品，不能删除
-		} else {
-			categoryService.delete(cid);
-			out.write("{\"msg\":\"ok\"}");
-		}
+//		PrintWriter out = response.getWriter();
+//		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+//		out.println("<HTML>");
+//		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
+//		out.println("  <BODY>");
+//		out.print("    This is ");
+//		out.print(this.getClass());
+//		out.println(", using the GET method");
+//		out.println("  </BODY>");
+//		out.println("</HTML>");
+//		out.flush();
+//		out.close();
+		
+		RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_product/productList.jsp");
+		rd.forward(request,response);
 	}
 
 	/**

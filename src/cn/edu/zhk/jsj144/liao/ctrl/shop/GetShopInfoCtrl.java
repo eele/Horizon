@@ -35,7 +35,6 @@ public class GetShopInfoCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		request.setCharacterEncoding("utf-8");
 		ShopService shopService = new ShopService();
 		
 		HttpSession session = request.getSession();
