@@ -9,46 +9,52 @@ import java.util.List;
  * @param <T>
  */
 public class PageBean<T> {
-	private int pc;//当前页码
-	private int tr;//总记录数
-	private int ps;//每页记录数
-	private String url;//请求路径和参数，例如：/BookServlet?method=findXXX&cid=1&bname=2
-	private List<T> beanList;
-	
-	// 计算总页数
-	public int getTp() {
-		int tp = tr / ps;
-		return tr % ps == 0 ? tp : tp + 1;
-	}
-	
-	public int getPc() {
-		return pc;
-	}
-	public void setPc(int pc) {
-		this.pc = pc;
-	}
-	public int getTr() {
-		return tr;
-	}
-	public void setTr(int tr) {
-		this.tr = tr;
-	}
-	public int getPs() {
-		return ps;
-	}
-	public void setPs(int ps) {
-		this.ps = ps;
-	}
+	private List<T> bean;            // 存放实体类集合
+    
+    private int currentPage;    // 当前页
+    private int pageSize;        // 每页显示的条数
+    private int totalCount;    // 总条数
+    private int totalPage;   // 总页数
+    private String url; // 链接地址
+    
+    public List<T> getBean() {
+        return bean ;
+    }
+    
+    public void setBean(List<T> bean) {
+        this.bean = bean ;
+    }
+    
+    public int getCurrentPage() {
+        return currentPage ;
+    }
+    
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage ;
+    }
+    
+    public int getPageSize() {
+        return pageSize ;
+    }
+    
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize ;
+    }
+    
+    public int getTotalPage() {
+        return (totalCount + pageSize - 1) / pageSize ;
+    }
+    
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount ;
+    }
+
 	public String getUrl() {
 		return url;
 	}
+
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public List<T> getBeanList() {
-		return beanList;
-	}
-	public void setBeanList(List<T> beanList) {
-		this.beanList = beanList;
-	}
+    
 }

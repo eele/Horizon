@@ -21,6 +21,7 @@ body{
 	width: 600px;
 	margin-left: 100px;
     top: 65px;
+    z-index: 10;
 }
 .newProduct {
 	font-weight: bold;
