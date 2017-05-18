@@ -40,9 +40,9 @@ public class GetProductListCtrl extends HttpServlet {
 		int pc = getPc(request); //得到pc：如果页面传递，使用页面的，如果没传，pc=1
 		String url = getUrl(request); //得到url
 		PageBean<Product> pb = proService.getProductList(pc);
-		pb.setUrl(url); //给PageBean设置url，保存PageBean，转发到/jsps/product/list.jsp
-		request.setAttribute("pb", pb);
+		pb.setUrl(url); //给PageBean设置url，保存PageBean
 		
+		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_product/productList.jsp");
 		rd.forward(request,response);
 	}

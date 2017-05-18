@@ -21,15 +21,15 @@ public class ProductDao {
 private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 	
 //	/**
-//	 * 按bid查询
-//	 * @param bid
+//	 * 按productid查询
+//	 * @param productid
 //	 * @return
 //	 * @throws SQLException
 //	 */
-//	public Product findByBid(String bid) throws SQLException {
-//		String sql = "SELECT * FROM t_product b, t_category c WHERE b.cid=c.cid AND b.bid=?";
+//	public Product findByproductid(String productid) throws SQLException {
+//		String sql = "SELECT * FROM product b, category c WHERE b.cid=c.cid AND b.productid=?";
 //		// 一行记录中，包含了很多的product的属性，还有一个cid属性
-//		Map<String,Object> map = qr.query(sql, new MapHandler(), bid);
+//		Map<String,Object> map = qr.query(sql, new MapHandler(), productid);
 //		// 把Map中除了cid以外的其他属性映射到product对象中
 //		Product product = CommonUtils.toBean(map, Product.class);
 //		// 把Map中cid属性映射到Category中，即这个Category只有cid
@@ -53,7 +53,7 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 	 * @throws SQLException
 	 */
 	public int findproductCountByCategory(String cid) throws SQLException {
-		String sql = "select count(*) from t_product where cid=?";
+		String sql = "select count(*) from product where cid=?";
 		Number cnt = (Number)qr.query(sql, new ScalarHandler(), cid);
 		return cnt == null ? 0 : cnt.intValue();
 	}
@@ -145,7 +145,7 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 			 */
 			whereSql.append(" and ").append(expr.getName())
 				.append(" ").append(expr.getOperator()).append(" ");
-			// where 1=1 and bid = ?
+			// where 1=1 and productid = ?
 			if(!expr.getOperator().equals("is null")) {
 				whereSql.append("?");
 				params.add(expr.getValue());
@@ -155,13 +155,13 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		/*
 		 * 3. 总记录数 
 		 */
-		String sql = "select count(*) from t_product" + whereSql;
+		String sql = "select count(*) from product" + whereSql;
 		Number number = (Number)qr.query(sql, new ScalarHandler(), params.toArray());
 		int tr = number.intValue();//得到了总记录数
 		/*
 		 * 4. 得到beanList，即当前页记录
 		 */
-		sql = "select * from t_product" + whereSql + " order by orderBy limit ?,?";
+		sql = "select * from product" + whereSql + " order by orderBy limit ?,?";
 		params.add((pc-1) * ps);//当前页首行记录的下标
 		params.add(ps);//一共查询几行，就是每页记录数
 		

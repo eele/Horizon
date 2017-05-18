@@ -6,7 +6,6 @@
   <head>
 <link rel="stylesheet" type="text/css" href="/Horizon/Back_Shop/css/productList.css" />
 <link rel="stylesheet" type="text/css" href="/Horizon/pager/pager.css" />
-<script type="text/javascript" src="/Horizon/pager/pager.js"></script>
 <script type="text/javascript" src="/Horizon/Back_Shop/js/productList.js"></script>
   </head>
   
@@ -18,7 +17,7 @@
 <c:forEach items="${pb.beanList }" var="product">
  <li>
   <div class="inner">
-    <a class="pic" href="<c:url value='/admin/AdminProServlet?method=load&bid=${product.bid }'/>"><img src="<c:url value='/${product.image_b }'/>" border="0"/></a>
+    <a class="pic" href="<c:url value='/admin/AdminProServlet?method=load&bid=${product.productid }'/>"><img src="<c:url value='${product.image_b }'/>" border="0"/></a>
     <p class="price" >
 		<span class="price_n">&yen;${product.currPrice }</span>
 		<span class="price_r">&yen;${product.price }</span>
