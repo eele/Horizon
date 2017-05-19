@@ -1,24 +1,24 @@
 package cn.edu.zhk.jsj144.liao.ctrl.product;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.io.PrintWriter;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 import cn.edu.zhk.jsj144.liao.entity.product.Product;
 import cn.edu.zhk.jsj144.liao.service.product.ProductService;
 
-public class GetProductListCtrl extends HttpServlet {
+public class GetProductByIDCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Constructor of the object.
 	 */
-	public GetProductListCtrl() {
+	public GetProductByIDCtrl() {
 		super();
 	}
 
@@ -36,23 +36,12 @@ public class GetProductListCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-
-		try {
-			PageBean<Product> pBean = new PageBean<Product>();
-			int currentPage = Integer.parseInt(request.getParameter("currentPage")); // 获取当前页码
-			pBean.setCurrentPage(currentPage);
-			pBean.setPageSize(8);  // 每页8条记录
-	        
-	        ProductService proService = new ProductService();
-	        PageBean<Product> pb= proService.getByPage(pBean, "%");  //获取该页所有商品信息列表
-	        pb.setUrl("/Horizon/product/GetProductListCtrl?cid=%");
-			request.setAttribute("pb", pb);
-			RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_product/productList.jsp");
-			rd.forward(request,response);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ProductService productService = new ProductService();
+		Product product = productService.getProductByID(request.getParameter("productid"));
+		
+		request.setAttribute("product", product);
+		RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_product/productDesc.jsp");
+		rd.forward(request,response);
 	}
 
 	/**

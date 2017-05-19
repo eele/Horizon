@@ -93,5 +93,14 @@ public class Product {
 	public void setProductDesc(String productDesc) {
 		this.productDesc = productDesc;
 	}
+	@Override
+	public String toString() {
+		return "Product [productid=" + productid + ", shopid=" + shopid
+				+ ", productName=" + productName + ", image_b=" + image_b
+				+ ", image_w=" + image_w + ", price=" + price + ", currPrice="
+				+ currPrice + ", brand=" + brand + ", productNum=" + productNum
+				+ ", proDate=" + proDate + ", purDate=" + purDate + ", cid="
+				+ cid + ", productDesc=" + productDesc + "]";
+	}
 	
 }

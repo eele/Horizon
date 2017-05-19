@@ -68,7 +68,7 @@ $(document).ready(function(){
 $(document).ready(function(){ 
 	$.ajax({
 		type: "get",
-		url: "/Horizon/product/GetProductListCtrl",
+		url: "/Horizon/product/GetProductListCtrl?cid=%&currentPage=1",
 		success: function(html) {
 			$(".productList").html(html);
 		},
