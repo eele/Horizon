@@ -11,6 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <link href="/Horizon/Back_Shop/css/infoMain.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/Horizon/Back_Shop/js/infoMain.js"></script>
+    <script type="text/javascript">$(".shopName").text("${shopInfo.shopName}");</script>
   </head>
   
   <body>

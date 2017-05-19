@@ -5,9 +5,9 @@
 
 .divProduct, .inner, .uiStyle, .liStyle, .pStyle,.imgStyle, .divStyle { margin: 0; padding: 0; list-style-type: none; font-size: 12px;}
 .price {padding-bottom: 3px; color: #878787; }
-.price_n {color: #c30; font-weight: bold; padding-right: 10px; font-family: Arial; }
-.price_s {color: #c30; font-family: Arial; }
-.price_r {color: #878787; text-decoration: line-through; padding-right: 10px; font-family: Arial; }
+.price_n {color: #c30; font-weight: bold; padding-right: 10px; font-family: Arial; font-size: 18px; }
+.price_s {color: #c30; font-family: Arial;  font-size: 20px;}
+.price_r {color: #878787; text-decoration: line-through; padding-right: 10px; font-family: Arial; font-size: 15px; }
 #Productname {text-decoration:underline; color:#555555; display: block; overflow: hidden; width: 200px; font-family: Arial; }
 #Productname:hover {color:#FF6600; }
 .inner a {color: #018BD3;}

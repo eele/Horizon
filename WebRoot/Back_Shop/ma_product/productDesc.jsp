@@ -12,11 +12,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>${product.productName}</title>
     
     <link href="/Horizon/Back_Shop/css/productDesc.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/adminjsps/admin/css/book/desc.css'/>">
-	<link rel="stylesheet" type="text/css" href="<c:url value='/jquery/jquery.datepick.css'/>">
-	<script type="text/javascript" src="<c:url value='/jquery/jquery.datepick.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/jquery/jquery.datepick-zh-CN.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/adminjsps/admin/js/book/desc.js'/>"></script>
+    <link rel="stylesheet" type="text/css" href="/adminjsps/admin/css/book/desc.css">
+	<link rel="stylesheet" type="text/css" href="/jquery/jquery.datepick.css">
+	<script type="text/javascript" src="/jquery/jquery.datepick.js"></script>
+	<script type="text/javascript" src="/jquery/jquery.datepick-zh-CN.js"></script>
+	<script type="text/javascript" src="/adminjsps/admin/js/book/desc.js"></script>
 	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
     <script type="text/javascript" src="/Horizon/Back_Shop/js/productDesc.js"></script>
     
@@ -96,10 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <img id="imgTitle" src="/Horizon/Back_Shop/img/mallTitle.png" alt="Horizon店铺管理">
 	</div>
 	<div align="left" class="tabBar">
-	  <div id="tab1" class="tabStyle">店铺信息</div>
-	  <div id="tab2" class="tabStyle" style="margin-left:105px">商品管理</div>
-	  <div id="tab3" class="tabStyle" style="margin-left:210px">订单管理</div>
-	  <div class="shopName">xx店铺</div>
+	  <div class="shopName">商品详情</div>
 	</div>
     <div class="mainArea">
 	      <input type="checkbox" id="box"><label for="box">编辑或删除</label>
@@ -107,113 +104,102 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <br/>
 	  <div id="show">
 	    <div class="sm">${product.productName }</div>
-	    <img align="top" src="<c:url value='/${product.image_w }'/>" class="tp"/>
+	    <img align="top" src="${product.image_w }" class="tp"/>
 	    <div id="book" style="float:left;">
-		    <ul>
-		    	<li>商品编号：${product.productid }</li>
-		    	<li>促销价：<span class="price_n">&yen;${product.currPrice }</span></li>
-		    	<li>定价：<span style="text-decoration:line-through;">&yen;${product.price }</span></li>
+		    <ul class="ulStyle">
+		    	<li class="liStyle" >商品编号：${product.productid }</li>
+		    	<li class="liStyle" >促销价：<span class="price_n">&yen;${product.currPrice }</span></li>
+		    	<li class="liStyle" >定价：<span style="text-decoration:line-through;">&yen;${product.price }</span></li>
 		    </ul>
 			<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
 			<table class="tab">
 				<tr>
-					<td colspan="3">
-						作者：著
-					</td>
+					<td colspan="3">品牌：</td>
 				</tr>
 				<tr>
-					<td colspan="3">
-						出版社：
-					</td>
+					<td colspan="3">数量：</td>
 				</tr>
 				<tr>
-					<td colspan="3">出版时间：</td>
+					<td colspan="3">生产日期：</td>
 				</tr>
 				<tr>
-					<td>版次：</td>
-					<td>页数：</td>
-					<td>字数：</td>
+					<td colspan="3">进货日期：</td>
 				</tr>
 				<tr>
-					<td width="180">印刷时间：${product.proDate }</td>
-					<td>开本：</td>
-					<td>纸张：</td>
+					<td colspan="3">商品说明：</td>
 				</tr>
 			</table>
 		</div>
 	  </div>
 	  
-<%	  
-// 	  <div id='formDiv'>
-// 	   <div class="sm">&nbsp;</div>
-// 	   <form action="<c:url value='/admin/AdminProServlet'/>" method="post" id="form">
-// 	    <input type="hidden" name="method" id="method"/>
-// 	   	<input type="hidden" name="bid" value="${product.productid }"/>
-// 	    <img align="top" src="<c:url value='${product.image_w }'/>" class="tp"/>
-// 	    <div style="float:left;">
-// 		    <ul>
-// 		    	<li>商品编号：${product.bid }</li>
-// 		    	<li>书名：　<input id="bname" type="text" name="bname" value="${product.bname }" style="width:500px;"/></li>
-// 		    	<li>当前价：<input id="currPrice" type="text" name="currPrice" value="${product.currPrice }" style="width:50px;"/></li>
-// 		    	<li>定价：　<input id="price" type="text" name="price" value="${product.price }" style="width:50px;"/>
-// 		    	折扣：<input id="discount" type="text" name="discount" value="${product.discount }" style="width:30px;"/>折</li>
-// 		    </ul>
-// 			<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
-// 			<table class="tab">
-// 				<tr>
-// 					<td colspan="3">
-// 						作者：　　<input id="author" type="text" name="author" value="${product.author }" style="width:150px;"/>
-// 					</td>
-// 				</tr>
-// 				<tr>
-// 					<td colspan="3">
-// 						出版社：　<input id="press" type="text" name="press" value="${product.press }" style="width:200px;"/>
-// 					</td>
-// 				</tr>
-// 				<tr>
-// 					<td colspan="3">出版时间：<input id="publishtime" type="text" name="publishtime" value="${product.publishtime }" style="width:100px;"/></td>
-// 				</tr>
-// 				<tr>
-// 					<td>版次：　　<input id="edition" type="text" name="edition" value="${product.edition }" style="width:40px;"/></td>
-// 					<td>页数：　　<input id="pageNum" type="text" name="pageNum" value="${product.pageNum }" style="width:50px;"/></td>
-// 					<td>字数：　　<input id="wordNum" type="text" name="wordNum" value="${product.wordNum }" style="width:80px;"/></td>
-// 				</tr>
-// 				<tr>
-// 					<td width="250px">印刷时间：<input id="printtime" type="text" name="printtime" value="${product.printtime }" style="width:100px;"/></td>
-// 					<td width="250px">开本：　　<input id="booksize" type="text" name="productsize" value="${product.booksize }" style="width:30px;"/></td>
-// 					<td>纸张：　　<input id="paper" type="text" name="paper" value="${product.paper }" style="width:80px;"/></td>
-// 				</tr>
-// 				<tr>
-// 					<td>
-// 						一级分类：<select name="pid" id="pid" onchange="loadChildren()">
-// 							<option value="">==请选择1级分类==</option>
-// 	<c:forEach items="${parents }" var="parent">
-// 	  <option value="${parent.cid }" <c:if test="${product.category.parent.cid eq parent.cid }">selected="selected"</c:if>>${parent.cname }</option>
-// 	</c:forEach>
-// 						</select>
-// 					</td>
-// 					<td>
-// 						二级分类：<select name="cid" id="cid">
-// 							<option value="">==请选择2级分类==</option>
-// 	<c:forEach items="${children }" var="child">
-// 	  <option value="${child.cid }" <c:if test="${product.category.cid eq child.cid }">selected="selected"</c:if>>${child.cname }</option>
-// 	</c:forEach>
-// 						</select>
-// 					</td>
-// 					<td></td>
-// 				</tr>
-// 				<tr>
-// 					<td colspan="2">
-// 						<input onclick="editForm()" type="button" name="method" id="editBtn" class="btn" value="编　　辑">
-// 						<input onclick="deleteForm()" type="button" name="method" id="delBtn" class="btn" value="删　　除">
-// 					</td>
-// 					<td></td>
-// 				</tr>
-// 			</table>
-// 		</div>
-// 	   </form>
-// 	  </div>
-//     %>
+	  <div id='formDiv'>
+	   <div class="sm">&nbsp;</div>
+	   <form action="/admin/AdminProServlet'/>" method="post" id="form">
+	    <input type="hidden" name="method" id="method"/>
+	   	<input type="hidden" name="bid" value="${product.productid }"/>
+	    <img align="top" src="${product.image_w }'/>" class="tp"/>
+	    <div style="float:left;">
+		    <ul class="ulStyle">
+		    	<li class="liStyle" >商品编号：${product.bid }</li>
+		    	<li class="liStyle" >商品名：　<input id="bname" type="text" name="bname" value="${product.bname }" style="width:500px;"/></li>
+		    	<li class="liStyle" >促销价：<input id="currPrice" type="text" name="currPrice" value="${product.currPrice }" style="width:50px;"/></li>
+		    	<li class="liStyle" >定价：　<input id="price" type="text" name="price" value="${product.price }" style="width:50px;"/>
+		    </ul>
+			<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
+			<table class="tab">
+				<tr>
+					<td colspan="3">
+						品牌：　　<input id="author" type="text" name="author" value="${product.author }" style="width:150px;"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						出版社：　<input id="press" type="text" name="press" value="${product.press }" style="width:200px;"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">出版时间：<input id="publishtime" type="text" name="publishtime" value="${product.publishtime }" style="width:100px;"/></td>
+				</tr>
+				<tr>
+					<td>版次：　　<input id="edition" type="text" name="edition" value="${product.edition }" style="width:40px;"/></td>
+					<td>页数：　　<input id="pageNum" type="text" name="pageNum" value="${product.pageNum }" style="width:50px;"/></td>
+					<td>字数：　　<input id="wordNum" type="text" name="wordNum" value="${product.wordNum }" style="width:80px;"/></td>
+				</tr>
+				<tr>
+					<td width="250px">印刷时间：<input id="printtime" type="text" name="printtime" value="${product.printtime }" style="width:100px;"/></td>
+					<td width="250px">开本：　　<input id="booksize" type="text" name="productsize" value="${product.booksize }" style="width:30px;"/></td>
+					<td>纸张：　　<input id="paper" type="text" name="paper" value="${product.paper }" style="width:80px;"/></td>
+				</tr>
+				<tr>
+					<td>
+						一级分类：<select name="pid" id="pid" onchange="loadChildren()">
+							<option value="">==请选择1级分类==</option>
+	<c:forEach items="${parents }" var="parent">
+	  <option value="${parent.cid }" <c:if test="${product.category.parent.cid eq parent.cid }">selected="selected"</c:if>>${parent.cname }</option>
+	</c:forEach>
+						</select>
+					</td>
+					<td>
+						二级分类：<select name="cid" id="cid">
+							<option value="">==请选择2级分类==</option>
+	<c:forEach items="${children }" var="child">
+	  <option value="${child.cid }" <c:if test="${product.category.cid eq child.cid }">selected="selected"</c:if>>${child.cname }</option>
+	</c:forEach>
+						</select>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input onclick="editForm()" type="button" name="method" id="editBtn" class="btn" value="编　　辑">
+						<input onclick="deleteForm()" type="button" name="method" id="delBtn" class="btn" value="删　　除">
+					</td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	   </form>
+	  </div>
     </div>
   </div>
   </body>

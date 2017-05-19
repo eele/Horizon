@@ -37,38 +37,12 @@ $(document).ready(function() {
 });
 
 /**
- * 商品类别列表高度调整
- */
-$(document).ready(function(){ 
-	if($(".commodityArea").height()+70 > $(window).height()) {
-		$(".list").height($(".commodityArea").height()+70);
-	} else {
-		if($(window).height() < 500){
-			$(".list").height(500);
-		} else {
-			$(".list").height($(window).height());
-		}
-	}
-	$(window).resize(function() {
-		if($(".commodityArea").height() > $(window).height()) {
-			$(".commodityArea").height($(".commodityArea").height()+70);
-		} else {
-			if($(window).height() < 500){
-				$(".list").height(500);
-			} else {
-				$(".list").height($(window).height());
-			}
-		}
-	});
-});
-
-/**
  * 显示商品区列表
  */
 $(document).ready(function(){ 
 	$.ajax({
 		type: "get",
-		url: "/Horizon/product/GetProductListCtrl?cid=%&currentPage=1",
+		url: "/Horizon/product/GetProductListCtrl?cid=all&currentPage=1",
 		success: function(html) {
 			$(".productList").html(html);
 		},

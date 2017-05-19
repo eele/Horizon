@@ -100,7 +100,7 @@ function loadChildren() {
 		<table>
 			<tr>
 				<td colspan="3">
-					品牌：　　<input type="text" id="author" name="author" value="Craig Walls" style="width:150px;"/>
+					品牌：　<input type="text" id="author" name="author" value="Craig Walls" style="width:150px;"/>
 				</td>
 			</tr>
 			<tr>

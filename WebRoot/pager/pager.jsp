@@ -8,7 +8,7 @@
 			alert('请输入正确的页码！');
 			return;
 		}
-		if(currentPage > ${pb.totalPage}) {//判断当前页码是否大于最大页
+		if(currentPage > new BacklogOverview("${pb.totalPage}")) {//判断当前页码是否大于最大页
 			alert('请输入正确的页码！');
 			return;
 		}
@@ -22,7 +22,9 @@
     <%--上一页 --%>
 <c:choose>
 	<c:when test="${pb.currentPage eq 1 }"><span class="spanBtnDisabled">上一页</span></c:when>
-	<c:otherwise><a href="javascript:$('.productList').load('${pb.url }&currentPage=${pb.currentPage-1}');" class="aBtn bold">上一页</a></c:otherwise>
+	<c:otherwise>
+		<a href="javascript:$('.productList').load('${pb.url }&currentPage=${pb.currentPage-1}');" class="aBtn bold">上一页</a>
+	</c:otherwise>
 </c:choose>
         
         

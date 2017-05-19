@@ -22,7 +22,7 @@ $(document).ready(function(){
 	window.onresize = function() {
 		$(".mainArea").height($(window).height()-80);
 		var w=$(window).width();
-		var changeWidth = 900;
+		var changeWidth = 930;
 		if(w < 1200) {
 			$(".bodyArea").width(changeWidth);
 			if(w < changeWidth) {

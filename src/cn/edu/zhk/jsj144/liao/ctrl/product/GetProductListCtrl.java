@@ -41,12 +41,20 @@ public class GetProductListCtrl extends HttpServlet {
 			PageBean<Product> pBean = new PageBean<Product>();
 			int currentPage = Integer.parseInt(request.getParameter("currentPage")); // 获取当前页码
 			pBean.setCurrentPage(currentPage);
-			pBean.setPageSize(8);  // 每页8条记录
+			pBean.setPageSize(12);  // 每页12条记录
 	        
+			String cid = request.getParameter("cid");
 	        ProductService proService = new ProductService();
-	        PageBean<Product> pb= proService.getByPage(pBean, "%");  //获取该页所有商品信息列表
-	        pb.setUrl("/Horizon/product/GetProductListCtrl?cid=%");
+	        PageBean<Product> pb = null;
+	        if (cid.equals("all")) {
+	        	pb= proService.getByPage(pBean, "%");  //获取该页所有商品信息列表
+	        	pb.setUrl("/Horizon/product/GetProductListCtrl?cid=all");
+			} else {
+				pb= proService.getByPage(pBean, cid);  //获取该页指定种类的商品信息列表
+				pb.setUrl("/Horizon/product/GetProductListCtrl?cid=" + cid);
+			}
 			request.setAttribute("pb", pb);
+			request.setAttribute("cid", cid);
 			RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_product/productList.jsp");
 			rd.forward(request,response);
 		} catch (SQLException e) {
