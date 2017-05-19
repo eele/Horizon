@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
+import cn.edu.zhk.jsj144.liao.entity.product.Product;
+import cn.edu.zhk.jsj144.liao.service.product.ProductService;
+
 public class GetProductListCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,18 +35,13 @@ public class GetProductListCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-//		PrintWriter out = response.getWriter();
-//		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-//		out.println("<HTML>");
-//		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-//		out.println("  <BODY>");
-//		out.print("    This is ");
-//		out.print(this.getClass());
-//		out.println(", using the GET method");
-//		out.println("  </BODY>");
-//		out.println("</HTML>");
-//		out.flush();
-//		out.close();
+
+		ProductService proService = new ProductService();
+		int pc = getPc(request); //得到pc：如果页面传递，使用页面的，如果没传，pc=1
+		String url = getUrl(request); //得到url
+		PageBean<Product> pb = proService.getProductList(pc);
+		pb.setUrl(url); //给PageBean设置url，保存PageBean，转发到/jsps/product/list.jsp
+		request.setAttribute("pb", pb);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_product/productList.jsp");
 		rd.forward(request,response);
@@ -62,6 +61,37 @@ public class GetProductListCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		doGet(request, response);
+	}
+	
+	/**
+	 * 截取url，用于分页处理
+	 * @param req
+	 * @return
+	 */
+	private String getUrl(HttpServletRequest req) {
+		String url = req.getRequestURI() + "?" + req.getQueryString();
+		//如果url中存在pc参数，截取掉，如果不存在那就不用截取。
+		int index = url.lastIndexOf("&pc=");
+		if(index != -1) {
+			url = url.substring(0, index);
+		}
+		return url;
+	}
+	
+	/**
+	 * 获取当前页码
+	 * @param req
+	 * @return
+	 */
+	private int getPc(HttpServletRequest req) {
+		int pc = 1;
+		String param = req.getParameter("pc");
+		if(param != null && !param.trim().isEmpty()) {
+			try {
+				pc = Integer.parseInt(param);
+			} catch(RuntimeException e) {}
+		}
+		return pc;
 	}
 
 }
