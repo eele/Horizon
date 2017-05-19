@@ -25,4 +25,11 @@ public class ProductService {
         pBean2.setPageSize(pBean.getPageSize());
         return pBean2;
     }
+
+	public Product getProductByID(String productid) {
+		// TODO Auto-generated method stub
+		return productDao.getProductByID(productid);
+	}
+	
+	
 }

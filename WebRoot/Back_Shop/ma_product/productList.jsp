@@ -18,11 +18,24 @@
 <c:forEach items="${pb.bean }" var="product">
  <li class="liStyle">
   <div class="inner">
-    <a class="pic" href="<c:url value='/admin/AdminProServlet?method=load&bid=${product.productid }'/>"><img class="imgStyle" src="<c:url value='${product.image_b }'/>" border="0"/></a>
+    <input type="hidden" >
+    <a class="pic" target="_blank" href="/Horizon/product/GetProductByIDCtrl?productid=${product.productid }">
+    	<img class="imgStyle" src="<c:url value='${product.image_b }'/>" border="0"/></a>
     <p class="price" >
 		<span class="price_n">&yen;${product.currPrice }</span>
 		<span class="price_r">&yen;${product.price }</span>
 	</p>
+	<p class="pStyle">
+		<a id="Productname" title="${product.productName }" href="/Horizon/product/GetProductByIDCtrl?productid=${product.productid }">${product.productName }</a>
+	</p>
+
+
+
+
+
+
+
+
 	<%
 // 	<c:url value="/admin/AdminProServlet" var="authorUrl">
 // 		<c:param name="method" value="findByAuthor"/>

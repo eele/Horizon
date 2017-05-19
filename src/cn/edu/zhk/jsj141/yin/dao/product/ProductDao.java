@@ -29,4 +29,11 @@ public class ProductDao {
         		cid, 
         		(pBean.getCurrentPage()-1)*pBean.getPageSize(), pBean.getPageSize());
 	}
+
+	public Product getProductByID(String productid) {
+		// TODO Auto-generated method stub
+		Product p = new Product();
+		p.setProductName("中文中文");
+		return p;
+	}
 }

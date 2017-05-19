@@ -49,6 +49,11 @@
     <servlet-name>GetProductListCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.GetProductListCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GetProductByIDCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.GetProductByIDCtrl</servlet-class>
+  </servlet>
+
 
 
 
@@ -103,6 +108,10 @@
   <servlet-mapping>
     <servlet-name>GetProductListCtrl</servlet-name>
     <url-pattern>/product/GetProductListCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetProductByIDCtrl</servlet-name>
+    <url-pattern>/product/GetProductByIDCtrl</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
