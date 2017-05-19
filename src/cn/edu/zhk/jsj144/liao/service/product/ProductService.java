@@ -28,7 +28,14 @@ public class ProductService {
 
 	public Product getProductByID(String productid) {
 		// TODO Auto-generated method stub
-		return productDao.getProductByID(productid);
+		Product product = null;
+		try {
+			product = productDao.getProductByID(productid);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return product;
 	}
 	
 	
