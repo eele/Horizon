@@ -39,7 +39,12 @@ public class ProductService {
 	}
 
 	public void addProduct(Product product) {
-		productDao.addProduct(product);
+		try {
+			productDao.addProduct(product);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
