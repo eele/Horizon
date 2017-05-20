@@ -26,7 +26,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <div id="tab1" class="tabStyle">店铺信息</div>
 	  <div id="tab2" class="tabStyle" style="margin-left:105px">商品管理</div>
 	  <div id="tab3" class="tabStyle" style="margin-left:210px">订单管理</div>
-	  <input type="hidden" class="shopCid">
 	  <input type="hidden" class="shopID">
 	  <div class="shopName">--- ---</div>
 	</div>

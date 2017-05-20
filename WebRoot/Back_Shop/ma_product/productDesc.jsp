@@ -12,11 +12,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>${product.productName}</title>
     
     <link href="/Horizon/Back_Shop/css/productDesc.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="/jquery/jquery.datepick.css">
-	<script type="text/javascript" src="/jquery/jquery.datepick.js"></script>
-	<script type="text/javascript" src="/jquery/jquery.datepick-zh-CN.js"></script>
-	<script type="text/javascript" src="/adminjsps/admin/js/book/desc.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Horizon/jQuery/jquery.datepick.css">
 	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
+	<script type="text/javascript" src="/Horizon/jQuery/jquery.datepick.js"></script>
+	<script type="text/javascript" src="/Horizon/jQuery/jquery.datepick-zh-CN.js"></script>
     <script type="text/javascript" src="/Horizon/Back_Shop/js/productDesc.js"></script>
     
 	<script type="text/javascript">
@@ -52,8 +51,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$.ajax({
 			async:true,
 			cache:false,
-			url:"/goods/admin/AdminProServlet",
-			data:{method:"ajaxFindChildren", pid:pid},
+			url:"/Horizon/category_product/FindChildCategoryCtrl",
+			data:{pid:pid},
 			type:"POST",
 			dataType:"json",
 			success:function(arr) {
@@ -67,21 +66,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			}
 		});
-	}
-	
-	/*
-	 * 点击编辑按钮时执行本函数
-	 */
-	function editForm() {
-		$("#method").val("edit");
-		$("#form").submit();
-	}
-	/*
-	 * 点击删除按钮时执行本函数
-	 */
-	 function deleteForm() {
-		$("#method").val("delete");
-		$("#form").submit();	
 	}
 	
 	</script>
@@ -113,19 +97,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
 			<table class="tab">
 				<tr>
-					<td colspan="3">品牌：</td>
+					<td colspan="3">商品品牌：${product.brand }</td>
 				</tr>
 				<tr>
-					<td colspan="3">数量：</td>
+					<td colspan="3">库存数量：${product.productNum }</td>
 				</tr>
 				<tr>
-					<td colspan="3">生产日期：</td>
+					<td colspan="3">生产日期：${product.proDate }</td>
 				</tr>
 				<tr>
-					<td colspan="3">进货日期：</td>
+					<td colspan="3">进货日期：${product.purDate }</td>
 				</tr>
 				<tr>
-					<td colspan="3">商品说明：</td>
+					<td colspan="3">商品说明：${product.productDesc }</td>
 				</tr>
 			</table>
 		</div>
@@ -133,13 +117,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  
 	  <div id='formDiv'>
 	   <div class="sm">&nbsp;</div>
-	   <form action="/admin/AdminProServlet'/>" method="post" id="form">
-	    <input type="hidden" name="method" id="method"/>
-	   	<input type="hidden" name="bid" value="${product.productid }"/>
-	    <img align="top" src="${product.image_w }'/>" class="tp"/>
+	   <form action="/Horizon/product/UpdateProductCtrl" method="post" id="form">
+	   	<input type="hidden" name="productid" value="${product.productid }"/>
+	   <img align="top" src="${product.image_w }" class="tp"/>
 	    <div style="float:left;">
 		    <ul class="ulStyle">
-		    	<li class="liStyle" >商品编号：${product.bid }</li>
+		    	<li class="liStyle" >商品编号：${product.productid }</li>
 		    	<li class="liStyle" >商品名：　<input id="productName" type="text" name="productName" value="${product.productName }" style="width:500px;"/></li>
 		    	<li class="liStyle" >促销价：<input id="currPrice" type="text" name="currPrice" value="${product.currPrice }" style="width:50px;"/></li>
 		    	<li class="liStyle" >定价：　<input id="price" type="text" name="price" value="${product.price }" style="width:50px;"/>
@@ -148,33 +131,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<table class="tab">
 				<tr>
 					<td colspan="3">
-						品牌：　　<input id="author" type="text" name="author" value="${product.author }" style="width:150px;"/>
+						商品品牌：　　<input type="text" id="brand" name="brand" value="${product.brand }" style="width:300px;"/>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="3">
-						出版社：　<input id="press" type="text" name="press" value="${product.press }" style="width:200px;"/>
+						库存数量：　<input type="text" name="productNum" id="productNum" value="${product.productNum }" style="width:60px;"/>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3">出版时间：<input id="proDate" type="text" name="proDate" value="${product.proDate }" style="width:100px;"/></td>
+					<td colspan="3">生产日期：<input type="text" id="proDate" name="proDate" value="${product.proDate }" style="width:100px;"/></td>
 				</tr>
 				<tr>
-					<td>版次：　　<input id="edition" type="text" name="edition" value="${product.edition }" style="width:40px;"/></td>
-					<td>页数：　　<input id="pageNum" type="text" name="pageNum" value="${product.pageNum }" style="width:50px;"/></td>
-					<td>字数：　　<input id="wordNum" type="text" name="wordNum" value="${product.wordNum }" style="width:80px;"/></td>
-				</tr>
-				<tr>
-					<td width="250px">印刷时间：<input id="printtime" type="text" name="printtime" value="${product.printtime }" style="width:100px;"/></td>
-					<td width="250px">开本：　　<input id="booksize" type="text" name="productsize" value="${product.booksize }" style="width:30px;"/></td>
-					<td>纸张：　　<input id="paper" type="text" name="paper" value="${product.paper }" style="width:80px;"/></td>
+					<td colspan="3">进货日期：<input type="text" id="purDate" name="purDate" value="${product.purDate }" style="width:100px;"/></td>
 				</tr>
 				<tr>
 					<td>
 						一级分类：<select name="pid" id="pid" onchange="loadChildren()">
 							<option value="">==请选择1级分类==</option>
 	<c:forEach items="${parents }" var="parent">
-	  <option value="${parent.cid }" <c:if test="${product.category.parent.cid eq parent.cid }">selected="selected"</c:if>>${parent.cname }</option>
+	  <option value="${parent.cid }" <%//<c:if test="${product.category.parent.cid eq parent.cid }">selected="selected"</c:if>%>>${parent.cname }</option>
 	</c:forEach>
 						</select>
 					</td>
@@ -182,10 +158,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						二级分类：<select name="cid" id="cid">
 							<option value="">==请选择2级分类==</option>
 	<c:forEach items="${children }" var="child">
-	  <option value="${child.cid }" <c:if test="${product.category.cid eq child.cid }">selected="selected"</c:if>>${child.cname }</option>
+	  <option value="${child.cid }" <%//<c:if test="${product.category.cid eq child.cid }">selected="selected"</c:if>%>>${child.cname }</option>
 	</c:forEach>
 						</select>
 					</td>
+					<tr>
+						<td colspan="4">商品说明：　　<textarea name="productDesc" id="productDesc" style="margin: 0px; width: 602px; height: 148px;">${product.productDesc }</textarea></td>
+					</tr>
 					<td></td>
 				</tr>
 				<tr>

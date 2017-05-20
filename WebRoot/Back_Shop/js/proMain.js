@@ -42,7 +42,12 @@ $(document).ready(function() {
 $(document).ready(function(){ 
 	$.ajax({
 		type: "get",
-		url: "/Horizon/product/GetProductListCtrl?cid=all&currentPage=1",
+		url: "/Horizon/product/GetProductListCtrl",
+		data: {
+			cid: "all",
+			shopid: $(".shopID").val(),
+			currentPage: "1"
+		},
 		success: function(html) {
 			$(".productList").html(html);
 		},

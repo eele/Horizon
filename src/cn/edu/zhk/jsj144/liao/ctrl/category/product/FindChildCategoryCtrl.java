@@ -1,7 +1,6 @@
 package cn.edu.zhk.jsj144.liao.ctrl.category.product;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;

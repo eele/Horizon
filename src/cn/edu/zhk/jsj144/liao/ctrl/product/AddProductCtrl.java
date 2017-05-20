@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,6 @@ public class AddProductCtrl extends HttpServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
-	@SuppressWarnings("unchecked")
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -106,8 +106,7 @@ public class AddProductCtrl extends HttpServlet {
 		// 保存上传的图片，把图片new成图片对象：Image、Icon、ImageIcon、BufferedImage、ImageIO
 		
 		//获取真实路径
-//		String savepath = this.getServletContext().getRealPath("/product_img");
-		String savepath = "d:\\product_img";
+		String savepath = this.getServletContext().getRealPath("/Back_Shop/ma_product/product_img");
 		
 		//创建目标文件
 		File destFile = new File(savepath, filename);
@@ -154,7 +153,8 @@ public class AddProductCtrl extends HttpServlet {
 		// 保存上传的图片，把图片new成图片对象：Image、Icon、ImageIcon、BufferedImage、ImageIO
 
 		// 获取真实路径
-//		savepath = this.getServletContext().getRealPath("/Back_Shop/ma_product/product_img");
+//		savepath = this.getServletContext().getRealPath("/product_img");
+		
 		// 创建目标文件
 		destFile = new File(savepath, filename);
 		// 保存文件
@@ -182,7 +182,14 @@ public class AddProductCtrl extends HttpServlet {
 		
 		product.setProductid(UUID.randomUUID().toString());
 		ProductService productService = new ProductService();
-		productService.addProduct(product);
+		try {
+			productService.addProduct(product);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			error("数据提交异常", request, response);
+			e.printStackTrace();
+			return;
+		}
 		
 		// 保存成功信息并响应输出
 		PrintWriter out = response.getWriter();

@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$(".listLayer2,this").click(function() {
 				$.ajax({
 					type: "get",
-					url: "/Horizon/product/GetProductListCtrl?cid=" + $(this).attr("id") + "&currentPage=1",
+					url: "/Horizon/product/GetProductListCtrl?shopid=" + $(".shopID").val() + "&cid=" + $(this).attr("id") + "&currentPage=1",
 					success: function(html) {
 						$(".productList").html(html);
 					},

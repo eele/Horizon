@@ -69,6 +69,11 @@
     <servlet-name>FindParentCategoryCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.category.product.FindParentCategoryCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UpdateProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.UpdateProductCtrl</servlet-class>
+  </servlet>
+
 
 
 
@@ -148,6 +153,10 @@
   <servlet-mapping>
     <servlet-name>FindParentCategoryCtrl</servlet-name>
     <url-pattern>/category_product/FindParentCategoryCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateProductCtrl</servlet-name>
+    <url-pattern>/product/UpdateProductCtrl</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

@@ -10,13 +10,14 @@ import cn.edu.zhk.jsj144.liao.entity.product.Product;
 public class ProductService {
 	private ProductDao productDao = new ProductDao();
 	
-	public PageBean<Product> getByPage(PageBean<Product> pBean, String cid) throws SQLException {
+	public PageBean<Product> getByPage(PageBean<Product> pBean, String shopid, String cid)
+			throws SQLException {
         
         //查询总条数
-        int totalCount=productDao.getTotalCount(cid);
+        int totalCount=productDao.getTotalCount(shopid, cid);
         
         //查询当前页的数据
-        List<Product> products=productDao.getCurrentPageBean(pBean,cid);
+        List<Product> products=productDao.getCurrentPageBean(pBean, shopid, cid);
         
         PageBean< Product> pBean2=new PageBean<Product>();
         pBean2.setTotalCount(totalCount);
@@ -38,14 +39,13 @@ public class ProductService {
 		return product;
 	}
 
-	public void addProduct(Product product) {
-		try {
-			productDao.addProduct(product);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void addProduct(Product product) throws SQLException {
+		productDao.addProduct(product);
 	}
-	
+
+	public void updateProduct(String productid) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -12,6 +12,9 @@
 <script type="text/javascript" src="/Horizon/jQuery/jquery.form.js"></script>
 <script type="text/javascript">
 $(function () {
+	$("input").click(function() {
+		$("#msg").text("");
+	});
 	$("input[name='shopid']").val($(".shopID").val());
 	$("#proDate").datepick({dateFormat:"yy-mm-dd"});
 	$("#purDate").datepick({dateFormat:"yy-mm-dd"});
@@ -93,7 +96,6 @@ function loadChildren() {
   <div class="addProMain" align="left">
    <p style="font-size: 16px; font-weight: 900; color: red;" id="msg"></p>
    <form action="/Horizon/product/AddProductCtrl" method="post" enctype="multipart/form-data" id="proForm">
-    <input type="hidden" name="shopid" >
     <div>
 	    <ul class="addProUl">
 	    	<li class="addProLi">商品名：　<input id="productName" type="text" name="productName"  style="width:500px;"/></li>
@@ -162,6 +164,7 @@ function loadChildren() {
 			</tr>
 	  </table>
 	</div>
+	<input type="hidden" name="shopid" >
    </form>
   </div>
 

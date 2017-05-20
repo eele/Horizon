@@ -22,26 +22,27 @@ public class ProductDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public int getTotalCount(String cid) throws SQLException {
+	public int getTotalCount(String shopid, String cid) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql="SELECT count(*) FROM product WHERE cid like ?";
-		Map<String,Object> map = qr.query(sql, new MapHandler(), cid);
+		String sql="SELECT count(*) FROM product WHERE shopid like ? and cid like ?";
+		Object[] params = {shopid, cid};
+		Map<String,Object> map = qr.query(sql, new MapHandler(), params);
 		return Integer.parseInt(String.valueOf(map.get("count(*)")));
 	}
 
 	/**
-	 * 获取当前页的指定种类商品
+	 * 获取某店铺当前页的指定种类商品
 	 * @param pBean
 	 * @param cid
+	 * @param cid2 
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Product> getCurrentPageBean(PageBean<Product> pBean, String cid) throws SQLException {
+	public List<Product> getCurrentPageBean(PageBean<Product> pBean, String shopid, String cid) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql="SELECT * FROM product WHERE cid like ? ORDER BY purDate DESC LIMIT ?,?";
-        return qr.query(sql, new BeanListHandler<Product>(Product.class), 
-        		cid, 
-        		(pBean.getCurrentPage()-1)*pBean.getPageSize(), pBean.getPageSize());
+		String sql="SELECT * FROM product WHERE shopid like ? and cid like ? ORDER BY orderBy DESC LIMIT ?,?";
+		Object[] params = {shopid, cid, (pBean.getCurrentPage()-1)*pBean.getPageSize(), pBean.getPageSize()};
+        return qr.query(sql, new BeanListHandler<Product>(Product.class), params);
 	}
 
 	/**
@@ -73,7 +74,7 @@ public class ProductDao {
 			attr = attr + "," + (String) map.keySet().toArray()[i];
 		}
 		
-		String sql = "insert into shop(" + attr + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into product(" + attr + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		qr.update(sql, map.values().toArray());
 	}
 }
