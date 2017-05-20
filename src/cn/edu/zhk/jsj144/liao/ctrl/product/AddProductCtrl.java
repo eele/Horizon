@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,9 +24,9 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import cn.edu.zhk.jsj141.yin.util.BeanMapUtil;
 import cn.edu.zhk.jsj144.liao.entity.product.Product;
-import cn.edu.zhk.jsj144.liao.service.category.product.CategoryService;
 import cn.edu.zhk.jsj144.liao.service.product.ProductService;
 
+@MultipartConfig
 public class AddProductCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -63,6 +64,7 @@ public class AddProductCtrl extends HttpServlet {
 			fileItemList = sfu.parseRequest(request);
 		} catch (FileUploadException e) {
 			// 如果出现这个异常，说明单个文件超出了800KB
+			e.printStackTrace();
 			error("上传的文件超出了800KB", request, response);
 			return;
 		}
@@ -104,7 +106,8 @@ public class AddProductCtrl extends HttpServlet {
 		// 保存上传的图片，把图片new成图片对象：Image、Icon、ImageIcon、BufferedImage、ImageIO
 		
 		//获取真实路径
-		String savepath = this.getServletContext().getRealPath("/product_img");
+//		String savepath = this.getServletContext().getRealPath("/product_img");
+		String savepath = "d:\\product_img";
 		
 		//创建目标文件
 		File destFile = new File(savepath, filename);
@@ -151,7 +154,7 @@ public class AddProductCtrl extends HttpServlet {
 		// 保存上传的图片，把图片new成图片对象：Image、Icon、ImageIcon、BufferedImage、ImageIO
 
 		// 获取真实路径
-		savepath = this.getServletContext().getRealPath("/Back_Shop/ma_product/product_img");
+//		savepath = this.getServletContext().getRealPath("/Back_Shop/ma_product/product_img");
 		// 创建目标文件
 		destFile = new File(savepath, filename);
 		// 保存文件
@@ -181,9 +184,11 @@ public class AddProductCtrl extends HttpServlet {
 		ProductService productService = new ProductService();
 		productService.addProduct(product);
 		
-		// 保存成功信息转发到msg.jsp
-		request.setAttribute("msg", "添加商品成功！");
-		request.getRequestDispatcher("/Back_Shop/ma_product/msg.jsp").forward(request, response);
+		// 保存成功信息并响应输出
+		PrintWriter out = response.getWriter();
+		out.println("添加商品成功！");
+		out.flush();
+		out.close();
 	}
 
 	/**
@@ -203,7 +208,7 @@ public class AddProductCtrl extends HttpServlet {
 	}
 
 	/**
-	 * 保存错误信息并转发
+	 * 保存错误信息并响应输出
 	 * @param msg
 	 * @param request
 	 * @param response

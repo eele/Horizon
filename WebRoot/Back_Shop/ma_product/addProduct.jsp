@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/Horizon/jQuery/jquery.datepick.css">
 <script type="text/javascript" src="/Horizon/jQuery/jquery.datepick.js"></script>
 <script type="text/javascript" src="/Horizon/jQuery/jquery.datepick-zh-CN.js"></script>
+<script type="text/javascript" src="/Horizon/jQuery/jquery.form.js"></script>
 <script type="text/javascript">
 $(function () {
 	$("#proDate").datepick({dateFormat:"yy-mm-dd"});
@@ -49,19 +50,28 @@ $(function () {
 			alert("定价、促销价必须是合法的小数！");
 			return false;
 		}
-		$.ajax({
-		    cache: true,
-		    type: "POST",
-		    url: $("#form").submit(),
-		    success: function(data) {
-		    	if (data.substring(0, 6)=="Error:") {
-		    		$("#msg").text(data);
-		    	} else{
-		    		$(".mainArea").html(data);
-		    	}
-			},
-			error: function() {
-				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
+// 		$.ajax({
+// 		    type: "POST",
+// 		    url: "/Horizon/product/AddProductCtrl",
+// 		    enctype: "multipart/form-data",
+// 		    cache: false,
+// 		    data: new FormData($("#proForm")[0]),
+// 		    processData: false,
+// 		    contentType: false,
+// 		    success: function(data) {
+// 		    	if (data.substring(0, 6)=="Error:") {
+// 		    		$("#msg").text(data);
+// 		    	} else{
+// 		    		$(".mainArea").html(data);
+// 		    	}
+// 			},
+// 			error: function() {
+// 				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
+// 			}
+// 		});
+		$("#proForm").ajaxSubmit({
+			success: function(data) {
+		    	$("#msg").text(data);
 			}
 		});
 	});
@@ -100,7 +110,7 @@ function loadChildren() {
   <body>
   <div class="addProMain" align="left">
    <p style="font-size: 16px; font-weight: 900; color: red;" id="msg"></p>
-   <form action="<c:url value='/product/AddProductCtrl'/>" enctype="multipart/form-data" method="post" id="form">
+   <form action="/Horizon/product/AddProductCtrl" method="post" enctype="multipart/form-data" id="proForm">
     <div>
 	    <ul class="addProUl">
 	    	<li class="addProLi">商品名：　<input id="productName" type="text" name="productName"  style="width:500px;"/></li>
