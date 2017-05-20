@@ -59,7 +59,7 @@
 							<td class="td" width="400px">
 								<div class="Productname">
 								  <img align="middle" width="70" src="<c:url value='/${orderItem.product.image_b }'/>"/>
-								  ${orderItem.product.bname }
+								  ${orderItem.product.productName }
 								</div>
 							</td>
 							<td class="td" >

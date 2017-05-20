@@ -1,6 +1,6 @@
 $(function () {
 	// 日期框
-	$("#publishtime").datepick({dateFormat:"yy-mm-dd"});
+	$("#proDate").datepick({dateFormat:"yy-mm-dd"});
 	$("#printtime").datepick({dateFormat:"yy-mm-dd"});
 
 	// 编辑和删除按钮样式
@@ -31,7 +31,7 @@ $(function () {
 
 
 function editForm() {
-	var bname = $("#bname").val();
+	var productName = $("#productName").val();
 	var currPrice = $("#currPrice").val();
 	var price = $("#price").val();
 	var discount = $("#discount").val();
@@ -40,7 +40,7 @@ function editForm() {
 	var pid = $("#pid").val();
 	var cid = $("#cid").val();
 	
-	if(!bname || !currPrice || !price || !discount || !author || !press || !pid || !cid) {
+	if(!productName || !currPrice || !price || !discount || !author || !press || !pid || !cid) {
 		alert("图名、当前价、定价、折扣、作者、出版社、1级分类、2级分类不能为空！");
 		return false;
 	}

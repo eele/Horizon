@@ -39,4 +39,9 @@ public class ProductDao {
 		BeanMapUtil.mapToBean(map, product);
 		return product;
 	}
+
+	public void addProduct(Product product) {
+		// TODO Auto-generated method stub
+		
+	}
 }

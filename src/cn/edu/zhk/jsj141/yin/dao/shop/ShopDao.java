@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;
-import org.apache.commons.lang.ArrayUtils;
 
 import cn.edu.zhk.jsj141.yin.util.BeanMapUtil;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;

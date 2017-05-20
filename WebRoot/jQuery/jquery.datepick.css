@@ -111,6 +111,8 @@ img.datepick-trigger {
 	background: #ccc;
 	text-align: center;
 	font-size: 100%;
+	margin-left: 0px;
+    margin-top: 0;
 }
 .datepick a {
 	display: block;

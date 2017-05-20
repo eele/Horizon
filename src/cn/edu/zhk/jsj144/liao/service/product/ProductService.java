@@ -37,6 +37,10 @@ public class ProductService {
 		}
 		return product;
 	}
+
+	public void addProduct(Product product) {
+		productDao.addProduct(product);
+	}
 	
 	
 }

@@ -59,7 +59,7 @@ $(document).ready(function(){
 	$(".newProduct").click(function() {
 		$.ajax({
 			type: "get",
-			url: "/Horizon/Back_Shop/ma_product/addProduct.jsp",
+			url: "/Horizon/category_product/FindParentCategoryCtrl",
 			success: function(html) {
 				$(".mainArea").html(html);
 			},

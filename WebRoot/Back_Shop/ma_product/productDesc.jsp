@@ -12,7 +12,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>${product.productName}</title>
     
     <link href="/Horizon/Back_Shop/css/productDesc.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="/adminjsps/admin/css/book/desc.css">
 	<link rel="stylesheet" type="text/css" href="/jquery/jquery.datepick.css">
 	<script type="text/javascript" src="/jquery/jquery.datepick.js"></script>
 	<script type="text/javascript" src="/jquery/jquery.datepick-zh-CN.js"></script>
@@ -141,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <div style="float:left;">
 		    <ul class="ulStyle">
 		    	<li class="liStyle" >商品编号：${product.bid }</li>
-		    	<li class="liStyle" >商品名：　<input id="bname" type="text" name="bname" value="${product.bname }" style="width:500px;"/></li>
+		    	<li class="liStyle" >商品名：　<input id="productName" type="text" name="productName" value="${product.productName }" style="width:500px;"/></li>
 		    	<li class="liStyle" >促销价：<input id="currPrice" type="text" name="currPrice" value="${product.currPrice }" style="width:50px;"/></li>
 		    	<li class="liStyle" >定价：　<input id="price" type="text" name="price" value="${product.price }" style="width:50px;"/>
 		    </ul>
@@ -158,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3">出版时间：<input id="publishtime" type="text" name="publishtime" value="${product.publishtime }" style="width:100px;"/></td>
+					<td colspan="3">出版时间：<input id="proDate" type="text" name="proDate" value="${product.proDate }" style="width:100px;"/></td>
 				</tr>
 				<tr>
 					<td>版次：　　<input id="edition" type="text" name="edition" value="${product.edition }" style="width:40px;"/></td>

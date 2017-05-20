@@ -57,6 +57,21 @@
     <servlet-name>GetShopNameCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.shop.GetShopNameCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>FindChildCategoryCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.category.product.FindChildCategoryCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.AddProductCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FindParentCategoryCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.category.product.FindParentCategoryCtrl</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -121,6 +136,18 @@
   <servlet-mapping>
     <servlet-name>GetShopNameCtrl</servlet-name>
     <url-pattern>/shopInfo/GetShopNameCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FindChildCategoryCtrl</servlet-name>
+    <url-pattern>/category_product/FindChildCategoryCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddProductCtrl</servlet-name>
+    <url-pattern>/product/AddProductCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FindParentCategoryCtrl</servlet-name>
+    <url-pattern>/category_product/FindParentCategoryCtrl</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
