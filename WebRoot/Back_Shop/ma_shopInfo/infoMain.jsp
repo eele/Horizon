@@ -11,7 +11,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <link href="/Horizon/Back_Shop/css/infoMain.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/Horizon/Back_Shop/js/infoMain.js"></script>
-    <script type="text/javascript">$(".shopName").text("${shopInfo.shopName}");</script>
+    <script type="text/javascript">
+    	$(".shopName").text("${shopInfo.shopName}");
+    	$(".shopID").val("${shopInfo.shopid}");
+    </script>
   </head>
   
   <body>
@@ -23,7 +26,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</div>
   </div>
   
-  <input type="hidden" name="shopID" value="${shopInfo.shopid}">
   <input type="hidden" id="pro_srcVal" value="${shopInfo.pro_src}">
   <input type="hidden" id="phy_storeVal" value="${shopInfo.phy_store}">
   <input type="hidden" id="fac_repVal" value="${shopInfo.fac_rep}">

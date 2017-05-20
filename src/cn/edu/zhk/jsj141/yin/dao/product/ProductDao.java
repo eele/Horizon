@@ -16,6 +16,12 @@ import cn.edu.zhk.jsj144.liao.entity.product.Product;
 public class ProductDao {
 	private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 
+	/**
+	 * 获取商品总数
+	 * @param cid
+	 * @return
+	 * @throws SQLException
+	 */
 	public int getTotalCount(String cid) throws SQLException {
 		// TODO Auto-generated method stub
 		String sql="SELECT count(*) FROM product WHERE cid like ?";
@@ -23,6 +29,13 @@ public class ProductDao {
 		return Integer.parseInt(String.valueOf(map.get("count(*)")));
 	}
 
+	/**
+	 * 获取当前页的指定种类商品
+	 * @param pBean
+	 * @param cid
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Product> getCurrentPageBean(PageBean<Product> pBean, String cid) throws SQLException {
 		// TODO Auto-generated method stub
 		String sql="SELECT * FROM product WHERE cid like ? ORDER BY purDate DESC LIMIT ?,?";
@@ -31,6 +44,12 @@ public class ProductDao {
         		(pBean.getCurrentPage()-1)*pBean.getPageSize(), pBean.getPageSize());
 	}
 
+	/**
+	 * 根据商品ID获取商品
+	 * @param productid
+	 * @return
+	 * @throws SQLException
+	 */
 	public Product getProductByID(String productid) throws SQLException {
 		// TODO Auto-generated method stub
 		String sql="SELECT * FROM product WHERE productid = ?";
@@ -40,8 +59,21 @@ public class ProductDao {
 		return product;
 	}
 
-	public void addProduct(Product product) {
+	/**
+	 * 添加商品
+	 * @param product
+	 * @throws SQLException 
+	 */
+	public void addProduct(Product product) throws SQLException {
 		// TODO Auto-generated method stub
+		Map<String, Object> map = (Map<String, Object>) BeanMapUtil.beanToMap(product);
 		
+		String attr = (String) map.keySet().toArray()[0];
+		for (int i = 1; i < 14; i++) {  // 拼接属性字段
+			attr = attr + "," + (String) map.keySet().toArray()[i];
+		}
+		
+		String sql = "insert into shop(" + attr + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		qr.update(sql, map.values().toArray());
 	}
 }
