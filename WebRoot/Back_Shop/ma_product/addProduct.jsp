@@ -50,25 +50,6 @@ $(function () {
 			alert("定价、促销价必须是合法的小数！");
 			return false;
 		}
-// 		$.ajax({
-// 		    type: "POST",
-// 		    url: "/Horizon/product/AddProductCtrl",
-// 		    enctype: "multipart/form-data",
-// 		    cache: false,
-// 		    data: new FormData($("#proForm")[0]),
-// 		    processData: false,
-// 		    contentType: false,
-// 		    success: function(data) {
-// 		    	if (data.substring(0, 6)=="Error:") {
-// 		    		$("#msg").text(data);
-// 		    	} else{
-// 		    		$(".mainArea").html(data);
-// 		    	}
-// 			},
-// 			error: function() {
-// 				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
-// 			}
-// 		});
 		$("#proForm").ajaxSubmit({
 			success: function(data) {
 		    	$("#msg").text(data);
