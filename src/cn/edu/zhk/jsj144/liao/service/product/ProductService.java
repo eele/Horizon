@@ -43,9 +43,15 @@ public class ProductService {
 		productDao.addProduct(product);
 	}
 
-	public void updateProduct(String productid) {
+	public void updateProduct(Product product) {
 		// TODO Auto-generated method stub
+		Product pro = getProductByID(product.getProductid());
+		product.setShopid(pro.getShopid());
+		product.setImage_b(pro.getImage_b());
+		product.setImage_w(pro.getImage_w());
+		product.setSalesNum(pro.getSalesNum());
 		
+		productDao.updateProduct(product);
 	}
 	
 }

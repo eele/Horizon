@@ -8,7 +8,7 @@
 			alert('请输入正确的页码！');
 			return;
 		}
-		if(currentPage > new BacklogOverview("${pb.totalPage}")) {//判断当前页码是否大于最大页
+		if(currentPage > "${pb.totalPage}") {//判断当前页码是否大于最大页
 			alert('请输入正确的页码！');
 			return;
 		}

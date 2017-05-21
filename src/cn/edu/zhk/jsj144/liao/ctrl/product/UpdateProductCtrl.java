@@ -1,11 +1,18 @@
 package cn.edu.zhk.jsj144.liao.ctrl.product;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
+
+import cn.edu.zhk.jsj141.yin.util.JsonUtil;
+import cn.edu.zhk.jsj144.liao.entity.product.Product;
 import cn.edu.zhk.jsj144.liao.service.product.ProductService;
 
 public class UpdateProductCtrl extends HttpServlet {
@@ -32,9 +39,20 @@ public class UpdateProductCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
+		
+		BufferedReader reader = new BufferedReader(
+				new InputStreamReader(request.getInputStream(), "utf-8"));  
+		String data = "", str = "";
+		while ((str = reader.readLine()) != null) {  //读取前端数据
+			data = data + str;
+		}
+
+		JSONObject jsonObject = JSONObject.fromObject(JsonUtil.urlToJson(data));
+		Product product = (Product) JSONObject.toBean(jsonObject, Product.class);
+		
 		ProductService proService = new ProductService();
-		proService.updateProduct(request.getParameter("productid"));
-		response.sendRedirect("/Horizon/product/GetProductByIDCtrl?productid=" + request.getParameter("productid"));
+		proService.updateProduct(product);
+		response.sendRedirect("/Horizon/product/GetProductByIDCtrl?productid=" + product.getProductid());
 	}
 
 	/**

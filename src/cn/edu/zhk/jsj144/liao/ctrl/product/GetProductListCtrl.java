@@ -49,10 +49,10 @@ public class GetProductListCtrl extends HttpServlet {
 	        PageBean<Product> pb = null;
 	        if (cid.equals("all")) {
 	        	pb= proService.getByPage(pBean, shopid, "%");  //获取该页所有商品信息列表
-	        	pb.setUrl("/Horizon/product/GetProductListCtrl?cid=all");
+	        	pb.setUrl("/Horizon/product/GetProductListCtrl?shopid=" + shopid + "&cid=all");
 			} else {
 				pb= proService.getByPage(pBean, shopid, cid);  //获取该页指定种类的商品信息列表
-				pb.setUrl("/Horizon/product/GetProductListCtrl?cid=" + cid);
+				pb.setUrl("/Horizon/product/GetProductListCtrl?shopid=" + shopid + "&cid=" + cid);
 			}
 			request.setAttribute("pb", pb);
 			request.setAttribute("cid", cid);

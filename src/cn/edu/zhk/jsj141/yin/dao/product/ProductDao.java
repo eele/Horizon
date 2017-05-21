@@ -77,4 +77,13 @@ public class ProductDao {
 		String sql = "insert into product(" + attr + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		qr.update(sql, map.values().toArray());
 	}
+
+	/**
+	 * 修改商品
+	 * @param product
+	 */
+	public void updateProduct(Product product) {
+		// TODO Auto-generated method stub
+		
+	}
 }
