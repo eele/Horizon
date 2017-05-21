@@ -9,15 +9,15 @@ import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 
 public class CustomerManagementService {
 
-	public PageBean<User> getByPage(int op, PageBean<User> pBean, String param)
+	public PageBean<User> getByPage(PageBean<User> pBean, String param)
 			throws SQLException {
 		CustomerManagementDao customerManagementDao = new CustomerManagementDao();
 		
         //查询总条数
-        int totalCount=customerManagementDao.getTotalCount(op, param);
+        int totalCount=customerManagementDao.getTotalCount(param);
         
         //查询当前页的数据
-        List<User> Users=customerManagementDao.getCurrentPageBean(op, pBean, param);
+        List<User> Users=customerManagementDao.getCurrentPageBean(pBean, param);
         
         PageBean< User> pBean2=new PageBean<User>();
         pBean2.setTotalCount(totalCount);

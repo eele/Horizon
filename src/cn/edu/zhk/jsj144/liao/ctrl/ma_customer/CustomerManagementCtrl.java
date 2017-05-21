@@ -75,10 +75,10 @@ public class CustomerManagementCtrl extends HttpServlet {
 		CustomerManagementService cuService = new CustomerManagementService();
 		PageBean<User> pb = null;
 		if (keyword.equals("_all_")) {
-			pb= cuService.getByPage(0, pBean, "%");  //获取该页所有商品信息列表
+			pb= cuService.getByPage(pBean, "%");  //获取该页所有商品信息列表
 			pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&keyword=_all_");
 		} else {
-			pb= cuService.getByPage(0, pBean, keyword);  //获取该页指定种类的商品信息列表
+			pb= cuService.getByPage(pBean, keyword);  //获取该页指定种类的商品信息列表
 			pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&keyword=" + keyword);
 		}
 		request.setAttribute("pb", pb);
