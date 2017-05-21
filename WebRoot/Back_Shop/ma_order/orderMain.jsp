@@ -9,15 +9,16 @@
     
 	<link rel="stylesheet" type="text/css" href="/Horizon/pager/pager.css" />
     <link rel="stylesheet" type="text/css" href="/Horizon/Back_Shop/css/orderMain.css" />
+    <script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
   </head>
   
   <body>
 <p class="pLink">
-  <a href="<c:url value='/admin/AdminOrderServlet?method=findByStatus&status=1'/>">未付款</a>  | 
-  <a href="<c:url value='/admin/AdminOrderServlet?method=findByStatus&status=2'/>">已付款</a>  | 
-  <a href="<c:url value='/admin/AdminOrderServlet?method=findByStatus&status=3'/>">已发货</a>  | 
-  <a href="<c:url value='/admin/AdminOrderServlet?method=findByStatus&status=4'/>">交易成功</a>  | 
-  <a href="<c:url value='/admin/AdminOrderServlet?method=findByStatus&status=5'/>">已取消</a>
+  <a href="/Horizon/order/OrderManagementCtrl?method=findByStatus&status=1">未付款</a>  | 
+  <a href="/Horizon/order/OrderManagementCtrl?method=findByStatus&status=2">已付款</a>  | 
+  <a href="/Horizon/order/OrderManagementCtrl?method=findByStatus&status=3">已发货</a>  | 
+  <a href="/Horizon/order/OrderManagementCtrl?method=findByStatus&status=4">交易成功</a>  | 
+  <a href="/Horizon/order/OrderManagementCtrl?method=findByStatus&status=5">已取消</a>
 </p>
 <div class="divMain">
 	<div class="title">
@@ -33,7 +34,7 @@
 <c:forEach items="${pb.beanList }" var="order">	
 	
 		<tr class="tt">
-			<td width="320px">订单号：<a  href="<c:url value='/admin/AdminOrderServlet?method=load&oid=${order.oid }'/>">${order.oid }</a></td>
+			<td width="320px">订单号：<a  href="/Horizon/order/OrderManagementCtrl?method=load&oid=${order.oid }">${order.oid }</a></td>
 			<td width="200px">下单时间：${order.ordertime }</td>
 			<td width="178px">&nbsp;</td>
 			<td width="205px">&nbsp;</td>
@@ -45,7 +46,7 @@
 
 
   <c:forEach items="${order.orderItemList }" var="orderItem">
-	    <img border="0" width="70" src="<c:url value='/${orderItem.product.image_b }'/>"/>
+	    <img border="0" width="70" src="/${orderItem.product.image_b }"/>
   </c:forEach>
 
 			</td>
@@ -63,12 +64,12 @@
 			</td>
 						
 			<td>
-			<a href="<c:url value='/admin/AdminOrderServlet?method=load&oid=${order.oid }'/>">查看</a><br/>
+			<a href="/Horizon/order/OrderManagementCtrl?method=load&oid=${order.oid }">查看</a><br/>
 <c:if test="${order.status eq 1 }">
-				<a href="<c:url value='/admin/AdminOrderServlet?method=load&oid=${order.oid }&btn=cancel'/>">取消</a><br/>						
+				<a href="/Horizon/order/OrderManagementCtrl?method=load&oid=${order.oid }&btn=cancel">取消</a><br/>						
 </c:if>
 <c:if test="${order.status eq 2 }">
-				<a href="<c:url value='/admin/AdminOrderServlet?method=load&oid=${order.oid }&btn=deliver'/>">发货</a><br/>
+				<a href="/Horizon/order/OrderManagementCtrl?method=load&oid=${order.oid }&btn=deliver">发货</a><br/>
 </c:if>			
 
 			</td>

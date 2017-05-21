@@ -85,7 +85,7 @@ $(document).ready(function(){
 		});
 	});
 	$("#tab3").click(function() {
-		$(".mainArea").html("<iframe src='/Horizon/Back_Shop/ma_order/orderMain.jsp'></iframe>");
+		$(".mainArea").html("<iframe src='/Horizon/order/OrderManagementCtrl?method=findAll'></iframe>");
 		$("iframe").height($(".mainArea").height());
 		$(window).resize(function() {
 			$("iframe").height($(".mainArea").height());

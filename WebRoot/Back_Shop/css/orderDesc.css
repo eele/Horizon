@@ -37,12 +37,10 @@ a:hover {
 	font-weight: 900;
 	font-size: 15px;
 	padding: 20px;
-	margin-left: 100px;
 }
 
 .divRow {
 	width: 1100px;
-	margin-left: 100px;
 	border: 2px solid #e9c9b2;
 	padding-top: 10px;
 	padding-bottom: 10px;

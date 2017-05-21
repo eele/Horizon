@@ -14,7 +14,8 @@ public class PageBean<T> {
     private int currentPage;    // 当前页
     private int pageSize;        // 每页显示的条数
     private int totalCount;    // 总条数
-    private int totalPage;   // 总页数
+    @SuppressWarnings("unused")
+	private int totalPage;   // 总页数
     private String url; // 链接地址
     
     public List<T> getBean() {
