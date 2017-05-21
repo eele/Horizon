@@ -41,6 +41,23 @@ $(document).ready(function(){
 }); 
 
 $(function () {
+	//刷新商品列表
+	$.ajax({
+		type: "get",
+		url: "/Horizon/product/GetProductListCtrl",
+		data: {
+			cid: "all",
+			shopid: $(".shopID", window.opener.document).val(),
+			currentPage: "1"
+		},
+		success: function(html) {
+			$(".productList", window.opener.document).html(html);
+		},
+		error: function() {
+			$(".productList", window.opener.document).html("<h2 align='center'><b>网页加载异常</b><h3>");
+		}
+	});
+	
 	// 日期框
 	$("#proDate").datepick({dateFormat:"yy-mm-dd"});
 	$("#purDate").datepick({dateFormat:"yy-mm-dd"});
@@ -99,6 +116,34 @@ function editForm() {
 
 function deleteForm() {
 	if(confirm("确实要删除本商品吗？")) {
+		$.ajax({
+			type: "get",
+			url: "/Horizon/product/DelProductCtrl" + window.location.search,
+			success: function(html) {
+				alert("删除成功。");
+			},
+			error: function() {
+				alert("删除失败。");
+			}
+		});
 		
+		//刷新商品列表
+		$.ajax({
+			type: "get",
+			url: "/Horizon/product/GetProductListCtrl",
+			data: {
+				cid: "all",
+				shopid: $(".shopID", window.opener.document).val(),
+				currentPage: "1"
+			},
+			success: function(html) {
+				$(".productList", window.opener.document).html(html);
+				close();
+			},
+			error: function() {
+				$(".productList", window.opener.document).html("<h2 align='center'><b>网页加载异常</b><h3>");
+				close();
+			}
+		});
 	}
 }

@@ -96,4 +96,9 @@ public class ProductDao {
 		String sql = "update product set " + attr + "where productid = '" + product.getProductid() + "'";
 		qr.update(sql, map.values().toArray());
 	}
+
+	public void delProduct(String productid) {
+		// TODO Auto-generated method stub
+		
+	}
 }

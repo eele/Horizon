@@ -58,5 +58,10 @@ public class ProductService {
 			e.printStackTrace();
 		}
 	}
+
+	public void delProduct(String productid) {
+		// TODO Auto-generated method stub
+		productDao.delProduct(productid);
+	}
 	
 }

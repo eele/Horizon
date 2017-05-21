@@ -73,6 +73,11 @@
     <servlet-name>UpdateProductCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.UpdateProductCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DelProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.DelProductCtrl</servlet-class>
+  </servlet>
+
 
 
 
@@ -157,6 +162,10 @@
   <servlet-mapping>
     <servlet-name>UpdateProductCtrl</servlet-name>
     <url-pattern>/product/UpdateProductCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelProductCtrl</servlet-name>
+    <url-pattern>/product/DelProductCtrl</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
