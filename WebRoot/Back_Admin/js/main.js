@@ -53,7 +53,7 @@ $(document).ready(function(){
 			$("iframe").attr("src", "/Horizon/category_product/FindAllCategoryCtrl");
 			break;
 		case "顾客个人信息":
-			$("iframe").attr("src", "/Horizon/Back_Admin/ma_customer/per_info.jsp");
+			$("iframe").attr("src", "/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&keyword=_all_&currentPage=1");
 			break;
 		case "顾客交易记录":
 			$("iframe").attr("src", "/Horizon/Back_Admin/ma_customer/trans_record.jsp");

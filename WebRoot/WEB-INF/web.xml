@@ -85,6 +85,11 @@
     <servlet-name>OrderManagementCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.order.OrderManagementCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CustomerManagementCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.ma_customer.CustomerManagementCtrl</servlet-class>
+  </servlet>
+
 
 
 
@@ -184,6 +189,10 @@
   <servlet-mapping>
     <servlet-name>OrderManagementCtrl</servlet-name>
     <url-pattern>/order/OrderManagementCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CustomerManagementCtrl</servlet-name>
+    <url-pattern>/ma_customer/CustomerManagementCtrl</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

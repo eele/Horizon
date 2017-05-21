@@ -11,47 +11,61 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
+	<base href="<%=basePath%>">
+	<link href="/Horizon/Back_Admin/css/per_info.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
+	<table width="100%" class="imagetable">
+		<tr>
+			<th width="211">顾客ID</th>
+			<th>登录名</th>
+			<th>E-Mail</th>
+			<th>手机号码</th>
+			<th colspan="2">操作</th>
+		</tr>
+		<c:forEach items="${pb.bean }" var="user">
+		<tr align="center">
+			<td>${user.uid }</td>
+			<td>${user.loginname }</td>
+			<td>${user.email }</td>
+			<td>${user.phone }</td>
+			<td width="100">重置密码</td>
+		    <td width="75">删除</td>
+		</tr>
+		</c:forEach>
+	</table>
+
 	<!--分页 -->
 	<div style="width:380px;margin:0 auto;margin-top:50px;">
 		<ul class="pagination" style="text-align:center; margin-top:10px;">
-			<c:if test="${pBean.currentPage<=1 }">
-				<li class="disabled"><a href="#" aria-label="Previous"><span
-						aria-hidden="true">&laquo;</span>
-				</a>
-				</li>
+			<c:if test="${pb.currentPage<=1 }">
+				<li class="disabled"><a href="#" aria-label="Previous"><span>&laquo;</span> </a></li>
 			</c:if>
-			<c:if test="${pBean.currentPage>1 }">
+			<c:if test="${pb.currentPage>1 }">
 				<li><a
-					href="${pageContext.request.contextPath }/product?method=findByPage&currentPage=${pBean.currentPage-1}&cid=
-　　　　　　　　　　　　　　${pBean.bean[0].cid }"
-					aria-label="Previous"><span aria-hidden="true">&laquo;</span>
-				</a>
+					href="${pb.url }&currentPage=${pb.currentPage-1}"
+					aria-label="Previous"><span aria-hidden="true">&laquo;</span> </a>
 				</li>
 			</c:if>
 
 			<!-- <li class="active"><a href="#">1</a></li> -->
-			<c:forEach begin="${pBean.currentPage-5>0?pBean.currentPage-5:1}"
-				end=　　　　　　　　　　　　　　　　"${pBean.currentPage+4>pBean.totalPage ?pBean.totalPage:pBean.currentPage+4}" var="i">
+			<c:forEach begin="${pb.currentPage-5>0?pb.currentPage-5:1}"
+				end = "${pb.currentPage + 4 > pb.totalPage ? pb.totalPage : pb.currentPage + 4 }" var="i">
                     <li><a
-					href="${pageContext.request.contextPath }/product?method=findByPage&currentPage=${i }
-　　　　　　　　　　　　　　　　&cid=${pBean.bean[0].cid }">${i
-						}</a>
-				</li>
+					href="${pb.url }&currentPage=${i }">${i}</a></li>
 			</c:forEach>
 
-			<c:if test="${pBean.currentPage>=pBean.totalPage }">
+			<c:if test="${pb.currentPage>=pb.totalPage }">
 				<li class="disabled"><a href="#" aria-label="Next"> <span
-						aria-hidden="true">&raquo;</span> </a></li>
+						aria-hidden="true">&raquo;</span> </a>
+				</li>
 			</c:if>
-			<c:if test="${pBean.currentPage<pBean.totalPage }">
+			<c:if test="${pb.currentPage<pb.totalPage }">
 				<li><a
-					href="${pageContext.request.contextPath }/product?method=findByPage&currentPage=
-　　　　　　　　　　　　　　　　　　${pBean.currentPage+1}&cid=${pBean.bean[0].cid }"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a></li>
+					href="${pb.url }&currentPage=${pb.currentPage+1}"
+					aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a>
+				</li>
 			</c:if>
 		</ul>
 	</div>
