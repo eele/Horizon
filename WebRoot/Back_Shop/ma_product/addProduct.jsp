@@ -60,6 +60,19 @@ $(function () {
 			}
 		});
 	});
+	
+	$("#return").click(function() {
+		$.ajax({
+			type: "get",
+			url: "/Horizon/Back_Shop/ma_product/proMain.jsp",
+			success: function(html) {
+				$(".mainArea").html(html);
+			},
+			error: function() {
+				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
+			}
+		});
+	});
 });
 
 // 用于加载二级分类
@@ -156,11 +169,11 @@ function loadChildren() {
 				<td colspan="4">商品说明：　　<textarea name="productDesc" id="productDesc" style="margin: 0px; width: 602px; height: 148px;"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="3">
-					<input type="button" id="btn" class="btn" value="确定添加" style="float:left">
-					<input type="button" id="btn2" value="取消返回">				</td>
-				<td></td>
-				<td></td>
+				<td colspan="4">
+					<input type="button" id="btn" class="btn" value="添     加" style="float:left;background-color: #ff4f00;">
+					<input type="button" id="return"  class="btn" value="返     回" style="margin-left: 30px;background-color: #ff9600;">
+					<input type="reset" id="reset"  class="btn" value="清     空" style="margin-left: 30px;background-color: #ff9600;">
+				</td>
 			</tr>
 	  </table>
 	</div>

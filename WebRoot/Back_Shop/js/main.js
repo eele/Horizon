@@ -25,6 +25,7 @@ $(document).ready(function(){
 		var changeWidth = 930;
 		if(w < 1200) {
 			$(".bodyArea").width(changeWidth);
+			$(".searchArea").css({"margin-left": "10px"});
 			if(w < changeWidth) {
 				$(".bodyArea").css("left",(changeWidth/2)+"px");
 				$(".bodyArea").css("margin-left",(-changeWidth/2)+"px");
@@ -36,6 +37,7 @@ $(document).ready(function(){
 			$(".bodyArea").width(1200);
 			$(".bodyArea").css("left","50%");
 			$(".bodyArea").css("margin-left","-600px");
+			$(".searchArea").css({"margin-left": "100px"});
 		}
 	};
 }); 

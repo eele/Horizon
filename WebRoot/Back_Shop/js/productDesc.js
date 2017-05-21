@@ -58,10 +58,6 @@ $(function () {
 		}
 	});
 	
-	// 日期框
-	$("#proDate").datepick({dateFormat:"yy-mm-dd"});
-	$("#purDate").datepick({dateFormat:"yy-mm-dd"});
-
 	// 编辑和删除按钮样式
 	$("#editBtn").addClass("editBtn1");
 	$("#delBtn").addClass("delBtn1");

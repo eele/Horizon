@@ -11,11 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <title>${product.productName}</title>
     
-    <link href="/Horizon/Back_Shop/css/productDesc.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="/Horizon/jQuery/jquery.datepick.css">
+    <link rel="stylesheet" type="text/css" href="/Horizon/Back_Shop/css/productDesc.css" >
 	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
-	<script type="text/javascript" src="/Horizon/jQuery/jquery.datepick.js"></script>
-	<script type="text/javascript" src="/Horizon/jQuery/jquery.datepick-zh-CN.js"></script>
     <script type="text/javascript" src="/Horizon/Back_Shop/js/productDesc.js"></script>
     
 	<script type="text/javascript">
