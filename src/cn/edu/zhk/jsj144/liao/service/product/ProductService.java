@@ -44,14 +44,19 @@ public class ProductService {
 	}
 
 	public void updateProduct(Product product) {
-		// TODO Auto-generated method stub
+		// 补齐属性
 		Product pro = getProductByID(product.getProductid());
 		product.setShopid(pro.getShopid());
 		product.setImage_b(pro.getImage_b());
 		product.setImage_w(pro.getImage_w());
 		product.setSalesNum(pro.getSalesNum());
 		
-		productDao.updateProduct(product);
+		try {
+			productDao.updateProduct(product);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

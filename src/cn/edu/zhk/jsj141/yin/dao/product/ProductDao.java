@@ -81,9 +81,19 @@ public class ProductDao {
 	/**
 	 * 修改商品
 	 * @param product
+	 * @throws SQLException 
 	 */
-	public void updateProduct(Product product) {
+	public void updateProduct(Product product) throws SQLException {
 		// TODO Auto-generated method stub
+		Map<String, Object> map = (Map<String, Object>) BeanMapUtil.beanToMap(product);
 		
+		String attr = "";
+		for (int i = 0; i < 14; i++) {  // 拼接属性字段
+			attr = attr + (String) map.keySet().toArray()[i] + "=?, ";
+		}
+		attr = attr.substring(0, attr.length()-2); //去除最后的逗号
+		
+		String sql = "update product set " + attr + "where productid = '" + product.getProductid() + "'";
+		qr.update(sql, map.values().toArray());
 	}
 }
