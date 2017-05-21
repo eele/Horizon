@@ -11,6 +11,7 @@ table {
 	width: 95%;
     margin-right: 15px;
     left: 15px;
+	margin-top: 10px;
 }
 
 td {
@@ -55,6 +56,6 @@ a:hover {color:#FF6600; text-decoration: underline;}
 	width: 350px;
 	top: 50px;
 	left: 50%;
-	margin-left: -100px;
+	margin-left: -180px;
 	background-color: #DCDCED;
 }

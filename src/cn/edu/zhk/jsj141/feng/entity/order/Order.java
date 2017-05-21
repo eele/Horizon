@@ -2,7 +2,7 @@ package cn.edu.zhk.jsj141.feng.entity.order;
 
 import java.util.List;
 
-import cn.edu.zhk.jsj144.liao.entity.user.User;
+import cn.edu.zhk.jsj141.feng.entity.user.User;
 
 public class Order {
 	private String oid;//主键

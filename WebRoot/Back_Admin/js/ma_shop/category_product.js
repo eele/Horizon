@@ -52,19 +52,7 @@ $(document).ready(function(){
 				url: "/Horizon/category_product/DelParentCategoryCtrl",
 				success: function(data) {
 					if(eval(data).msg=="ok") {
-						$(".pop_up").css("display","none");
-						$("#caName").val("");
-						$("#desc").val("");
-						$.ajax({
-							method: "get",
-							url: "/Horizon/category_product/FindAllCategoryCtrl",
-							success: function(data){
-								$(".mainArea").html(data);
-							},
-							error: function(data){
-								$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-							}
-						});
+						location.reload(true);
 					} else {
 						alert("该分类下还有二级分类，不能删除。");
 					}
@@ -85,19 +73,7 @@ $(document).ready(function(){
 				url: "/Horizon/category_product/DelChildCategoryCtrl",
 				success: function(data) {
 					if(eval(data).msg=="ok") {
-						$(".pop_up").css("display","none");
-						$("#caName").val("");
-						$("#desc").val("");
-						$.ajax({
-							method: "get",
-							url: "/Horizon/category_product/FindAllCategoryCtrl",
-							success: function(data){
-								$(".mainArea").html(data);
-							},
-							error: function(data){
-								$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-							}
-						});
+						location.reload(true);
 					} else {
 						alert("该二级分类下还有商品，不能删除。");
 					}
@@ -138,19 +114,7 @@ $(document).ready(function(){
 					},
 				url: url,
 				success: function() {
-					$(".pop_up").css("display","none");
-					$("#caName").val("");
-					$("#desc").val("");
-					$.ajax({
-						method: "get",
-						url: "/Horizon/category_product/FindAllCategoryCtrl",
-						success: function(data){
-							$(".mainArea").html(data);
-						},
-						error: function(data){
-							$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-						}
-					});
+					location.reload(true);
 				},
 				error: function() {
 					alert("数据提交异常。");

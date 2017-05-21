@@ -35,6 +35,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
 	
     <div class="topBar">此处显示  class "topBar" 的内容</div>
-	<div class="mainArea"></div>
+	<div  class="mainArea"><iframe></iframe></div>
   </body>
 </html>

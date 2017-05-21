@@ -15,27 +15,23 @@ $(document).ready(function(){
 });
 
 /**
- * 左栏高度自动调整
+ * 左栏与iframe高度自动调整
  */
 $(document).ready(function(){ 
-	if($(".mainArea").height() > $(window).height()) {
-		$(".left").height($(".mainArea").height());
+	if($(window).height() < 600){
+		$(".left").height(600);
+		$("iframe").height(530);
 	} else {
-		if($(window).height() < 600){
-			$(".left").height(600);
-		} else {
-			$(".left").height($(window).height());
-		}
+		$(".left").height($(window).height());
+		$("iframe").height($(window).height()-70);
 	}
 	$(window).resize(function() {
-		if($(".mainArea").height() > $(window).height()) {
-			$(".left").height($(".mainArea").height());
+		if($(window).height() < 600){
+			$(".left").height(600);
+			$("iframe").height(530);
 		} else {
-			if($(window).height() < 600){
-				$(".left").height(600);
-			} else {
-				$(".left").height($(window).height());
-			}
+			$(".left").height($(window).height());
+			$("iframe").height($(window).height()-70);
 		}
 	});
 });
@@ -48,88 +44,25 @@ $(document).ready(function(){
 		var itemName = $(e.target).text();
 		switch(itemName) {
 		case "店铺开通审核":
-			$.ajax({
-				method: "get",
-				url: "/Horizon/Back_Admin/ma_shop/confirm_reg.jsp",
-				success: function(data){
-					$(".mainArea").html(data);
-				},
-				error: function(data){
-					$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-				}
-			});
+			$("iframe").attr("src", "/Horizon/Back_Admin/ma_shop/confirm_reg.jsp");
 			break;
 		case "店铺类别管理":
-			$.ajax({
-				method: "get",
-				url: "/Horizon/Back_Admin/ma_shop/category_shop.jsp",
-				success: function(data){
-					$(".mainArea").html(data);
-				},
-				error: function(data){
-					$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-				}
-			});
+			$("iframe").attr("src", "/Horizon/Back_Admin/ma_shop/category_shop.jsp");
 			break;
 		case "商品类别管理":
-			$.ajax({
-				method: "get",
-				url: "/Horizon/category_product/FindAllCategoryCtrl",
-				success: function(data){
-					$(".mainArea").html(data);
-				},
-				error: function(data){
-					$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-				}
-			});
+			$("iframe").attr("src", "/Horizon/category_product/FindAllCategoryCtrl");
 			break;
 		case "顾客个人信息":
-			$.ajax({
-				method: "get",
-				url: "/Horizon/Back_Admin/ma_customer/per_info.jsp",
-				success: function(data){
-					$(".mainArea").html(data);
-				},
-				error: function(data){
-					$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-				}
-			});
+			$("iframe").attr("src", "/Horizon/Back_Admin/ma_customer/per_info.jsp");
 			break;
 		case "顾客交易记录":
-			$.ajax({
-				method: "get",
-				url: "/Horizon/Back_Admin/ma_customer/trans_record.jsp",
-				success: function(data){
-					$(".mainArea").html(data);
-				},
-				error: function(data){
-					$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-				}
-			});
+			$("iframe").attr("src", "/Horizon/Back_Admin/ma_customer/trans_record.jsp");
 			break;
 		case "顾客问题反馈":
-			$.ajax({
-				method: "get",
-				url: "/Horizon/Back_Admin/ma_customer/issue_feedback.jsp",
-				success: function(data){
-					$(".mainArea").html(data);
-				},
-				error: function(data){
-					$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-				}
-			});
+			$("iframe").attr("src", "/Horizon/Back_Admin/ma_customer/issue_feedback.jsp");
 			break;
 		case "修改个人密码":
-			$.ajax({
-				method: "get",
-				url: "/Horizon/Back_Admin/changePwd.jsp",
-				success: function(data){
-					$(".mainArea").html(data);
-				},
-				error: function(data){
-					$(".mainArea").html("<h1 align='center'>网页加载异常</h1>");
-				}
-			});
+			$("iframe").attr("src", "/Horizon/Back_Admin/changePwd.jsp");
 			break;
 		}
 	});

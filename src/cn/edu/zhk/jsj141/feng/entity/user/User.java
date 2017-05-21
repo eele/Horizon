@@ -1,4 +1,4 @@
-package cn.edu.zhk.jsj144.liao.entity.user;
+package cn.edu.zhk.jsj141.feng.entity.user;
 
 /**
  * 用户模块实体类
