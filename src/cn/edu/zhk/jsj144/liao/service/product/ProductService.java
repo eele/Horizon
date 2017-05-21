@@ -10,14 +10,23 @@ import cn.edu.zhk.jsj144.liao.entity.product.Product;
 public class ProductService {
 	private ProductDao productDao = new ProductDao();
 	
-	public PageBean<Product> getByPage(PageBean<Product> pBean, String shopid, String cid)
+	/**
+	 * 获取当前页商品列表
+	 * @param op 商品类别cid或搜索关键字
+	 * @param pBean
+	 * @param shopid
+	 * @param param
+	 * @return
+	 * @throws SQLException
+	 */
+	public PageBean<Product> getByPage(int op, PageBean<Product> pBean, String shopid, String param)
 			throws SQLException {
         
         //查询总条数
-        int totalCount=productDao.getTotalCount(shopid, cid);
+        int totalCount=productDao.getTotalCount(op, shopid, param);
         
         //查询当前页的数据
-        List<Product> products=productDao.getCurrentPageBean(pBean, shopid, cid);
+        List<Product> products=productDao.getCurrentPageBean(op, pBean, shopid, param);
         
         PageBean< Product> pBean2=new PageBean<Product>();
         pBean2.setTotalCount(totalCount);
@@ -27,6 +36,11 @@ public class ProductService {
         return pBean2;
     }
 
+	/**
+	 * 获取商品详细信息
+	 * @param productid
+	 * @return
+	 */
 	public Product getProductByID(String productid) {
 		// TODO Auto-generated method stub
 		Product product = null;
@@ -39,10 +53,19 @@ public class ProductService {
 		return product;
 	}
 
+	/**
+	 * 添加商品
+	 * @param product
+	 * @throws SQLException
+	 */
 	public void addProduct(Product product) throws SQLException {
 		productDao.addProduct(product);
 	}
 
+	/**
+	 * 修改商品
+	 * @param product
+	 */
 	public void updateProduct(Product product) {
 		// 补齐属性
 		Product pro = getProductByID(product.getProductid());
@@ -59,6 +82,11 @@ public class ProductService {
 		}
 	}
 
+	/**
+	 * 删除商品
+	 * @param productid
+	 * @throws SQLException
+	 */
 	public void delProduct(String productid) throws SQLException {
 		// TODO Auto-generated method stub
 		productDao.delProduct(productid);

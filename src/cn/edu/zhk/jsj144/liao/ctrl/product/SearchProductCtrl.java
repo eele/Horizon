@@ -2,6 +2,7 @@ package cn.edu.zhk.jsj144.liao.ctrl.product;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,13 +13,13 @@ import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 import cn.edu.zhk.jsj144.liao.entity.product.Product;
 import cn.edu.zhk.jsj144.liao.service.product.ProductService;
 
-public class GetProductListCtrl extends HttpServlet {
+public class SearchProductCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Constructor of the object.
 	 */
-	public GetProductListCtrl() {
+	public SearchProductCtrl() {
 		super();
 	}
 
@@ -36,26 +37,24 @@ public class GetProductListCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-
 		try {
 			PageBean<Product> pBean = new PageBean<Product>();
 			int currentPage = Integer.parseInt(request.getParameter("currentPage")); // 获取当前页码
 			pBean.setCurrentPage(currentPage);
 			pBean.setPageSize(12);  // 每页12条记录
 	        
-			String cid = request.getParameter("cid");
+			String keyword = request.getParameter("keyword");
 			String shopid = request.getParameter("shopid");
 	        ProductService proService = new ProductService();
 	        PageBean<Product> pb = null;
-	        if (cid.equals("all")) {
-	        	pb= proService.getByPage(0, pBean, shopid, "%");  //获取该页所有商品信息列表
-	        	pb.setUrl("/Horizon/product/GetProductListCtrl?shopid=" + shopid + "&cid=all");
+	        if (keyword.equals("")) {
+	        	pb= proService.getByPage(1,pBean, shopid, "%");  //获取该页所有商品信息列表
+	        	pb.setUrl("/Horizon/product/SearchProductCtrl?shopid=" + shopid + "&keyword=all");
 			} else {
-				pb= proService.getByPage(0, pBean, shopid, cid);  //获取该页指定种类的商品信息列表
-				pb.setUrl("/Horizon/product/GetProductListCtrl?shopid=" + shopid + "&cid=" + cid);
+				pb= proService.getByPage(1,pBean, shopid, keyword);  //获取该页指定关键词的商品信息列表
+				pb.setUrl("/Horizon/product/SearchProductCtrl?shopid=" + shopid + "&keyword=" + keyword);
 			}
 			request.setAttribute("pb", pb);
-			request.setAttribute("cid", cid);
 			RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_product/productList.jsp");
 			rd.forward(request,response);
 		} catch (SQLException e) {

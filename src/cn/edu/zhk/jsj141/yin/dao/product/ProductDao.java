@@ -18,30 +18,52 @@ public class ProductDao {
 
 	/**
 	 * 获取商品总数
-	 * @param cid
+	 * @param op 商品类别cid或搜索关键字
+	 * @param shopid
+	 * @param param
 	 * @return
 	 * @throws SQLException
 	 */
-	public int getTotalCount(String shopid, String cid) throws SQLException {
+	public int getTotalCount(int op, String shopid, String param) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql="SELECT count(*) FROM product WHERE shopid like ? and cid like ?";
-		Object[] params = {shopid, cid};
+		String sql = null;
+		Object[] params = null;
+		if(op == 0) {
+			sql="SELECT count(*) FROM product WHERE shopid like ? and cid like ?";
+			Object[] params1 = {shopid, param};
+			params = params1;
+		} else {
+			sql="SELECT count(*) FROM product WHERE shopid like ? and ( productName like ? or brand like ? )";
+			Object[] params1 = {shopid, "%"+param+"%", "%"+param+"%"};
+			params = params1;
+		}
 		Map<String,Object> map = qr.query(sql, new MapHandler(), params);
 		return Integer.parseInt(String.valueOf(map.get("count(*)")));
 	}
 
 	/**
-	 * 获取某店铺当前页的指定种类商品
+	 * 获取某店铺当前页的指定商品
+	 * @param op 商品类别cid或搜索关键字
 	 * @param pBean
-	 * @param cid
-	 * @param cid2 
+	 * @param shopid
+	 * @param param
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Product> getCurrentPageBean(PageBean<Product> pBean, String shopid, String cid) throws SQLException {
+	public List<Product> getCurrentPageBean(int op, PageBean<Product> pBean, String shopid, String param) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql="SELECT * FROM product WHERE shopid like ? and cid like ? ORDER BY orderBy DESC LIMIT ?,?";
-		Object[] params = {shopid, cid, (pBean.getCurrentPage()-1)*pBean.getPageSize(), pBean.getPageSize()};
+		String sql = null;
+		Object[] params = null;
+		if(op == 0) {
+			sql="SELECT * FROM product WHERE shopid like ? and cid like ? ORDER BY orderBy DESC LIMIT ?,?";
+			Object[] params1 = {shopid, param, (pBean.getCurrentPage()-1)*pBean.getPageSize(), pBean.getPageSize()};
+			params = params1;
+		} else {
+			sql="SELECT * FROM product WHERE shopid like ? and ( productName like ? or brand like ? ) ORDER BY orderBy DESC LIMIT ?,?";
+			Object[] params1 = {shopid, "%"+param+"%", "%"+param+"%", (pBean.getCurrentPage()-1)*pBean.getPageSize(), pBean.getPageSize()};
+			params = params1;
+		}
+		
         return qr.query(sql, new BeanListHandler<Product>(Product.class), params);
 	}
 

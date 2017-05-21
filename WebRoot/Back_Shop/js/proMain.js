@@ -74,3 +74,31 @@ $(document).ready(function(){
 		});
 	});
 });
+
+/**
+ * 搜索商品
+ */
+$(document).ready(function(){ 
+	$(".searchButton").click(function() {
+		$.ajax({
+			type: "POST",
+			url: "/Horizon/product/SearchProductCtrl",
+			data: {
+				keyword: $("input[name='inputBox']").val(),
+				shopid: $(".shopID").val(),
+				currentPage: "1"
+			},
+			success: function(html) {
+				$(".productList").html(html);
+			},
+			error: function() {
+				$(".productList").html("<h2 align='center'><b>网页加载异常</b><h3>");
+			}
+		});
+	});
+	
+	// 监听输入框的回车操作
+	$("input[name='inputBox']").bind('keypress',function(event){  
+	    if(event.keyCode == "13") $(".searchButton").click();  
+	});
+});
