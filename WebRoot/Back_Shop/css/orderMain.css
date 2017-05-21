@@ -12,12 +12,7 @@ body {
 }
 
 .divMain {
-	width: 1000px;
-	margin-left: 150px;
-}
-
-.pLink {
-	margin-left: 150px;
+	width: 100%;
 }
 
 .title {

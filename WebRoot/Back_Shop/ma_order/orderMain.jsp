@@ -4,8 +4,10 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+  <head>
+    <title>订单列表</title>
+    
 	<link rel="stylesheet" type="text/css" href="/Horizon/pager/pager.css" />
-    <script type="text/javascript" src="/Horizon/pager/pager.js"></script>
     <link rel="stylesheet" type="text/css" href="/Horizon/Back_Shop/css/orderMain.css" />
   </head>
   
@@ -75,7 +77,7 @@
 
 	</table>
 	<br/>
-	<%@include file="/pager/pager.jsp" %>
+	<%@include file="/pager/pager_order.jsp" %>
 </div>
   </body>
 </html>

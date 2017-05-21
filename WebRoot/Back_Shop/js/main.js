@@ -85,15 +85,10 @@ $(document).ready(function(){
 		});
 	});
 	$("#tab3").click(function() {
-		$.ajax({
-			type: "get",
-			url: "/Horizon/Back_Shop/ma_order/orderMain.jsp",
-			success: function(html) {
-				$(".mainArea").html(html);
-			},
-			error: function() {
-				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
-			}
+		$(".mainArea").html("<iframe src='/Horizon/Back_Shop/ma_order/orderMain.jsp'></iframe>");
+		$("iframe").height($(".mainArea").height());
+		$(window).resize(function() {
+			$("iframe").height($(".mainArea").height());
 		});
 	});
 }); 

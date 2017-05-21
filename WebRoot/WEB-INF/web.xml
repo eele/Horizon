@@ -81,6 +81,11 @@
     <servlet-name>SearchProductCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.SearchProductCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>OrderManagementCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.order.OrderManagementCtrl</servlet-class>
+  </servlet>
+
 
 
 
@@ -175,6 +180,10 @@
   <servlet-mapping>
     <servlet-name>SearchProductCtrl</servlet-name>
     <url-pattern>/product/SearchProductCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderManagementCtrl</servlet-name>
+    <url-pattern>/order/OrderManagementCtrl</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
