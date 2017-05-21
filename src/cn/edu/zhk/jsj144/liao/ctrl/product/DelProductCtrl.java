@@ -1,6 +1,8 @@
 package cn.edu.zhk.jsj144.liao.ctrl.product;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +35,12 @@ public class DelProductCtrl extends HttpServlet {
 
 		response.setContentType("text/html");
 		ProductService proService = new ProductService();
-		proService.delProduct(request.getParameter("productid"));
+		try {
+			proService.delProduct(request.getParameter("productid"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

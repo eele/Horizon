@@ -59,7 +59,7 @@ public class ProductService {
 		}
 	}
 
-	public void delProduct(String productid) {
+	public void delProduct(String productid) throws SQLException {
 		// TODO Auto-generated method stub
 		productDao.delProduct(productid);
 	}

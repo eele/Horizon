@@ -97,8 +97,9 @@ public class ProductDao {
 		qr.update(sql, map.values().toArray());
 	}
 
-	public void delProduct(String productid) {
+	public void delProduct(String productid) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		String sql = "delete from product where productid=?";
+		qr.update(sql, productid);
 	}
 }
