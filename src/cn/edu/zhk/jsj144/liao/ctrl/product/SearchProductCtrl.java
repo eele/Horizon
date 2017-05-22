@@ -49,7 +49,7 @@ public class SearchProductCtrl extends HttpServlet {
 	        PageBean<Product> pb = null;
 	        if (keyword.equals("")) {
 	        	pb= proService.getByPage(1,pBean, shopid, "%");  //获取该页所有商品信息列表
-	        	pb.setUrl("/Horizon/product/SearchProductCtrl?shopid=" + shopid + "&keyword=all");
+	        	pb.setUrl("/Horizon/product/SearchProductCtrl?shopid=" + shopid + "&keyword=");
 			} else {
 				pb= proService.getByPage(1,pBean, shopid, keyword);  //获取该页指定关键词的商品信息列表
 				pb.setUrl("/Horizon/product/SearchProductCtrl?shopid=" + shopid + "&keyword=" + keyword);

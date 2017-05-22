@@ -1,3 +1,6 @@
+/*
+ * 重置密码
+ */
 function resetPwd(uid) {
 	if(confirm("确实要重置该用户密码吗？")) {
 		$.ajax({
@@ -13,6 +16,10 @@ function resetPwd(uid) {
 	}
 }
 
+/**
+ * 删除用户
+ * @param uid
+ */
 function delUser(uid) {
 	if(confirm("确实要删除该用户吗？")) {
 		$.ajax({

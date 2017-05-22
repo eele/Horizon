@@ -10,12 +10,13 @@ import org.apache.commons.dbutils.handlers.MapHandler;
 
 import cn.edu.zhk.jsj141.feng.entity.user.User;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
+import cn.edu.zhk.jsj144.liao.entity.ma_customer.Tr_record;
 import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 
 public class CustomerManagementDao {
 	private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 
-	public int getTotalCount(String param) throws SQLException {
+	public int getUserTotalCount(String param) throws SQLException {
 		// TODO Auto-generated method stub
 		String sql="SELECT count(*) FROM `user` WHERE loginname like ? or email like ? or phone like ? ";
 		Object[] params = {"%"+param+"%", "%"+param+"%", "%"+param+"%"};
@@ -23,7 +24,7 @@ public class CustomerManagementDao {
 		return Integer.parseInt(String.valueOf(map.get("count(*)")));
 	}
 
-	public List<User> getCurrentPageBean(PageBean<User> pBean,
+	public List<User> getUserCurrentPageBean(PageBean<User> pBean,
 			String param) throws SQLException {
 		// TODO Auto-generated method stub
 		String sql="SELECT * FROM `user` WHERE loginname like ? or email like ? or phone like ? LIMIT ?,?";
@@ -64,6 +65,22 @@ public class CustomerManagementDao {
 		} else {
 			return true;
 		}
+	}
+
+	public int getTrRecordTotalCount(String param) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql="SELECT count(*) FROM trans_record WHERE loginname like ?  ";
+		Map<String,Object> map = qr.query(sql, new MapHandler(), "%"+param+"%");
+		return Integer.parseInt(String.valueOf(map.get("count(*)")));
+	}
+
+	public List<Tr_record> getTrRecordCurrentPageBean(PageBean<Tr_record> pBean,
+			String param) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql="SELECT * FROM trans_record WHERE loginname like ? or email like ? or phone like ? LIMIT ?,?";
+		Object[] params = {"%"+param+"%", "%"+param+"%", "%"+param+"%", (pBean.getCurrentPage()-1)*pBean.getPageSize(), pBean.getPageSize()};
+
+		return qr.query(sql, new BeanListHandler<Tr_record>(Tr_record.class), params);
 	}
 
 }

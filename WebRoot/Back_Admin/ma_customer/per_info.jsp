@@ -19,6 +19,12 @@
 </head>
 
 <body>
+	<div style="height:40px" align="center">
+		搜索登录名/E-Mail/手机号码：
+		<input type="text" id="searchUser" style="width:300px">&nbsp;&nbsp;
+		<input type="button" value="搜索" 
+		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&currentPage=1&keyword='+$('#searchUser').val()">
+	</div>
 	<table width="100%" class="imagetable" cellspacing="0" cellpadding="0">
 		<tr>
 			<th width="200">顾客ID</th>

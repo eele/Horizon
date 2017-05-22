@@ -5,23 +5,30 @@ import java.util.List;
 
 import cn.edu.zhk.jsj141.feng.entity.user.User;
 import cn.edu.zhk.jsj141.yin.dao.customer.CustomerManagementDao;
+import cn.edu.zhk.jsj144.liao.entity.ma_customer.Tr_record;
 import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 
 public class CustomerManagementService {
 
 	CustomerManagementDao customerManagementDao = new CustomerManagementDao();
 
-	public PageBean<User> getByPage(PageBean<User> pBean, String param)
+	@SuppressWarnings("unchecked")
+	public <T> PageBean<T> getByPage(int op, PageBean<T> pBean, String param)
 			throws SQLException {
-        //查询总条数
-        int totalCount=customerManagementDao.getTotalCount(param);
+        //查询总条数和当前页的数据
+		List<T> records = null;
+		int totalCount = 0;
+		if(op == 1) {
+			totalCount=customerManagementDao.getUserTotalCount(param);
+			records=(List<T>) customerManagementDao.getUserCurrentPageBean((PageBean<User>) pBean, param);
+		} else if(op == 2) {
+			totalCount=customerManagementDao.getTrRecordTotalCount(param);
+			records=(List<T>) customerManagementDao.getTrRecordCurrentPageBean((PageBean<Tr_record>) pBean, param);
+		}
         
-        //查询当前页的数据
-        List<User> Users=customerManagementDao.getCurrentPageBean(pBean, param);
-        
-        PageBean< User> pBean2=new PageBean<User>();
+        PageBean<T> pBean2=new PageBean<T>();
         pBean2.setTotalCount(totalCount);
-        pBean2.setBean(Users);
+        pBean2.setBean(records);
         pBean2.setCurrentPage(pBean.getCurrentPage());
         pBean2.setPageSize(pBean.getPageSize());
         return pBean2;
