@@ -9,10 +9,10 @@ import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 
 public class CustomerManagementService {
 
+	CustomerManagementDao customerManagementDao = new CustomerManagementDao();
+
 	public PageBean<User> getByPage(PageBean<User> pBean, String param)
 			throws SQLException {
-		CustomerManagementDao customerManagementDao = new CustomerManagementDao();
-		
         //查询总条数
         int totalCount=customerManagementDao.getTotalCount(param);
         
@@ -26,4 +26,9 @@ public class CustomerManagementService {
         pBean2.setPageSize(pBean.getPageSize());
         return pBean2;
     }
+
+	public void resetUserPwd(String uid) {
+		// TODO Auto-generated method stub
+		customerManagementDao.resetUserPwd(uid);
+	}
 }

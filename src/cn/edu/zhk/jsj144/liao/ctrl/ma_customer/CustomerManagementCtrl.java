@@ -15,6 +15,8 @@ import cn.edu.zhk.jsj144.liao.service.ma_customer.CustomerManagementService;
 
 public class CustomerManagementCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private CustomerManagementService cuService = new CustomerManagementService();
 
 	/**
 	 * Constructor of the object.
@@ -41,6 +43,13 @@ public class CustomerManagementCtrl extends HttpServlet {
 		if(method.equals("getUserList")) {
 			try {
 				getUserList(request, response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if(method.equals("resetUserPwd")) {
+			try {
+				resetUserPwd(request, response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -72,7 +81,6 @@ public class CustomerManagementCtrl extends HttpServlet {
 		pBean.setPageSize(15);  // 每页15条记录
 
 		String keyword = request.getParameter("keyword");
-		CustomerManagementService cuService = new CustomerManagementService();
 		PageBean<User> pb = null;
 		if (keyword.equals("_all_")) {
 			pb= cuService.getByPage(pBean, "%");  //获取该页所有商品信息列表
@@ -85,6 +93,12 @@ public class CustomerManagementCtrl extends HttpServlet {
 		request.setAttribute("keyword", keyword);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/per_info.jsp");
 		rd.forward(request,response);
+	}
+	
+	public void resetUserPwd(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		String uid = request.getParameter("uid");
+		cuService.resetUserPwd(uid);
 	}
 
 }

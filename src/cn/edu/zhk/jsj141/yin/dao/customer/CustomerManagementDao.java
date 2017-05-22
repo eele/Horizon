@@ -32,4 +32,9 @@ public class CustomerManagementDao {
 		return qr.query(sql, new BeanListHandler<User>(User.class), params);
 	}
 
+	public void resetUserPwd(String uid) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

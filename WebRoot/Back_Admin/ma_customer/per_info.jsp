@@ -11,63 +11,62 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-	<base href="<%=basePath%>">
-	<link href="/Horizon/Back_Admin/css/per_info.css" rel="stylesheet" type="text/css">
+<base href="<%=basePath%>">
+<link href="/Horizon/Back_Admin/css/per_info.css" rel="stylesheet"
+	type="text/css">
 </head>
 
 <body>
-	<table width="100%" class="imagetable">
+	<table width="100%" class="imagetable" cellspacing="0" cellpadding="0">
 		<tr>
-			<th width="211">顾客ID</th>
+			<th width="200">顾客ID</th>
 			<th>登录名</th>
 			<th>E-Mail</th>
 			<th>手机号码</th>
 			<th colspan="2">操作</th>
 		</tr>
 		<c:forEach items="${pb.bean }" var="user">
-		<tr align="center">
-			<td>${user.uid }</td>
-			<td>${user.loginname }</td>
-			<td>${user.email }</td>
-			<td>${user.phone }</td>
-			<td width="100">重置密码</td>
-		    <td width="75">删除</td>
-		</tr>
+			<tr align="center">
+				<td>${user.uid }</td>
+				<td>${user.loginname }</td>
+				<td>${user.email }</td>
+				<td>${user.phone }</td>
+		<c:choose>
+			<c:when test="${empty  user.loginpass }">
+				<td width="100"></td>
+			</c:when>
+			<c:otherwise>
+				<td width="100"><a href="/Horizon/ma_customer/CustomerManagementCtrl?method=resetUserPwd&uid=${user.uid }">重置密码</a></td>
+			</c:otherwise>
+		</c:choose>
+				<td width="75"><a href="">删除</a></td>
+			</tr>
 		</c:forEach>
 	</table>
 
 	<!--分页 -->
-	<div style="width:380px;margin:0 auto;margin-top:50px;">
-		<ul class="pagination" style="text-align:center; margin-top:10px;">
-			<c:if test="${pb.currentPage<=1 }">
-				<li class="disabled"><a href="#" aria-label="Previous"><span>&laquo;</span> </a></li>
-			</c:if>
-			<c:if test="${pb.currentPage>1 }">
-				<li><a
-					href="${pb.url }&currentPage=${pb.currentPage-1}"
-					aria-label="Previous"><span aria-hidden="true">&laquo;</span> </a>
-				</li>
-			</c:if>
+	<div class="pager" align="right">
+		<c:if test="${pb.currentPage<=1 }">
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:45%" align="center">--</div>
+		</c:if>
+		<c:if test="${pb.currentPage>1 }">
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:45%" align="center"><a href="${pb.url }&currentPage=${pb.currentPage-1}"><span>&laquo;</span> </a></div>
+		</c:if>
 
-			<!-- <li class="active"><a href="#">1</a></li> -->
-			<c:forEach begin="${pb.currentPage-5>0?pb.currentPage-5:1}"
-				end = "${pb.currentPage + 4 > pb.totalPage ? pb.totalPage : pb.currentPage + 4 }" var="i">
-                    <li><a
-					href="${pb.url }&currentPage=${i }">${i}</a></li>
-			</c:forEach>
+		<c:forEach begin="${pb.currentPage-5>0?pb.currentPage-5:1}"
+			end="${pb.currentPage + 4 > pb.totalPage ? pb.totalPage : pb.currentPage + 4 }" var="i">
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:50%" align="center"><a href="${pb.url }&currentPage=${i }">${i}</a></div>
+		</c:forEach>
 
-			<c:if test="${pb.currentPage>=pb.totalPage }">
-				<li class="disabled"><a href="#" aria-label="Next"> <span
-						aria-hidden="true">&raquo;</span> </a>
-				</li>
-			</c:if>
-			<c:if test="${pb.currentPage<pb.totalPage }">
-				<li><a
-					href="${pb.url }&currentPage=${pb.currentPage+1}"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a>
-				</li>
-			</c:if>
-		</ul>
+		<c:if test="${pb.currentPage>=pb.totalPage }">
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:55%" align="center">--</div>
+		</c:if>
+		<c:if test="${pb.currentPage<pb.totalPage }">
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:55%" align="center">
+				<a href="${pb.url }&currentPage=${pb.currentPage+1}"> <span>&raquo;</span> </a>
+			</div>
+		</c:if>
+		<div style="position: relative;font-size:20px;font-weight:900;height:30px;float:left;left:60%" align="center">共${pb.totalPage}页，第${pb.currentPage}页</div>
 	</div>
 	<!-- 分页结束  -->
 </body>
