@@ -32,9 +32,10 @@ public class CustomerManagementDao {
 		return qr.query(sql, new BeanListHandler<User>(User.class), params);
 	}
 
-	public void resetUserPwd(String uid) {
+	public void resetUserPwd(String uid) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		String sql = "update `user` set loginpass='' where uid=?";
+		qr.update(sql, uid);
 	}
 
 }

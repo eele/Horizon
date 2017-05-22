@@ -27,7 +27,7 @@ public class CustomerManagementService {
         return pBean2;
     }
 
-	public void resetUserPwd(String uid) {
+	public void resetUserPwd(String uid) throws SQLException {
 		// TODO Auto-generated method stub
 		customerManagementDao.resetUserPwd(uid);
 	}
