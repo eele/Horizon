@@ -70,6 +70,13 @@ public class CustomerManagementCtrl extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if(method.equals("getOrderList")) {
+			try {
+				getOrderList(request, response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -98,13 +105,12 @@ public class CustomerManagementCtrl extends HttpServlet {
 
 		String keyword = request.getParameter("keyword");
 		PageBean<User> pb = null;
-		if (keyword.equals("_all_")) {
-			pb= cuService.getByPage(1, pBean, "%");  //获取该页所有顾客信息列表
-			pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&keyword=_all_");
-		} else {
-			pb= cuService.getByPage(1, pBean, keyword);  //获取该页指定关键字的顾客信息列表
-			pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&keyword=" + keyword);
+		String[] params = {"%"};
+		if (!keyword.equals("")) {
+			params[0] = keyword;
 		}
+		pb= cuService.getByPage(1, pBean, params);
+		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&keyword=" + keyword);
 		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/per_info.jsp");
 		rd.forward(request,response);
@@ -138,15 +144,39 @@ public class CustomerManagementCtrl extends HttpServlet {
 
 		String loginName = request.getParameter("loginName");
 		PageBean<Tr_record> pb = null;
-		if (loginName.equals("_all_")) {
-			pb= cuService.getByPage(2, pBean, "%");  //获取该页所有顾客交易记录列表
-			pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&loginName=_all_");
-		} else {
-			pb= cuService.getByPage(2, pBean, loginName);  //获取该页指定登录名的顾客交易记录列表
-			pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&loginName=" + loginName);
+		String[] params = {"%"};
+		if (!loginName.equals("")) {
+			params[0] = loginName;
 		}
+		pb= cuService.getByPage(2, pBean, params);
+		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&loginName=" + loginName);
 		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/trans_record.jsp");
+		rd.forward(request,response);
+	}
+	
+	public void getOrderList(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		PageBean<Tr_record> pBean = new PageBean<Tr_record>();
+		int currentPage = Integer.parseInt(request.getParameter("currentPage")); // 获取当前页码
+		pBean.setCurrentPage(currentPage);
+		pBean.setPageSize(20);  // 每页20条记录
+
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
+		String loginName = request.getParameter("loginName");
+		PageBean<Tr_record> pb = null;
+		String[] params = {loginName, "1=1", "1=1"};
+		if (!startDate.equals("")) {
+			params[1] = "ordertime >='" + startDate + "'";
+		}
+		if (!endDate.equals("")) {
+			params[2] = "ordertime <='" + endDate + "'";
+		}
+		pb= cuService.getByPage(3, pBean, params);
+		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getOrderList&loginName=" + loginName + "&startDate=" + startDate + "&endDate=" + endDate);
+		request.setAttribute("pb", pb);
+		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/trans_record_sub.jsp");
 		rd.forward(request,response);
 	}
 

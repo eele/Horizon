@@ -15,39 +15,35 @@
 	<link href="/Horizon/Back_Admin/css/per_info.css" rel="stylesheet"
 		type="text/css">
 	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
-    <script type="text/javascript" src="/Horizon/Back_Admin/js/per_info.js"></script>
+    <script type="text/javascript" src="/Horizon/Back_Admin/js/trans_record.js"></script>
 </head>
 
 <body>
+	<div style="height:40px">
+		<input type="button" value="返回" 
+		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&currentPage=1&loginName='">
+	</div>
 	<div style="height:40px" align="center">
-		搜索登录名/E-Mail/手机号码：
-		<input type="text" id="searchUser" style="width:300px">&nbsp;&nbsp;
+		搜索下单日期范围：
+		<input type="text" id="startDate" style="width:200px" placeholder="开始日期">
+		&nbsp;&nbsp;—&nbsp;&nbsp;
+		<input type="text" id="endDate" style="width:200px" placeholder="结束日期">&nbsp;&nbsp;
 		<input type="button" value="搜索" 
-		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&currentPage=1&keyword='+$('#searchUser').val()">
+		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getOrderList&currentPage=1&loginName=${param.loginName }&startDate=' + $('#startDate').val() + '&endDate=' + $('#endDate').val()">
 	</div>
 	<table width="100%" class="imagetable" cellspacing="0" cellpadding="0">
 		<tr>
-			<th width="200">顾客ID</th>
-			<th>登录名</th>
-			<th>E-Mail</th>
-			<th>手机号码</th>
-			<th colspan="2">操作</th>
+			<th width="200">订单ID</th>
+			<th>下单时间</th>
+			<th>消费金额</th>
+			<th>订单状态</th>
 		</tr>
-		<c:forEach items="${pb.bean }" var="user">
+		<c:forEach items="${pb.bean }" var="order">
 			<tr align="center">
-				<td>${user.uid }</td>
-				<td>${user.loginname }</td>
-				<td>${user.email }</td>
-				<td>${user.phone }</td>
-		<c:choose>
-			<c:when test="${empty  user.loginpass }">
-				<td width="100"></td>
-			</c:when>
-			<c:otherwise>
-				<td width="100"><a href="javascript:resetPwd('${user.uid }')">重置密码</a></td>
-			</c:otherwise>
-		</c:choose>
-				<td width="75"><a href="javascript:delUser('${user.uid }')">删除</a></td>
+				<td>${order.oid }</td>
+				<td>${order.ordertime }</td>
+				<td>${order.total }</td>
+				<td>${order.status }</td>
 			</tr>
 		</c:forEach>
 	</table>

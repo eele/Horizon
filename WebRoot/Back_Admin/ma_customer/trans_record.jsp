@@ -23,14 +23,14 @@
 		搜索顾客登录名：
 		<input type="text" id="searchUser" style="width:300px">&nbsp;&nbsp;
 		<input type="button" value="搜索" 
-		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&currentPage=1&keyword='+$('#searchUser').val()">
+		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&currentPage=1&loginName='+$('#searchUser').val()">
 	</div>
 	<table width="100%" class="imagetable" cellspacing="0" cellpadding="0">
 		<tr>
 			<th width="200">顾客登录名</th>
 			<th>下单次数</th>
 			<th>最近下单时间</th>
-			<th>最近90天消费金额</th>
+			<th>最近90天消费金额（元）</th>
 			<th colspan="2">操作</th>
 		</tr>
 		<c:forEach items="${pb.bean }" var="tr_record">
@@ -39,7 +39,7 @@
 				<td>${tr_record.orderNum }</td>
 				<td>${tr_record.ordertime }</td>
 				<td>${tr_record.price }</td>
-				<td width="75"><a href="javascript:')">查看详情</a></td>
+				<td width="75"><a href="/Horizon/ma_customer/CustomerManagementCtrl?method=getOrderList&startDate=&endDate=&currentPage=1&loginName=${tr_record.loginname }">查看详情</a></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -47,23 +47,23 @@
 	<!--分页 -->
 	<div class="pager" align="right">
 		<c:if test="${pb.currentPage<=1 }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:45%" align="center">--</div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:40%" align="center">--</div>
 		</c:if>
 		<c:if test="${pb.currentPage>1 }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:45%" align="center"><a href="${pb.url }&currentPage=${pb.currentPage-1}"><span>&laquo;</span> </a></div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:40%" align="center"><a href="${pb.url }&currentPage=${pb.currentPage-1}">上一页</a></div>
 		</c:if>
 
 		<c:forEach begin="${pb.currentPage-5>0?pb.currentPage-5:1}"
 			end="${pb.currentPage + 4 > pb.totalPage ? pb.totalPage : pb.currentPage + 4 }" var="i">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:50%" align="center"><a href="${pb.url }&currentPage=${i }">${i}</a></div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:45%" align="center"><a href="${pb.url }&currentPage=${i }">${i}</a></div>
 		</c:forEach>
 
 		<c:if test="${pb.currentPage>=pb.totalPage }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:55%" align="center">--</div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:50%" align="center">--</div>
 		</c:if>
 		<c:if test="${pb.currentPage<pb.totalPage }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:55%" align="center">
-				<a href="${pb.url }&currentPage=${pb.currentPage+1}"> <span>&raquo;</span> </a>
+			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:50%" align="center">
+				<a href="${pb.url }&currentPage=${pb.currentPage+1}">下一页</a>
 			</div>
 		</c:if>
 		<div style="position: relative;font-size:20px;font-weight:900;height:30px;float:left;left:60%" align="center">共${pb.totalPage}页，第${pb.currentPage}页</div>
