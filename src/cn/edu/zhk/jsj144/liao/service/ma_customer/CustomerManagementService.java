@@ -31,4 +31,16 @@ public class CustomerManagementService {
 		// TODO Auto-generated method stub
 		customerManagementDao.resetUserPwd(uid);
 	}
+
+	public boolean delUser(String uid) throws SQLException {
+		// TODO Auto-generated method stub
+		boolean hasShop = customerManagementDao.hasShop(uid);
+		boolean hasOrder = customerManagementDao.hasOrder(uid);
+		boolean allowDel = false;
+		if(!hasShop && !hasOrder) {
+			customerManagementDao.delUser(uid);
+			allowDel = true;
+		}
+		return allowDel;
+	}
 }

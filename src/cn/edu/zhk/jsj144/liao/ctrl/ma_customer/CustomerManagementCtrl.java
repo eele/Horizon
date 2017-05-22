@@ -1,6 +1,7 @@
 package cn.edu.zhk.jsj144.liao.ctrl.ma_customer;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -54,6 +55,13 @@ public class CustomerManagementCtrl extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if(method.equals("delUser")) {
+			try {
+				delUser(request, response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -99,6 +107,19 @@ public class CustomerManagementCtrl extends HttpServlet {
 			throws ServletException, IOException, SQLException {
 		String uid = request.getParameter("uid");
 		cuService.resetUserPwd(uid);
+	}
+	
+	public void delUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		String uid = request.getParameter("uid");
+		PrintWriter out = response.getWriter();
+		if( cuService.delUser(uid)) {  // 能删除则输出1，否则输出0
+			out.print("1");
+		} else {
+			out.print("0");
+		}
+		out.flush();
+		out.close();
 	}
 
 }

@@ -11,9 +11,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
-<link href="/Horizon/Back_Admin/css/per_info.css" rel="stylesheet"
-	type="text/css">
+	<base href="<%=basePath%>">
+	<link href="/Horizon/Back_Admin/css/per_info.css" rel="stylesheet"
+		type="text/css">
+	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
+    <script type="text/javascript" src="/Horizon/Back_Admin/js/per_info.js"></script>
 </head>
 
 <body>
@@ -36,10 +38,10 @@
 				<td width="100"></td>
 			</c:when>
 			<c:otherwise>
-				<td width="100"><a href="/Horizon/ma_customer/CustomerManagementCtrl?method=resetUserPwd&uid=${user.uid }">重置密码</a></td>
+				<td width="100"><a href="javascript:resetPwd('${user.uid }')">重置密码</a></td>
 			</c:otherwise>
 		</c:choose>
-				<td width="75"><a href="">删除</a></td>
+				<td width="75"><a href="javascript:delUser('${user.uid }')">删除</a></td>
 			</tr>
 		</c:forEach>
 	</table>

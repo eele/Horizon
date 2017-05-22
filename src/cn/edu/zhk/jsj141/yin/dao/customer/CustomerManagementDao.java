@@ -38,4 +38,32 @@ public class CustomerManagementDao {
 		qr.update(sql, uid);
 	}
 
+	public void delUser(String uid) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "delete from `user` where uid=?";
+		qr.update(sql, uid);
+	}
+
+	public boolean hasShop(String uid) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "select * from `shop` where sellerid=?";
+		Map<String, Object> shopInfo = qr.query(sql, new MapHandler(), uid);
+		if(shopInfo == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean hasOrder(String uid) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "select * from `order` where uid=?";
+		Map<String, Object> order = qr.query(sql, new MapHandler(), uid);
+		if(order == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 }
