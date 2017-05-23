@@ -86,6 +86,13 @@ public class CustomerManagementCtrl extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if(method.equals("delIssueList")) {
+			try {
+				delIssueList(request, response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -209,6 +216,12 @@ public class CustomerManagementCtrl extends HttpServlet {
 		request.setAttribute("keyword", request.getParameter("keyword"));
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/issue_feedback.jsp");
 		rd.forward(request,response);
+	}
+	
+	public void delIssueList(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		String loginname = request.getParameter("loginname");
+		cuService.delIssueList(loginname);
 	}
 
 }

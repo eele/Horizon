@@ -118,4 +118,10 @@ public class CustomerManagementDao {
 		return qr.query(sql, new BeanListHandler<Issue>(Issue.class), params2);
 	}
 
+	public void delIssueList(String loginname) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "delete from `issue` where loginname=?";
+		qr.update(sql, loginname);
+	}
+
 }

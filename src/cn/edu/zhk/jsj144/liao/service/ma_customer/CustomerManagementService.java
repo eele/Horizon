@@ -61,4 +61,9 @@ public class CustomerManagementService {
 		}
 		return allowDel;
 	}
+
+	public void delIssueList(String loginname) throws SQLException {
+		// TODO Auto-generated method stub
+		customerManagementDao.delIssueList(loginname);
+	}
 }

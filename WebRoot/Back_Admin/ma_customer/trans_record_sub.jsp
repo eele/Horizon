@@ -58,26 +58,26 @@
 	<!--分页 -->
 	<div class="pager" align="right">
 		<c:if test="${pb.currentPage<=1 }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:40%" align="center">--</div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:20%" align="center">--</div>
 		</c:if>
 		<c:if test="${pb.currentPage>1 }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:40%" align="center"><a href="${pb.url }&currentPage=${pb.currentPage-1}">上一页</a></div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:20%" align="center"><a href="${pb.url }&currentPage=${pb.currentPage-1}">上一页</a></div>
 		</c:if>
 
 		<c:forEach begin="${pb.currentPage-5>0?pb.currentPage-5:1}"
 			end="${pb.currentPage + 4 > pb.totalPage ? pb.totalPage : pb.currentPage + 4 }" var="i">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:45%" align="center"><a href="${pb.url }&currentPage=${i }">${i}</a></div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:25%" align="center"><a href="${pb.url }&currentPage=${i }">${i}</a></div>
 		</c:forEach>
 
 		<c:if test="${pb.currentPage>=pb.totalPage }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:50%" align="center">--</div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:30%" align="center">--</div>
 		</c:if>
 		<c:if test="${pb.currentPage<pb.totalPage }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:50%" align="center">
+			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:30%" align="center">
 				<a href="${pb.url }&currentPage=${pb.currentPage+1}">下一页</a>
 			</div>
 		</c:if>
-		<div style="position: relative;font-size:20px;font-weight:900;height:30px;float:left;left:60%" align="center">共${pb.totalPage}页，第${pb.currentPage}页</div>
+		<div style="position: relative;font-size:20px;font-weight:900;height:30px;float:left;left:40%" align="center">共${pb.totalPage}页，第${pb.currentPage}页</div>
 	</div>
 	<!-- 分页结束  -->
 </body>

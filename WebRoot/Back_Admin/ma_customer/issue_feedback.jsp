@@ -50,29 +50,29 @@
 			<tr align="center">
 				<td>${issue.loginname }</td>
 				<td>${issue.email }</td>
-				<td><span id="${issue.loginname }">${issue.issue_title }</span></td>
+				<td><span id="tit_${issue.loginname }">${issue.issue_title }</span></td>
 				<td>${issue.datetime }</td>
-				<td width="100"><a href="">查看内容</a></td>
+				<td width="100"><a href="javascript:showIssue('${issue.loginname }')">查看内容</a></td>
 				<td width="75"><a href="javascript:delIssue('${issue.loginname }')">删除</a></td>
 			</tr>
-			<input type="hidden" id="${issue.loginname }" value="${issue.issue_con }">
+			<input type="hidden" id="con_${issue.loginname }" value="${issue.issue_con }">
 		</c:forEach>
 	</table>
 	<div class="pop_up" >
 		<br>
 		<table width="671" height="293" border="0" align="center">
 		  <tr>
-		    <th height="37" align="left" scope="col">顾客：<span id="login_name"></span></th>
+		    <th height="37" align="left" scope="col">顾客：<span class="login_name"></span></th>
 	      </tr>
 		  <tr>
-			<th width="640" height="46" align="left" scope="col">标题: <span id="issue_title"></span></th>
+			<th width="640" height="46" align="left" scope="col">标题: <span class="issue_title"></span></th>
 		  </tr>
 		  <tr>
-			<td height="160" align="left" valign="top"><span id="iss_con"></span></td>
+			<td height="160" align="left" valign="top"><span class="iss_con"></span></td>
 		  </tr>
 		  <tr>
 			<td height="40" align="center" valign="middle">
-				<input type="button" onClick=""></td>
+				<input type="button" value="关闭" onClick="$('.pop_up').css({'display':'none'})"></td>
 		  </tr>
 	  </table>
 
@@ -89,10 +89,10 @@
 	</form>
 	<div class="pager" align="right">
 		<c:if test="${pb.currentPage<=1 }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:40%" align="center">--</div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:20%" align="center">--</div>
 		</c:if>
 		<c:if test="${pb.currentPage>1 }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:40%" align="center"><a href="javascript:$('#last').submit()">上一页</a></div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:20%" align="center"><a href="javascript:$('#last').submit()">上一页</a></div>
 		</c:if>
 
 		<c:forEach begin="${pb.currentPage-5>0?pb.currentPage-5:1}"
@@ -100,18 +100,18 @@
 			<form action="${pb.url }&currentPage=${i}" method="post" id="${i}">
 				<input type="hidden" name="keyword" value="${param.keyword }">
 			</form>
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:45%" align="center"><a href="javascript:$('#${i}').submit()">${i}</a></div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:25%" align="center"><a href="javascript:$('#${i}').submit()">${i}</a></div>
 		</c:forEach>
 
 		<c:if test="${pb.currentPage>=pb.totalPage }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:50%" align="center">--</div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:30%" align="center">--</div>
 		</c:if>
 		<c:if test="${pb.currentPage<pb.totalPage }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:50%" align="center">
+			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:30%" align="center">
 				<a href="javascript:$('#next').submit()">下一页</a>
 			</div>
 		</c:if>
-		<div style="position: relative;font-size:20px;font-weight:900;height:30px;float:left;left:60%" align="center">共${pb.totalPage}页，第${pb.currentPage}页</div>
+		<div style="position: relative;font-size:20px;font-weight:900;height:30px;float:left;left:40%" align="center">共${pb.totalPage}页，第${pb.currentPage}页</div>
 	</div>
 	<!-- 分页结束  -->
 </body>
