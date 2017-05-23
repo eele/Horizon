@@ -13,6 +13,14 @@ public class CustomerManagementService {
 
 	CustomerManagementDao customerManagementDao = new CustomerManagementDao();
 
+	/**
+	 * 获取某页记录
+	 * @param op 1.用户信息列表；2.交易记录列表；3.交易记录详情列表；4.顾客问题反馈列表
+	 * @param pBean
+	 * @param params
+	 * @return
+	 * @throws SQLException
+	 */
 	@SuppressWarnings("unchecked")
 	public <T> PageBean<T> getByPage(int op, PageBean<T> pBean, String[] params)
 			throws SQLException {
@@ -45,11 +53,22 @@ public class CustomerManagementService {
         return pBean2;
     }
 
+	/**
+	 * 重置用户密码
+	 * @param uid
+	 * @throws SQLException
+	 */
 	public void resetUserPwd(String uid) throws SQLException {
 		// TODO Auto-generated method stub
 		customerManagementDao.resetUserPwd(uid);
 	}
 
+	/**
+	 * 删除无下单和开店记录的用户
+	 * @param uid
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean delUser(String uid) throws SQLException {
 		// TODO Auto-generated method stub
 		boolean hasShop = customerManagementDao.hasShop(uid);
@@ -62,6 +81,11 @@ public class CustomerManagementService {
 		return allowDel;
 	}
 
+	/**
+	 * 删除顾客问题记录
+	 * @param loginname
+	 * @throws SQLException
+	 */
 	public void delIssueList(String loginname) throws SQLException {
 		// TODO Auto-generated method stub
 		customerManagementDao.delIssueList(loginname);
