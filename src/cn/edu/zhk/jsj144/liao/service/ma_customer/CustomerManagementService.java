@@ -9,6 +9,11 @@ import cn.edu.zhk.jsj141.yin.dao.customer.CustomerManagementDao;
 import cn.edu.zhk.jsj144.liao.entity.ma_customer.Tr_record;
 import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 
+/**
+ * 顾客管理业务层
+ * @author ele
+ *
+ */
 public class CustomerManagementService {
 
 	CustomerManagementDao customerManagementDao = new CustomerManagementDao();
