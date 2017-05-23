@@ -59,7 +59,7 @@ $(document).ready(function(){
 			$("iframe").attr("src", "/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&loginName=&currentPage=1");
 			break;
 		case "顾客问题反馈":
-			$("iframe").attr("src", "/Horizon/Back_Admin/ma_customer/issue_feedback.jsp");
+			$("iframe").attr("src", "/Horizon/ma_customer/CustomerManagementCtrl?method=getIssueList&keyword=&currentPage=1");
 			break;
 		case "修改个人密码":
 			$("iframe").attr("src", "/Horizon/Back_Admin/changePwd.jsp");

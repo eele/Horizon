@@ -22,6 +22,7 @@
 	<div style="height:40px">
 		<input type="button" value="返回" 
 		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&currentPage=1&loginName='">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;顾客：${param.loginName }
 	</div>
 	<div style="height:40px" align="center">
 		搜索下单日期范围：
@@ -29,21 +30,27 @@
 		&nbsp;&nbsp;—&nbsp;&nbsp;
 		<input type="text" id="endDate" style="width:200px" placeholder="结束日期">&nbsp;&nbsp;
 		<input type="button" value="搜索" 
-		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getOrderList&currentPage=1&loginName=${param.loginName }&startDate=' + $('#startDate').val() + '&endDate=' + $('#endDate').val()">
+		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getOrderList&currentPage=1&loginName=encodeURI(encodeURI(${param.loginName }))&startDate=' + $('#startDate').val() + '&endDate=' + $('#endDate').val()">
 	</div>
 	<table width="100%" class="imagetable" cellspacing="0" cellpadding="0">
 		<tr>
-			<th width="200">订单ID</th>
+			<th width="200">交易订单ID</th>
 			<th>下单时间</th>
 			<th>消费金额</th>
-			<th>订单状态</th>
+			<th>交易状态</th>
 		</tr>
 		<c:forEach items="${pb.bean }" var="order">
 			<tr align="center">
 				<td>${order.oid }</td>
 				<td>${order.ordertime }</td>
 				<td>${order.total }</td>
-				<td>${order.status }</td>
+		<c:choose>
+			<c:when test="${order.status==1 }"><td>未付款</td></c:when>
+			<c:when test="${order.status==2 }"><td>未发货</td></c:when>
+			<c:when test="${order.status==3 }"><td>未确认收货</td></c:when>
+			<c:when test="${order.status==4 }"><td>交易成功</td></c:when>
+			<c:when test="${order.status==5 }"><td>已取消</td></c:when>
+		</c:choose>
 			</tr>
 		</c:forEach>
 	</table>

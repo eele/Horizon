@@ -23,7 +23,7 @@
 		搜索登录名/E-Mail/手机号码：
 		<input type="text" id="searchUser" style="width:300px">&nbsp;&nbsp;
 		<input type="button" value="搜索" 
-		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&currentPage=1&keyword='+$('#searchUser').val()">
+		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&currentPage=1&keyword='+encodeURI(encodeURI($('#searchUser').val()))">
 	</div>
 	<table width="100%" class="imagetable" cellspacing="0" cellpadding="0">
 		<tr>
@@ -53,17 +53,26 @@
 	</table>
 
 	<!--分页 -->
+	<form action="${pb.url }&currentPage=${pb.currentPage-1}" method="post" id="last">
+		<input type="hidden" name="keyword" value="${param.keyword }">
+	</form>
+	<form action="${pb.url }&currentPage=${pb.currentPage+1}" method="post" id="next">
+		<input type="hidden" name="keyword" value="${param.keyword }">
+	</form>
 	<div class="pager" align="right">
 		<c:if test="${pb.currentPage<=1 }">
 			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:40%" align="center">--</div>
 		</c:if>
 		<c:if test="${pb.currentPage>1 }">
-			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:40%" align="center"><a href="${pb.url }&currentPage=${pb.currentPage-1}">上一页</a></div>
+			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:40%" align="center"><a href="javascript:$('#last').submit()">上一页</a></div>
 		</c:if>
 
 		<c:forEach begin="${pb.currentPage-5>0?pb.currentPage-5:1}"
 			end="${pb.currentPage + 4 > pb.totalPage ? pb.totalPage : pb.currentPage + 4 }" var="i">
-			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:45%" align="center"><a href="${pb.url }&currentPage=${i }">${i}</a></div>
+			<form action="${pb.url }&currentPage=${i}" method="post" id="${i}">
+				<input type="hidden" name="keyword" value="${param.keyword }">
+			</form>
+			<div style="position: relative;font-size:20px;font-weight:900;width:30px;height:30px;float:left;left:45%" align="center"><a href="javascript:$('#${i}').submit()">${i}</a></div>
 		</c:forEach>
 
 		<c:if test="${pb.currentPage>=pb.totalPage }">
@@ -71,7 +80,7 @@
 		</c:if>
 		<c:if test="${pb.currentPage<pb.totalPage }">
 			<div style="position: relative;font-size:20px;font-weight:900;width:90px;height:30px;float:left;left:50%" align="center">
-				<a href="${pb.url }&currentPage=${pb.currentPage+1}">下一页</a>
+				<a href="javascript:$('#next').submit()">下一页</a>
 			</div>
 		</c:if>
 		<div style="position: relative;font-size:20px;font-weight:900;height:30px;float:left;left:60%" align="center">共${pb.totalPage}页，第${pb.currentPage}页</div>

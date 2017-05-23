@@ -2,6 +2,7 @@ package cn.edu.zhk.jsj144.liao.ctrl.ma_customer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zhk.jsj141.feng.entity.user.User;
+import cn.edu.zhk.jsj144.liao.entity.issue.Issue;
 import cn.edu.zhk.jsj144.liao.entity.ma_customer.Tr_record;
 import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 import cn.edu.zhk.jsj144.liao.service.ma_customer.CustomerManagementService;
@@ -77,6 +79,13 @@ public class CustomerManagementCtrl extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if(method.equals("getIssueList")) {
+			try {
+				getIssueList(request, response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -103,15 +112,16 @@ public class CustomerManagementCtrl extends HttpServlet {
 		pBean.setCurrentPage(currentPage);
 		pBean.setPageSize(20);  // 每页20条记录
 
-		String keyword = request.getParameter("keyword");
+		String keyword = URLDecoder.decode(request.getParameter("keyword"), "utf-8");
 		PageBean<User> pb = null;
 		String[] params = {"%"};
 		if (!keyword.equals("")) {
 			params[0] = keyword;
 		}
 		pb= cuService.getByPage(1, pBean, params);
-		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&keyword=" + keyword);
+		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList");
 		request.setAttribute("pb", pb);
+		request.setAttribute("keyword", request.getParameter("keyword"));
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/per_info.jsp");
 		rd.forward(request,response);
 	}
@@ -142,14 +152,14 @@ public class CustomerManagementCtrl extends HttpServlet {
 		pBean.setCurrentPage(currentPage);
 		pBean.setPageSize(20);  // 每页20条记录
 
-		String loginName = request.getParameter("loginName");
+		String loginName = URLDecoder.decode(request.getParameter("loginName"), "utf-8");
 		PageBean<Tr_record> pb = null;
 		String[] params = {"%"};
 		if (!loginName.equals("")) {
 			params[0] = loginName;
 		}
 		pb= cuService.getByPage(2, pBean, params);
-		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&loginName=" + loginName);
+		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&loginName=" + request.getParameter("loginName"));
 		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/trans_record.jsp");
 		rd.forward(request,response);
@@ -164,7 +174,7 @@ public class CustomerManagementCtrl extends HttpServlet {
 
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
-		String loginName = request.getParameter("loginName");
+		String loginName = URLDecoder.decode(request.getParameter("loginName"), "utf-8");
 		PageBean<Tr_record> pb = null;
 		String[] params = {loginName, "1=1", "1=1"};
 		if (!startDate.equals("")) {
@@ -174,9 +184,30 @@ public class CustomerManagementCtrl extends HttpServlet {
 			params[2] = "ordertime <='" + endDate + "'";
 		}
 		pb= cuService.getByPage(3, pBean, params);
-		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getOrderList&loginName=" + loginName + "&startDate=" + startDate + "&endDate=" + endDate);
+		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getOrderList&loginName=" + request.getParameter("loginName") + "&startDate=" + startDate + "&endDate=" + endDate);
 		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/trans_record_sub.jsp");
+		rd.forward(request,response);
+	}
+	
+	public void getIssueList(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		PageBean<Issue> pBean = new PageBean<Issue>();
+		int currentPage = Integer.parseInt(request.getParameter("currentPage")); // 获取当前页码
+		pBean.setCurrentPage(currentPage);
+		pBean.setPageSize(13);  // 每页13条记录
+
+		String keyword = URLDecoder.decode(request.getParameter("keyword"), "utf-8");
+		PageBean<Issue> pb = null;
+		String[] params = {"%"};
+		if (!keyword.equals("")) {
+			params[0] = keyword;
+		}
+		pb= cuService.getByPage(4, pBean, params);
+		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getIssueList");
+		request.setAttribute("pb", pb);
+		request.setAttribute("keyword", request.getParameter("keyword"));
+		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/issue_feedback.jsp");
 		rd.forward(request,response);
 	}
 

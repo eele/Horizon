@@ -19,15 +19,22 @@ public class CustomerManagementService {
         //查询总条数和当前页的数据
 		List<T> records = null;
 		int totalCount = 0;
-		if(op == 1) {
+		switch(op) {
+		case 1:
 			totalCount=customerManagementDao.getUserTotalCount(params);
 			records=(List<T>) customerManagementDao.getUserCurrentPageBean((PageBean<User>) pBean, params);
-		} else if(op == 2) {
+			break;
+		case 2:
 			totalCount=customerManagementDao.getTrRecordTotalCount(params);
 			records=(List<T>) customerManagementDao.getTrRecordCurrentPageBean((PageBean<Tr_record>) pBean, params);
-		} else if(op == 3) {
-			totalCount=customerManagementDao.getTrRecordTotalCount(params);
+			break;
+		case 3:
+			totalCount=customerManagementDao.getOrderTotalCount(params);
 			records=(List<T>) customerManagementDao.getOrderCurrentPageBean((PageBean<Order>) pBean, params);
+			break;
+		case 4:
+			totalCount=customerManagementDao.getIssueTotalCount(params);
+			records=(List<T>) customerManagementDao.getIssueCurrentPageBean((PageBean<Order>) pBean, params);
 		}
         
         PageBean<T> pBean2=new PageBean<T>();

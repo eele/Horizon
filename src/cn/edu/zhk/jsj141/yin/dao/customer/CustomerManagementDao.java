@@ -11,6 +11,7 @@ import org.apache.commons.dbutils.handlers.MapHandler;
 import cn.edu.zhk.jsj141.feng.entity.order.Order;
 import cn.edu.zhk.jsj141.feng.entity.user.User;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
+import cn.edu.zhk.jsj144.liao.entity.issue.Issue;
 import cn.edu.zhk.jsj144.liao.entity.ma_customer.Tr_record;
 import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 
@@ -91,6 +92,30 @@ public class CustomerManagementDao {
 		Object[] params2 = {params[0], (pBean.getCurrentPage()-1)*pBean.getPageSize(), pBean.getPageSize()};
 
 		return qr.query(sql, new BeanListHandler<Order>(Order.class), params2);
+	}
+
+	public int getOrderTotalCount(String[] params) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql="SELECT count(*) FROM `order`,`user` WHERE order.uid=user.uid and loginname=? and " + params[1] + " and " + params[2];
+		Map<String,Object> map = qr.query(sql, new MapHandler(), params[0]);
+		return Integer.parseInt(String.valueOf(map.get("count(*)")));
+	}
+
+	public int getIssueTotalCount(String[] params) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql="SELECT count(*) FROM `issue` WHERE loginname like ? or issue_title like ? or issue_con like ? ";
+		Object[] params2 = {"%"+params[0]+"%", "%"+params[0]+"%", "%"+params[0]+"%"};
+		Map<String,Object> map = qr.query(sql, new MapHandler(), params2);
+		return Integer.parseInt(String.valueOf(map.get("count(*)")));
+	}
+
+	public List<Issue> getIssueCurrentPageBean(PageBean<Order> pBean,
+			String[] params) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql="SELECT * FROM `issue` WHERE loginname like ? or issue_title like ? or issue_con like ? LIMIT ?,?";
+		Object[] params2 = {"%"+params[0]+"%", "%"+params[0]+"%", "%"+params[0]+"%", (pBean.getCurrentPage()-1)*pBean.getPageSize(), pBean.getPageSize()};
+
+		return qr.query(sql, new BeanListHandler<Issue>(Issue.class), params2);
 	}
 
 }

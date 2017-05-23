@@ -15,7 +15,6 @@
 	<link href="/Horizon/Back_Admin/css/per_info.css" rel="stylesheet"
 		type="text/css">
 	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
-    <script type="text/javascript" src="/Horizon/Back_Admin/js/trans_record.js"></script>
 </head>
 
 <body>
@@ -23,7 +22,7 @@
 		搜索顾客登录名：
 		<input type="text" id="searchUser" style="width:300px">&nbsp;&nbsp;
 		<input type="button" value="搜索" 
-		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&currentPage=1&loginName='+$('#searchUser').val()">
+		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&currentPage=1&loginName='+encodeURI(encodeURI($('#searchUser').val()))">
 	</div>
 	<table width="100%" class="imagetable" cellspacing="0" cellpadding="0">
 		<tr>
