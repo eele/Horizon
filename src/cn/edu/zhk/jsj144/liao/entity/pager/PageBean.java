@@ -2,19 +2,14 @@ package cn.edu.zhk.jsj144.liao.entity.pager;
 
 import java.util.List;
 
-/**
- * 分页Bean，它会在各层之间传递！
- * @author qdmmy6
- *
- * @param <T>
- */
 public class PageBean<T> {
-	private List<T> bean;            // 存放实体类集合
+	private List<T> bean;    // 存放实体类集合
     
     private int currentPage;    // 当前页
     private int pageSize;        // 每页显示的条数
     private int totalCount;    // 总条数
-    private int totalPage;   // 总页数
+    @SuppressWarnings("unused")
+	private int totalPage;   // 总页数
     private String url; // 链接地址
     
     public List<T> getBean() {

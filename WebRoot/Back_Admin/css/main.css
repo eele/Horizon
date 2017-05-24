@@ -10,7 +10,6 @@ body{
 }
 .mainArea {
 	position: relative;
-	width: auto;
 	margin-left: 200px;
 }
 .itemTitle {
@@ -45,4 +44,9 @@ body{
 	height: 70px;
 	width: auto;
 	margin-left: 200px;
+}
+
+iframe {
+	width: 100%;
+	border: 0;
 }

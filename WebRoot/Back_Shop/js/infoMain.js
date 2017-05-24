@@ -9,7 +9,7 @@ $(function(){
 			url: "/Horizon/shopInfo/UpdateShopInfoCtrl",
 			dataType: "JSON",
 			data: {
-				shopid: $("input[name='shopID']").val(),
+				shopid: $("input.shopID").val(),
 				sellerid: null,
 				shopName: $("input[name='shopName']").val(),
 				shopCid: null,

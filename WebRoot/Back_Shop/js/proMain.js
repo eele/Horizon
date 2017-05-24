@@ -37,38 +37,17 @@ $(document).ready(function() {
 });
 
 /**
- * 商品类别列表高度调整
- */
-$(document).ready(function(){ 
-	if($(".commodityArea").height()+70 > $(window).height()) {
-		$(".list").height($(".commodityArea").height()+70);
-	} else {
-		if($(window).height() < 500){
-			$(".list").height(500);
-		} else {
-			$(".list").height($(window).height());
-		}
-	}
-	$(window).resize(function() {
-		if($(".commodityArea").height() > $(window).height()) {
-			$(".commodityArea").height($(".commodityArea").height()+70);
-		} else {
-			if($(window).height() < 500){
-				$(".list").height(500);
-			} else {
-				$(".list").height($(window).height());
-			}
-		}
-	});
-});
-
-/**
  * 显示商品区列表
  */
 $(document).ready(function(){ 
 	$.ajax({
 		type: "get",
-		url: "/Horizon/product/GetProductListCtrl?cid=%&currentPage=1",
+		url: "/Horizon/product/GetProductListCtrl",
+		data: {
+			cid: "all",
+			shopid: $(".shopID").val(),
+			currentPage: "1"
+		},
 		success: function(html) {
 			$(".productList").html(html);
 		},
@@ -85,7 +64,7 @@ $(document).ready(function(){
 	$(".newProduct").click(function() {
 		$.ajax({
 			type: "get",
-			url: "/Horizon/Back_Shop/ma_product/addProduct.jsp",
+			url: "/Horizon/category_product/FindParentCategoryCtrl",
 			success: function(html) {
 				$(".mainArea").html(html);
 			},
@@ -93,5 +72,33 @@ $(document).ready(function(){
 				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
 			}
 		});
+	});
+});
+
+/**
+ * 搜索商品
+ */
+$(document).ready(function(){ 
+	$(".searchButton").click(function() {
+		$.ajax({
+			type: "POST",
+			url: "/Horizon/product/SearchProductCtrl",
+			data: {
+				keyword: $("input[name='inputBox']").val(),
+				shopid: $(".shopID").val(),
+				currentPage: "1"
+			},
+			success: function(html) {
+				$(".productList").html(html);
+			},
+			error: function() {
+				$(".productList").html("<h2 align='center'><b>网页加载异常</b><h3>");
+			}
+		});
+	});
+	
+	// 监听输入框的回车操作
+	$("input[name='inputBox']").bind('keypress',function(event){  
+	    if(event.keyCode == "13") $(".searchButton").click();  
 	});
 });

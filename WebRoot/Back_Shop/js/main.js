@@ -4,7 +4,7 @@
 $(document).ready(function(){ 
 	$(".mainArea").height($(window).height()-80);
 	var w=$(window).width();
-	var changeWidth = 900;
+	var changeWidth = 930;
 	if(w < 1200) {
 		$(".bodyArea").width(changeWidth);
 		if(w < changeWidth) {
@@ -22,9 +22,10 @@ $(document).ready(function(){
 	window.onresize = function() {
 		$(".mainArea").height($(window).height()-80);
 		var w=$(window).width();
-		var changeWidth = 900;
+		var changeWidth = 930;
 		if(w < 1200) {
 			$(".bodyArea").width(changeWidth);
+			$(".searchArea").css({"margin-left": "10px"});
 			if(w < changeWidth) {
 				$(".bodyArea").css("left",(changeWidth/2)+"px");
 				$(".bodyArea").css("margin-left",(-changeWidth/2)+"px");
@@ -36,6 +37,7 @@ $(document).ready(function(){
 			$(".bodyArea").width(1200);
 			$(".bodyArea").css("left","50%");
 			$(".bodyArea").css("margin-left","-600px");
+			$(".searchArea").css({"margin-left": "100px"});
 		}
 	};
 }); 
@@ -85,15 +87,10 @@ $(document).ready(function(){
 		});
 	});
 	$("#tab3").click(function() {
-		$.ajax({
-			type: "get",
-			url: "/Horizon/Back_Shop/ma_order/orderMain.jsp",
-			success: function(html) {
-				$(".mainArea").html(html);
-			},
-			error: function() {
-				$(".mainArea").html("<h2 align='center'><b>网页加载异常</b><h3>");
-			}
+		$(".mainArea").html("<iframe src='/Horizon/order/OrderManagementCtrl?method=findAll'></iframe>");
+		$("iframe").height($(".mainArea").height());
+		$(window).resize(function() {
+			$("iframe").height($(".mainArea").height());
 		});
 	});
 }); 

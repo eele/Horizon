@@ -7,16 +7,7 @@
   <head>
     <title>订单详细</title>
     
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-	<link rel="stylesheet" type="text/css" href="<c:url value='/adminjsps/admin/css/order/desc.css'/>">
+	<link rel="stylesheet" type="text/css" href="/Horizon/Back_Shop/css/orderDesc.css">
   </head>
   
 <body>
@@ -59,7 +50,7 @@
 							<td class="td" width="400px">
 								<div class="Productname">
 								  <img align="middle" width="70" src="<c:url value='/${orderItem.product.image_b }'/>"/>
-								  ${orderItem.product.bname }
+								  ${orderItem.product.productName }
 								</div>
 							</td>
 							<td class="td" >
@@ -73,10 +64,6 @@
 							</td>			
 						</tr>
 </c:forEach>
-
-							
-							
-							
 					</table>
 				</dd>
 			</dl>
@@ -86,13 +73,14 @@
 			<span class="price_t">&yen;${order.total }</span><br/>
 
 <c:if test="${order.status eq 2 and btn eq 'deliver' }">
-	<a id="deliver" href="<c:url value='/admin/AdminOrderServlet?method=deliver&oid=${order.oid }'/>">发　　货</a>
+	<a id="deliver" href="/Horizon/order/OrderManagementCtrl?method=deliver&oid=${order.oid }">发　　货</a>
 </c:if>
 <c:if test="${order.status eq 1 and btn eq 'cancel' }">
-	<a id="cancel" href="<c:url value='/admin/AdminOrderServlet?method=cancel&oid=${order.oid }'/>">取　　消</a>
+	<a id="cancel" href="/Horizon/order/OrderManagementCtrl?method=cancel&oid=${order.oid }">取　　消</a>
 </c:if>
 		</div>
 	</div>
+	<div style="color: #ff6600;font-weight: 900;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${msg }</div>
 </body>
 </html>
 

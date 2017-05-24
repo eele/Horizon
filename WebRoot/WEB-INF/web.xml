@@ -53,6 +53,71 @@
     <servlet-name>GetProductByIDCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.GetProductByIDCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GetShopNameCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.shop.GetShopNameCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FindChildCategoryCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.category.product.FindChildCategoryCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.AddProductCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FindParentCategoryCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.category.product.FindParentCategoryCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.UpdateProductCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DelProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.DelProductCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.product.SearchProductCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OrderManagementCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.order.OrderManagementCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CustomerManagementCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.ma_customer.CustomerManagementCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ShopManagementCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.ma_shop.ShopManagementCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminLoginCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.admin.AdminLoginCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ChangePasswordCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.admin.ChangePasswordCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminLogoutCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.admin.AdminLogoutCtrl</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -67,31 +132,31 @@
 
   <servlet-mapping>
     <servlet-name>FindAllCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/FindAllCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/FindAllCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddParentCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/AddParentCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/AddParentCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddChildCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/AddChildCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/AddChildCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>EditParentCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/EditParentCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/EditParentCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>EditChildCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/EditChildCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/EditChildCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DelParentCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/DelParentCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/DelParentCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DelChildCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/DelChildCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/DelChildCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetCategoryListCtrl</servlet-name>
@@ -113,6 +178,58 @@
     <servlet-name>GetProductByIDCtrl</servlet-name>
     <url-pattern>/product/GetProductByIDCtrl</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetShopNameCtrl</servlet-name>
+    <url-pattern>/shopInfo/GetShopNameCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FindChildCategoryCtrl</servlet-name>
+    <url-pattern>/category_product/FindChildCategoryCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddProductCtrl</servlet-name>
+    <url-pattern>/product/AddProductCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FindParentCategoryCtrl</servlet-name>
+    <url-pattern>/category_product/FindParentCategoryCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateProductCtrl</servlet-name>
+    <url-pattern>/product/UpdateProductCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelProductCtrl</servlet-name>
+    <url-pattern>/product/DelProductCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchProductCtrl</servlet-name>
+    <url-pattern>/product/SearchProductCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderManagementCtrl</servlet-name>
+    <url-pattern>/order/OrderManagementCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CustomerManagementCtrl</servlet-name>
+    <url-pattern>/admin/ma_customer/CustomerManagementCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShopManagementCtrl</servlet-name>
+    <url-pattern>/admin/ma_shop/ShopManagementCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminLoginCtrl</servlet-name>
+    <url-pattern>/admin_login/AdminLoginCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ChangePasswordCtrl</servlet-name>
+    <url-pattern>/admin/ChangePasswordCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminLogoutCtrl</servlet-name>
+    <url-pattern>/admin_logout/AdminLogoutCtrl</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
@@ -123,5 +240,17 @@
   <filter-mapping>
   	<filter-name>CharSetEncodingFilter</filter-name>
   	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+  	<filter-name>AdminLoginFilter</filter-name>
+  	<filter-class>cn.edu.zhk.jsj144.liao.filter.AdminLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>AdminLoginFilter</filter-name>
+  	<url-pattern>/Back_Admin/*</url-pattern>
+  </filter-mapping>
+   <filter-mapping>
+  	<filter-name>AdminLoginFilter</filter-name>
+  	<url-pattern>/admin/*</url-pattern>
   </filter-mapping>
 </web-app>

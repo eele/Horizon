@@ -6,10 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import cn.edu.zhk.jsj144.liao.service.category.product.CategoryService;
-import cn.edu.zhk.jsj144.liao.service.shop.ShopService;
 /**
  * 查询所有分类
  * @author ele

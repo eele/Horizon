@@ -9,7 +9,8 @@ public class Product {
 	private float price = 0;   // 定价
 	private float currPrice = 0;   // 促销价
 	private String brand = null;   // 品牌
-	private int productNum = 0;   // 数量
+	private int productNum = 0;   // 库存数量
+	private int salesNum = 0;  // 销量
 	private String proDate = null;   // 生产日期
 	private String purDate = null;   // 进货日期
 	private String cid = null;   // 商品种类ID
@@ -68,6 +69,12 @@ public class Product {
 	}
 	public void setProductNum(int productNum) {
 		this.productNum = productNum;
+	}
+	public int getSalesNum() {
+		return salesNum;
+	}
+	public void setSalesNum(int salesNum) {
+		this.salesNum = salesNum;
 	}
 	public String getProDate() {
 		return proDate;

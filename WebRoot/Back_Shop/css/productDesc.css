@@ -42,24 +42,8 @@ body{
 	color: #FFFFFF;
 	position: absolute;
 	height: 30px;
-	left: 450px;
+	left: 40%;
 	line-height: 30px;
-}
-
-.tabStyle {
-	color: #FFFFFF;
-	background-color: #68A9EA;
-	position: absolute;
-	height: 30px;
-	width: 100px;
-	line-height: 30px;
-	text-align: center;
-	font-weight: bold;
-	left: 30px;
-	cursor:pointer
-}
-.tabStyle:hover {
-	background-color: #1D74CB;
 }
 
 .mainArea {
@@ -85,9 +69,10 @@ body{
 }
 
 .sm {
-	font-size: 13pt;
+	font-size: 16pt;
 	font-weight: 900;
 	margin-bottom: 30px;
+	margin-left: 30px;
 }
 
 .bd {
@@ -104,7 +89,7 @@ body{
 	list-style: none;
 }
 
-.lisTyle {
+.liStyle {
 	margin: 10px;
 }
 
