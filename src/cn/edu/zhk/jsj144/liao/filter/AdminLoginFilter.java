@@ -32,7 +32,7 @@ public class AdminLoginFilter implements Filter {
 			if(request.getServletPath().equals("/Back_Admin/login.jsp") || request.getServletPath().equals("/Back_Admin/css/login.css")) {
 				arg2.doFilter(arg0, arg1);
 			} else {
-				System.out.println(request.getServletPath() + "?" + request.getQueryString());
+				System.out.println("block  " + request.getServletPath() + "?" + request.getQueryString());
 				request.setAttribute("gotoURL", request.getServletPath() + "?" + request.getQueryString());
 				RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/login.jsp");
 				rd.forward(request,response);
