@@ -7,6 +7,11 @@ import cn.edu.zhk.jsj141.feng.entity.pager.PageBean;
 import cn.edu.zhk.jsj141.yin.dao.order.OrderDao;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
 
+/**
+ * 订单管理业务层
+ * @author ele
+ *
+ */
 public class OrderService {
 
 private OrderDao orderDao = new OrderDao();

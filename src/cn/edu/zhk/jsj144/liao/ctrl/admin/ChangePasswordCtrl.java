@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import cn.edu.zhk.jsj144.liao.entity.admin.Admin;
 import cn.edu.zhk.jsj144.liao.service.admin.AdminService;
 
+/**
+ * 管理员修改密码控制层
+ * @author ele
+ *
+ */
 public class ChangePasswordCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -7,6 +7,11 @@ import cn.edu.zhk.jsj141.yin.dao.product.ProductDao;
 import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 import cn.edu.zhk.jsj144.liao.entity.product.Product;
 
+/**
+ * 商品管理业务层
+ * @author ele
+ *
+ */
 public class ProductService {
 	private ProductDao productDao = new ProductDao();
 	

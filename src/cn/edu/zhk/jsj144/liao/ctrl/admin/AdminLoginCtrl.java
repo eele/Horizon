@@ -15,6 +15,11 @@ import cn.edu.zhk.jsj144.liao.service.admin.AdminService;
 import cn.edu.zhk.jsj144.liao.service.admin.ErrorPasswordException;
 import cn.edu.zhk.jsj144.liao.service.admin.ErrorUsernameException;
 
+/**
+ * 管理员登录控制层
+ * @author ele
+ *
+ */
 public class AdminLoginCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

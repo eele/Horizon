@@ -1,15 +1,19 @@
 package cn.edu.zhk.jsj144.liao.ctrl.admin;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 管理员退出帐号控制层
+ * @author ele
+ *
+ */
 public class AdminLogoutCtrl extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Constructor of the object.
