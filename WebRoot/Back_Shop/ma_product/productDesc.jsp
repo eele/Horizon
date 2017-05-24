@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$.ajax({
 			async:true,
 			cache:false,
-			url:"/Horizon/admin/category_product/FindChildCategoryCtrl",
+			url:"/Horizon/category_product/FindChildCategoryCtrl",
 			data:{pid:pid},
 			type:"POST",
 			dataType:"json",

@@ -160,7 +160,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetCategoryListCtrl</servlet-name>
-    <url-pattern>/admin/category_product/GetCategoryListCtrl</url-pattern>
+    <url-pattern>/category_product/GetCategoryListCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetShopInfoCtrl</servlet-name>
@@ -184,7 +184,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>FindChildCategoryCtrl</servlet-name>
-    <url-pattern>/admin/category_product/FindChildCategoryCtrl</url-pattern>
+    <url-pattern>/category_product/FindChildCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddProductCtrl</servlet-name>
@@ -192,7 +192,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>FindParentCategoryCtrl</servlet-name>
-    <url-pattern>/admin/category_product/FindParentCategoryCtrl</url-pattern>
+    <url-pattern>/category_product/FindParentCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>UpdateProductCtrl</servlet-name>

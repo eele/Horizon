@@ -64,10 +64,6 @@
 							</td>			
 						</tr>
 </c:forEach>
-
-							
-							
-							
 					</table>
 				</dd>
 			</dl>
@@ -84,6 +80,7 @@
 </c:if>
 		</div>
 	</div>
+	<div style="color: #ff6600;font-weight: 900;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${msg }</div>
 </body>
 </html>
 
