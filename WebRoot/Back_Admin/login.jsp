@@ -17,6 +17,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function() {
 		// 单击按钮提交表单
 		$(".but").click(function() {
+			var getUrl = "${gotoURL}";
+			if(getUrl == "") {
+				getUrl = "/Back_Admin/main.jsp";
+			}
 			if($("#username").val() != "" && $("#password").val() != "") {
 				$.ajax({
 					type: "POST",  
@@ -25,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                async: false,
 					success: function(data) {
 						if(data=="OK") {
-							location.href="/Horizon/Back_Admin/main.jsp";
+							location.href="/Horizon" + getUrl;
 						} else {
 							$("#msg").text(data);
 						}

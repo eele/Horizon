@@ -47,7 +47,7 @@ $(document).ready(function(){
 			$("iframe").attr("src", "/Horizon/admin/ma_shop/ShopManagementCtrl?method=shopVerifyList&keyword=&currentPage=1");
 			break;
 		case "商品类别管理":
-			$("iframe").attr("src", "/Horizon/category_product/FindAllCategoryCtrl");
+			$("iframe").attr("src", "/Horizon/admin/category_product/FindAllCategoryCtrl");
 			break;
 		case "顾客个人信息":
 			$("iframe").attr("src", "/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getUserList&keyword=&currentPage=1");

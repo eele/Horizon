@@ -85,7 +85,7 @@ function loadChildren() {
 	$.ajax({
 		async:true,
 		cache:false,
-		url:"/Horizon/category_product/FindChildCategoryCtrl",
+		url:"/Horizon/admin/category_product/FindChildCategoryCtrl",
 		data:{pid:pid},
 		type:"POST",
 		dataType:"json",

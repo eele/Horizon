@@ -132,35 +132,35 @@
 
   <servlet-mapping>
     <servlet-name>FindAllCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/FindAllCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/FindAllCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddParentCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/AddParentCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/AddParentCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddChildCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/AddChildCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/AddChildCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>EditParentCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/EditParentCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/EditParentCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>EditChildCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/EditChildCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/EditChildCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DelParentCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/DelParentCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/DelParentCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DelChildCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/DelChildCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/DelChildCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetCategoryListCtrl</servlet-name>
-    <url-pattern>/category_product/GetCategoryListCtrl</url-pattern>
+    <url-pattern>/admin/category_product/GetCategoryListCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetShopInfoCtrl</servlet-name>
@@ -184,7 +184,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>FindChildCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/FindChildCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/FindChildCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddProductCtrl</servlet-name>
@@ -192,7 +192,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>FindParentCategoryCtrl</servlet-name>
-    <url-pattern>/category_product/FindParentCategoryCtrl</url-pattern>
+    <url-pattern>/admin/category_product/FindParentCategoryCtrl</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>UpdateProductCtrl</servlet-name>

@@ -49,7 +49,7 @@ $(document).ready(function(){
 				type: "POST",
 				dataType: "json",
 				data: {id: $(this).parents("tr").attr("id")},
-				url: "/Horizon/category_product/DelParentCategoryCtrl",
+				url: "/Horizon/admin/category_product/DelParentCategoryCtrl",
 				success: function(data) {
 					if(eval(data).msg=="ok") {
 						location.reload(true);
@@ -70,7 +70,7 @@ $(document).ready(function(){
 				type: "POST",
 				dataType: "json",
 				data: {id: $(this).parents("tr").attr("id")},
-				url: "/Horizon/category_product/DelChildCategoryCtrl",
+				url: "/Horizon/admin/category_product/DelChildCategoryCtrl",
 				success: function(data) {
 					if(eval(data).msg=="ok") {
 						location.reload(true);
@@ -90,16 +90,16 @@ $(document).ready(function(){
 		} else{
 			switch($("#popTitle").text()) {
 			case "添加一级分类":
-				var url = "/Horizon/category_product/AddParentCategoryCtrl";
+				var url = "/Horizon/admin/category_product/AddParentCategoryCtrl";
 				break;
 			case "添加二级分类":
-				var url = "/Horizon/category_product/AddChildCategoryCtrl";
+				var url = "/Horizon/admin/category_product/AddChildCategoryCtrl";
 				break;
 			case "修改一级分类":
-				var url = "/Horizon/category_product/EditParentCategoryCtrl";
+				var url = "/Horizon/admin/category_product/EditParentCategoryCtrl";
 				break;
 			case "修改二级分类":
-				var url = "/Horizon/category_product/EditChildCategoryCtrl";
+				var url = "/Horizon/admin/category_product/EditChildCategoryCtrl";
 				break;
 			}
 			

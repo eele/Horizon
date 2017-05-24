@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -31,7 +32,9 @@ public class AdminLoginFilter implements Filter {
 			if(request.getServletPath().equals("/Back_Admin/login.jsp") || request.getServletPath().equals("/Back_Admin/css/login.css")) {
 				arg2.doFilter(arg0, arg1);
 			} else {
-				response.sendRedirect("/Horizon/Back_Admin/login.jsp");
+				request.setAttribute("gotoURL", request.getServletPath() + "?" + request.getQueryString());
+				RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/login.jsp");
+				rd.forward(request,response);
 			}
 		} else {
 			arg2.doFilter(arg0, arg1);
