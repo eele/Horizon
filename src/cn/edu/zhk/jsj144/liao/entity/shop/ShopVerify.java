@@ -9,6 +9,8 @@ public class ShopVerify {
 	private String bank = null;  // 开户银行
 	private String bankcardNum = null;  // 银行卡号
 	private String status = null;  // 开店审核状态
+	private String reason = null;  // 开店申请拒绝理由
+	private boolean notice = false;  // 显示开店审核结果通知
 	
 	public String getLoginname() {
 		return loginname;
@@ -57,6 +59,18 @@ public class ShopVerify {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	public boolean isNotice() {
+		return notice;
+	}
+	public void setNotice(boolean notice) {
+		this.notice = notice;
 	}
 	
 }

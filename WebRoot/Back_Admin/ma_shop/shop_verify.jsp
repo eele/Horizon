@@ -14,6 +14,19 @@
 	<base href="<%=basePath%>">
 	<link href="/Horizon/Back_Admin/css/shop_verify.css" rel="stylesheet"
 		type="text/css">
+	<style type="text/css">
+    	.pop_up {
+    		position:absolute;
+    		width:600px;
+    		height:330px;
+    		left:50%;
+    		margin-left:-300px;
+    		top:30px;
+    		background-color:#c5d0f7;
+    		z-index:10;
+    		display:none;
+    	}
+	</style> 
 	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
     <script type="text/javascript" src="/Horizon/Back_Admin/js/shop_verify.js"></script>
 </head>
@@ -60,6 +73,30 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<div class="pop_up" >
+		<br>
+		<table width="560" height="293" border="0" align="center">
+		  <tr>
+		    <th height="37" align="left" scope="col">开店申请用户：<span class="login_name"></span></th>
+	      </tr>
+		  <tr>
+			<th width="560" height="46" align="left" scope="col">请输入开店申请拒绝理由: </th>
+		  </tr>
+		  <tr>
+			<td height="160" align="left" valign="top">
+				<textarea id="reason" style="height:160px;width:560px;font-size:16px" ></textarea>
+			</td>
+		  </tr>
+		  <tr>
+			<td height="40" align="center" valign="middle">
+				<input type="button" value="提交" onClick="submitRefuse($('.login_name').text())"></td>
+		  </tr>
+	  </table>
+
+			<br>
+			<br>
+			<br>
+	</div>
 
 	<!--分页 -->
 	<form action="${pb.url }&currentPage=${pb.currentPage-1}" method="post" id="last">

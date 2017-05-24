@@ -31,10 +31,10 @@ public class ShopManagementDao {
 		return qr.query(sql, new BeanListHandler<ShopVerify>(ShopVerify.class), params);
 	}
 
-	public void changeVerifyStatus(String loginname, String status) throws SQLException {
+	public void changeVerifyStatus(String loginname, String status, String reason) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql = "update `shopVerify` set status=? where loginname=?";
-		qr.update(sql, status, loginname);
+		String sql = "update `shopVerify` set status=?,reason=? where loginname=?";
+		qr.update(sql, status, reason, loginname);
 	}
 
 	public void delVerifyInfo(String loginname) throws SQLException {

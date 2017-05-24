@@ -26,9 +26,9 @@ public class ShopManagementService {
         return pBean2;
 	}
 
-	public void changeVerifyStatus(String loginname, String status) throws SQLException {
+	public void changeVerifyStatus(String loginname, String status, String reason) throws SQLException {
 		// TODO Auto-generated method stub
-		shopManagementDao.changeVerifyStatus(loginname, status);
+		shopManagementDao.changeVerifyStatus(loginname, status, reason);
 	}
 
 	public void delVerifyInfo(String loginname) throws SQLException {

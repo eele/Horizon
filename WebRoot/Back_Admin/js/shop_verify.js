@@ -44,21 +44,37 @@ function allow(loginname) {
  */
 function refuse(loginname) {
 	if(confirm("确定拒绝用户 " + loginname + " 开店吗？")) {
-		$.ajax({
-			type: "get",
-			url: "/Horizon/admin/ma_shop/ShopManagementCtrl?method=changeVerifyStatus&status=0&loginname="+loginname,
-			success: function() {
-				location.reload(true);
-			},
-			error: function() {
-				alert("操作异常。");
-			}
-		});
+		$(".login_name").text(loginname);
+		$(".pop_up").css({display:"block"});
 	}
 }
 
+/**
+ * 提交拒绝用户开店请求
+ * @param loginname
+ */
+function submitRefuse(loginname) {
+	$(".pop_up").css({display:"none"});
+	$.ajax({
+		type: "post",
+		url: "/Horizon/admin/ma_shop/ShopManagementCtrl",
+		data: {
+			method: "changeVerifyStatus",
+			status: "0",
+			loginname: loginname,
+			reason: $("#reason").val()
+		},
+		success: function() {
+			location.reload(true);
+		},
+		error: function() {
+			alert("操作异常。");
+		}
+	});
+}
+
 function delVerifyInfo(loginname) {
-	if(confirm("确实要删除用户 " + loginname + " 的待审核信息吗？")) {
+	if(confirm("确实要删除用户 " + loginname + " 的开店申请信息吗？")) {
 		$.ajax({
 			type: "get",
 			url: "/Horizon/admin/ma_shop/ShopManagementCtrl?method=delVerifyInfo&loginname="+loginname,
@@ -66,7 +82,7 @@ function delVerifyInfo(loginname) {
 				location.reload(true);
 			},
 			error: function() {
-				alert("操作异常，无法删除该待审核信息。");
+				alert("操作异常，无法删除该开店申请信息。");
 			}
 		});
 	}

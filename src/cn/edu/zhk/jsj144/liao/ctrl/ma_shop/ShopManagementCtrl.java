@@ -87,7 +87,7 @@ public class ShopManagementCtrl extends HttpServlet {
 	}
 
 	/**
-	 * 获取待审核记录列表
+	 * 获取开店申请记录列表
 	 * @param request
 	 * @param response
 	 * @throws ServletException
@@ -100,7 +100,7 @@ public class ShopManagementCtrl extends HttpServlet {
 		PageBean<ShopVerify> pBean = new PageBean<ShopVerify>();
 		int currentPage = Integer.parseInt(request.getParameter("currentPage")); // 获取当前页码
 		pBean.setCurrentPage(currentPage);
-		pBean.setPageSize(20);  // 每页20条记录
+		pBean.setPageSize(13);  // 每页13条记录
 
 		String keyword = URLDecoder.decode(request.getParameter("keyword"), "utf-8");
 		PageBean<ShopVerify> pb = null;
@@ -128,11 +128,12 @@ public class ShopManagementCtrl extends HttpServlet {
 			throws ServletException, IOException, SQLException {
 		String loginname = request.getParameter("loginname");
 		String status = request.getParameter("status");
-		shopMaService.changeVerifyStatus(loginname, status);
+		String reason = request.getParameter("reason");
+		shopMaService.changeVerifyStatus(loginname, status, reason);
 	}
 	
 	/**
-	 * 
+	 * 删除开店申请记录
 	 * @param request
 	 * @param response
 	 * @throws ServletException
