@@ -17,6 +17,11 @@ import cn.edu.zhk.jsj144.liao.entity.ma_customer.Tr_record;
 import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 import cn.edu.zhk.jsj144.liao.service.ma_customer.CustomerManagementService;
 
+/**
+ * 顾客管理控制层
+ * @author ele
+ *
+ */
 public class CustomerManagementCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -112,6 +117,14 @@ public class CustomerManagementCtrl extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	/**
+	 * 获取顾客信息
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public void getUserList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		PageBean<User> pBean = new PageBean<User>();
@@ -126,19 +139,35 @@ public class CustomerManagementCtrl extends HttpServlet {
 			params[0] = keyword;
 		}
 		pb= cuService.getByPage(1, pBean, params);
-		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList");
+		pb.setUrl("/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getUserList");
 		request.setAttribute("pb", pb);
 		request.setAttribute("keyword", request.getParameter("keyword"));
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/per_info.jsp");
 		rd.forward(request,response);
 	}
 	
+	/**
+	 * 重置用户密码
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public void resetUserPwd(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		String uid = request.getParameter("uid");
 		cuService.resetUserPwd(uid);
 	}
 	
+	/**
+	 * 删除无下单和开店记录的用户
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public void delUser(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		String uid = request.getParameter("uid");
@@ -152,6 +181,14 @@ public class CustomerManagementCtrl extends HttpServlet {
 		out.close();
 	}
 	
+	/**
+	 * 获取顾客交易记录
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public void getTrRecordList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		PageBean<Tr_record> pBean = new PageBean<Tr_record>();
@@ -166,12 +203,20 @@ public class CustomerManagementCtrl extends HttpServlet {
 			params[0] = loginName;
 		}
 		pb= cuService.getByPage(2, pBean, params);
-		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&loginName=" + request.getParameter("loginName"));
+		pb.setUrl("/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getTrRecordList&loginName=" + request.getParameter("loginName"));
 		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/trans_record.jsp");
 		rd.forward(request,response);
 	}
 	
+	/**
+	 * 获取顾客交易详情
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public void getOrderList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		PageBean<Tr_record> pBean = new PageBean<Tr_record>();
@@ -191,12 +236,20 @@ public class CustomerManagementCtrl extends HttpServlet {
 			params[2] = "ordertime <='" + endDate + "'";
 		}
 		pb= cuService.getByPage(3, pBean, params);
-		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getOrderList&loginName=" + request.getParameter("loginName") + "&startDate=" + startDate + "&endDate=" + endDate);
+		pb.setUrl("/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getOrderList&loginName=" + request.getParameter("loginName") + "&startDate=" + startDate + "&endDate=" + endDate);
 		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/trans_record_sub.jsp");
 		rd.forward(request,response);
 	}
 	
+	/**
+	 * 获取顾客问题
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public void getIssueList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		PageBean<Issue> pBean = new PageBean<Issue>();
@@ -211,13 +264,21 @@ public class CustomerManagementCtrl extends HttpServlet {
 			params[0] = keyword;
 		}
 		pb= cuService.getByPage(4, pBean, params);
-		pb.setUrl("/Horizon/ma_customer/CustomerManagementCtrl?method=getIssueList");
+		pb.setUrl("/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getIssueList");
 		request.setAttribute("pb", pb);
 		request.setAttribute("keyword", request.getParameter("keyword"));
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Admin/ma_customer/issue_feedback.jsp");
 		rd.forward(request,response);
 	}
 	
+	/**
+	 * 删除顾客问题
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public void delIssueList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		String loginname = request.getParameter("loginname");

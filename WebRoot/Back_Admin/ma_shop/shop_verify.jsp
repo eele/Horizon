@@ -12,42 +12,51 @@
 <html>
 <head>
 	<base href="<%=basePath%>">
-	<link href="/Horizon/Back_Admin/css/ma_info.css" rel="stylesheet"
+	<link href="/Horizon/Back_Admin/css/shop_verify.css" rel="stylesheet"
 		type="text/css">
 	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
-    <script type="text/javascript" src="/Horizon/Back_Admin/js/per_info.js"></script>
+    <script type="text/javascript" src="/Horizon/Back_Admin/js/shop_verify.js"></script>
 </head>
 
 <body>
 	<div style="height:40px" align="center">
-		搜索登录名/E-Mail/手机号码：
+		搜索用户名/真实姓名：
 		<input type="text" id="searchUser" style="width:300px">&nbsp;&nbsp;
 		<input type="button" value="搜索" 
-		onClick="location.href='/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getUserList&currentPage=1&keyword='+encodeURI(encodeURI($('#searchUser').val()))">
+		onClick="location.href='/Horizon/admin/ma_shop/ShopManagementCtrl?method=shopVerifyList&currentPage=1&keyword='+encodeURI(encodeURI($('#searchUser').val()))">
 	</div>
 	<table width="100%" class="imagetable" cellspacing="0" cellpadding="0">
 		<tr>
-			<th width="200">顾客ID</th>
-			<th>登录名</th>
-			<th>E-Mail</th>
-			<th>手机号码</th>
-			<th colspan="2">操作</th>
+		  	<th width="123">用户名</th>
+			<th width="78">真实姓名</th>
+			<th>身份证号码</th>
+			<th>常用地址</th>
+			<th>联系电话</th>
+			<th>开户银行</th>
+			<th>银行卡号</th>
+			<th width="100">审核结果</th>
+			<th width="50">操作</th>
 		</tr>
-		<c:forEach items="${pb.bean }" var="user">
+		<c:forEach items="${pb.bean }" var="shopVerify">
 			<tr align="center">
-				<td>${user.uid }</td>
-				<td>${user.loginname }</td>
-				<td>${user.email }</td>
-				<td>${user.phone }</td>
-		<c:choose>
-			<c:when test="${empty  user.loginpass }">
-				<td width="100"></td>
-			</c:when>
-			<c:otherwise>
-				<td width="100"><a href="javascript:resetPwd('${user.uid }')">重置密码</a></td>
-			</c:otherwise>
-		</c:choose>
-				<td width="75"><a href="javascript:delUser('${user.uid }')">删除</a></td>
+			  	<td >${shopVerify.loginname }</td>
+				<td>${shopVerify.name }</td>
+				<td>${shopVerify.idcardNum }</td>
+				<td>${shopVerify.address }</td>
+				<td>${shopVerify.phone }</td>
+				<td>${shopVerify.bank }</td>
+				<td>${shopVerify.bankcardNum }</td>
+				<td>
+			<c:choose>
+				<c:when test="${empty  shopVerify.status }">
+					<a href="javascript:allow('${shopVerify.loginname }')">允许</a>
+					<a href="javascript:refuse('${shopVerify.loginname }')">拒绝</a>
+				</c:when>
+				<c:when test="${shopVerify.status==0 }">已拒绝</c:when>
+				<c:when test="${shopVerify.status==1 }">已允许</c:when>
+			</c:choose>
+				</td>
+				<td><a href="javascript:delVerifyInfo('${shopVerify.loginname }')">删除</a></td>
 			</tr>
 		</c:forEach>
 	</table>

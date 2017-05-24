@@ -8,16 +8,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
-    <title>运营管理后台</title>
-
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <div align="center" style="margin-top: 100px" ><b>欢迎进入运营商管理平台</b></div>
   </body>
 </html>

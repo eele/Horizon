@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
         <div class="itemTitle" style="margin-top:30px">店铺管理</div>
 			<div class="itemStyle">店铺开通审核</div>
-			<div class="itemStyle">店铺类别管理</div>
 			<div class="itemStyle">商品类别管理</div>
 		<div class="itemTitle">顾客管理</div>
 			<div class="itemStyle">顾客个人信息</div>
@@ -34,7 +33,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="itemStyle">修改个人密码</div>
   </div>
 	
-    <div class="topBar">此处显示  class "topBar" 的内容</div>
-	<div  class="mainArea"><iframe></iframe></div>
+    <div class="topBar" style="line-height:70px">
+		<img src="/Horizon/Back_Admin/img/headIcon.png" style="margin-left: 30px;margin-top: 17px; float:left"/>
+		<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理员： <%=(String)session.getAttribute("adminName") %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:if(confirm('确定要退出管理平台吗？'))location.href='/Horizon/admin_logout/AdminLogoutCtrl'">退出管理平台</a></b>
+		
+	</div>
+	<div  class="mainArea"><iframe src="/Horizon/Back_Admin/welcome.jsp"></iframe></div>
   </body>
 </html>

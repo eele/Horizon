@@ -44,22 +44,19 @@ $(document).ready(function(){
 		var itemName = $(e.target).text();
 		switch(itemName) {
 		case "店铺开通审核":
-			$("iframe").attr("src", "/Horizon/Back_Admin/ma_shop/confirm_reg.jsp");
-			break;
-		case "店铺类别管理":
-			$("iframe").attr("src", "/Horizon/Back_Admin/ma_shop/category_shop.jsp");
+			$("iframe").attr("src", "/Horizon/admin/ma_shop/ShopManagementCtrl?method=shopVerifyList&keyword=&currentPage=1");
 			break;
 		case "商品类别管理":
 			$("iframe").attr("src", "/Horizon/category_product/FindAllCategoryCtrl");
 			break;
 		case "顾客个人信息":
-			$("iframe").attr("src", "/Horizon/ma_customer/CustomerManagementCtrl?method=getUserList&keyword=&currentPage=1");
+			$("iframe").attr("src", "/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getUserList&keyword=&currentPage=1");
 			break;
 		case "顾客交易记录":
-			$("iframe").attr("src", "/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&loginName=&currentPage=1");
+			$("iframe").attr("src", "/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getTrRecordList&loginName=&currentPage=1");
 			break;
 		case "顾客问题反馈":
-			$("iframe").attr("src", "/Horizon/ma_customer/CustomerManagementCtrl?method=getIssueList&keyword=&currentPage=1");
+			$("iframe").attr("src", "/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getIssueList&keyword=&currentPage=1");
 			break;
 		case "修改个人密码":
 			$("iframe").attr("src", "/Horizon/Back_Admin/changePwd.jsp");

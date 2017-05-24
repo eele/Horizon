@@ -12,7 +12,7 @@
 <html>
 <head>
 	<base href="<%=basePath%>">
-	<link href="/Horizon/Back_Admin/css/per_info.css" rel="stylesheet"
+	<link href="/Horizon/Back_Admin/css/ma_info.css" rel="stylesheet"
 		type="text/css">
 	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
     <script type="text/javascript" src="/Horizon/Back_Admin/js/issue_feedback.js"></script>
@@ -34,9 +34,9 @@
 <body>
 	<div style="height:40px" align="center">
 		搜索登录名/问题标题/问题内容：
-		<input type="text" id="searchUser" style="width:300px">&nbsp;&nbsp;
+		<input type="text" id="searchIss" style="width:300px">&nbsp;&nbsp;
 		<input type="button" value="搜索" 
-		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getIssueList&currentPage=1&keyword='+encodeURI(encodeURI($('#searchUser').val()))">
+		onClick="location.href='/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getIssueList&currentPage=1&keyword='+encodeURI(encodeURI($('#searchIss').val()))">
 	</div>
 	<table width="100%" class="imagetable" cellspacing="0" cellpadding="0">
 		<tr>

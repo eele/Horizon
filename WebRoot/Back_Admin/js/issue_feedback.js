@@ -17,7 +17,7 @@ function delIssue(loginname) {
 	if(confirm("是否删除顾客 "+loginname+" 的问题？")) {
 		$.ajax({
 			type: "POST",
-			url: "/Horizon/ma_customer/CustomerManagementCtrl?method=delIssueList",
+			url: "/Horizon/admin/ma_customer/CustomerManagementCtrl?method=delIssueList",
 			data:{
 				loginname:loginname,
 			},

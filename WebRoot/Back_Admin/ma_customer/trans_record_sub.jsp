@@ -12,7 +12,7 @@
 <html>
 <head>
 	<base href="<%=basePath%>">
-	<link href="/Horizon/Back_Admin/css/per_info.css" rel="stylesheet"
+	<link href="/Horizon/Back_Admin/css/ma_info.css" rel="stylesheet"
 		type="text/css">
 	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
     <script type="text/javascript" src="/Horizon/Back_Admin/js/trans_record.js"></script>
@@ -21,7 +21,7 @@
 <body>
 	<div style="height:40px">
 		<input type="button" value="返回" 
-		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getTrRecordList&currentPage=1&loginName='">
+		onClick="location.href='/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getTrRecordList&currentPage=1&loginName='">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;顾客：${param.loginName }
 	</div>
 	<div style="height:40px" align="center">
@@ -30,7 +30,7 @@
 		&nbsp;&nbsp;—&nbsp;&nbsp;
 		<input type="text" id="endDate" style="width:200px" placeholder="结束日期">&nbsp;&nbsp;
 		<input type="button" value="搜索" 
-		onClick="location.href='/Horizon/ma_customer/CustomerManagementCtrl?method=getOrderList&currentPage=1&loginName=encodeURI(encodeURI(${param.loginName }))&startDate=' + $('#startDate').val() + '&endDate=' + $('#endDate').val()">
+		onClick="location.href='/Horizon/admin/ma_customer/CustomerManagementCtrl?method=getOrderList&currentPage=1&loginName=encodeURI(encodeURI(${param.loginName }))&startDate=' + $('#startDate').val() + '&endDate=' + $('#endDate').val()">
 	</div>
 	<table width="100%" class="imagetable" cellspacing="0" cellpadding="0">
 		<tr>
