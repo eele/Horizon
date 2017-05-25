@@ -33,6 +33,26 @@ public class ShopDao {
 		return shopInfo;
 	}
 
+
+	/**
+	 * 通过shopid获取店铺信息
+	 * 
+	 * @param uid
+	 * @return
+	 * @throws SQLException
+	 */
+	public ShopInfo getShopInfo2(String shopid) throws SQLException {
+		String sql = "select * from shop where shopid like ?";
+		List<Map<String, Object>> mapList = qr.query(sql, new MapListHandler(), "%"+shopid+"%");
+		ShopInfo shopInfo = null;
+		if (!mapList.isEmpty()) {
+			shopInfo = new ShopInfo();
+			BeanMapUtil.mapToBean(mapList.get(0), shopInfo);
+		}
+		return shopInfo;
+	}
+	
+	
 	/**
 	 * 添加店铺信息
 	 * 

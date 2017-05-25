@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zhk.jsj141.feng.entity.order.Order;
-import cn.edu.zhk.jsj141.feng.entity.pager.PageBean;
+import cn.edu.zhk.jsj141.feng.entity.pager.PageBean2;
 import cn.edu.zhk.jsj144.liao.service.order.OrderService;
 
 public class OrderManagementCtrl extends HttpServlet {
@@ -87,9 +87,9 @@ public class OrderManagementCtrl extends HttpServlet {
 		int pc = getPc(request); // 得到pc：如果页面传递，使用页面的，如果没传，pc=1
 		String url = getUrl(request);
 		
-		// 使用pc和cid调用service#findByCategory得到PageBean
-		PageBean<Order> pb = orderService.findAll(pc);
-		// 给PageBean设置url，保存PageBean，转发到/jsps/book/list.jsp
+		// 使用pc和cid调用service#findByCategory得到PageBean2
+		PageBean2<Order> pb = orderService.findAll(pc);
+		// 给PageBean2设置url，保存PageBean2，转发到/jsps/book/list.jsp
 		pb.setUrl(url);
 		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_order/orderMain.jsp");
@@ -111,9 +111,9 @@ public class OrderManagementCtrl extends HttpServlet {
 		String url = getUrl(request);
 		// 获取链接参数：status
 		int status = Integer.parseInt(request.getParameter("status"));
-		// 使用pc和cid调用service#findByCategory得到PageBean
-		PageBean<Order> pb = orderService.findByStatus(status, pc);
-		// 给PageBean设置url，保存PageBean，转发到/jsps/book/list.jsp
+		// 使用pc和cid调用service#findByCategory得到PageBean2
+		PageBean2<Order> pb = orderService.findByStatus(status, pc);
+		// 给PageBean2设置url，保存PageBean2，转发到/jsps/book/list.jsp
 		pb.setUrl(url);
 		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_order/orderMain.jsp");

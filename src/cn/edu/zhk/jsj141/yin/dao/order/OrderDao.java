@@ -14,11 +14,11 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import cn.edu.zhk.jsj141.feng.entity.order.Order;
 import cn.edu.zhk.jsj141.feng.entity.order.OrderItem;
 import cn.edu.zhk.jsj141.feng.entity.pager.Expression;
-import cn.edu.zhk.jsj141.feng.entity.pager.PageBean;
+import cn.edu.zhk.jsj141.feng.entity.pager.PageBean2;
 import cn.edu.zhk.jsj141.feng.entity.pager.PageConstants;
-import cn.edu.zhk.jsj141.yin.util.BeanMapUtil;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
 import cn.edu.zhk.jsj144.liao.entity.product.Product;
+import cn.edu.zhk.jsj141.feng.commons.CommonUtils;
 
 public class OrderDao {
 private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
@@ -35,6 +35,7 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		return number.intValue();
 	}
 	
+
 	/**
 	 * 修改订单状态
 	 * @param oid
@@ -45,6 +46,7 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "update `order` set status=? where oid=?";
 		qr.update(sql, status, oid);
 	}
+	
 	
 	/**
 	 * 加载订单
@@ -79,7 +81,7 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		 * 多个条目就对应Object[][]
 		 * 执行批处理，完成插入订单条目
 		 */
-		sql = "insert into `order`item values(?,?,?,?,?,?,?,?)";
+		sql = "insert into `orderitem` values(?,?,?,?,?,?,?,?)";
 		int len = order.getOrderItemList().size();
 		Object[][] objs = new Object[len][];
 		for(int i = 0; i < len; i++){
@@ -99,7 +101,7 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 	 * @return
 	 * @throws SQLException
 	 */
-	public PageBean<Order> findByUser(String uid, int pc) throws SQLException {
+	public PageBean2<Order> findByUser(String uid, int pc) throws SQLException {
 		List<Expression> exprList = new ArrayList<Expression>();
 		exprList.add(new Expression("uid", "=", uid));
 		return findByCriteria(exprList, pc);
@@ -108,7 +110,7 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 	/**
 	 * 查询所有
 	 */
-	public PageBean<Order> findAll(int pc) throws SQLException {
+	public PageBean2<Order> findAll(int pc) throws SQLException {
 		List<Expression> exprList = new ArrayList<Expression>();
 		return findByCriteria(exprList, pc);
 	}
@@ -120,13 +122,13 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 	 * @return
 	 * @throws SQLException
 	 */
-	public PageBean<Order> findByStatus(int status, int pc) throws SQLException {
+	public PageBean2<Order> findByStatus(int status, int pc) throws SQLException {
 		List<Expression> exprList = new ArrayList<Expression>();
 		exprList.add(new Expression("status", "=", status + ""));
 		return findByCriteria(exprList, pc);
 	}
 	
-	private PageBean<Order> findByCriteria(List<Expression> exprList, int pc) throws SQLException {
+	private PageBean2<Order> findByCriteria(List<Expression> exprList, int pc) throws SQLException {
 		/*
 		 * 1. 得到ps
 		 * 2. 得到tr
@@ -183,7 +185,7 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		/*
 		 * 5. 创建PageBean，设置参数
 		 */
-		PageBean<Order> pb = new PageBean<Order>();
+		PageBean2<Order> pb = new PageBean2<Order>();
 		/*
 		 * 其中PageBean没有url，这个任务由Servlet完成
 		 */
@@ -204,7 +206,7 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		 * 2. 执行之，得到List<OrderItem>
 		 * 3. 设置给Order对象
 		 */
-		String sql = "select * from `order`item where oid=?";
+		String sql = "select * from `orderitem` where oid=?";
 		List<Map<String,Object>> mapList = qr.query(sql, new MapListHandler(), order.getOid());
 		List<OrderItem> orderItemList = toOrderItemList(mapList);
 		
@@ -224,10 +226,20 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		}
 		return orderItemList;
 	}
-
+	
 	/*
 	 * 把一个Map转换成一个OrderItem
 	 */
+	private OrderItem toOrderItem(Map<String, Object> map) {
+		OrderItem orderItem = CommonUtils.toBean(map, OrderItem.class);
+		Product product = CommonUtils.toBean(map, Product.class);
+		orderItem.setProduct(product);
+		return orderItem;
+	}
+	
+	/*
+	 * 把一个Map转换成一个OrderItem
+	 
 	private OrderItem toOrderItem(Map<String, Object> map) {
 		OrderItem orderItem = new OrderItem();
 		BeanMapUtil.mapToBean(map, orderItem);
@@ -235,5 +247,5 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		BeanMapUtil.mapToBean(map, product);
 		orderItem.setProduct(product);
 		return orderItem;
-	}
+	}*/
 }

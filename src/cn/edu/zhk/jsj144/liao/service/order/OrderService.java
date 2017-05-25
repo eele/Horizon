@@ -3,7 +3,7 @@ package cn.edu.zhk.jsj144.liao.service.order;
 import java.sql.SQLException;
 
 import cn.edu.zhk.jsj141.feng.entity.order.Order;
-import cn.edu.zhk.jsj141.feng.entity.pager.PageBean;
+import cn.edu.zhk.jsj141.feng.entity.pager.PageBean2;
 import cn.edu.zhk.jsj141.yin.dao.order.OrderDao;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
 
@@ -84,10 +84,10 @@ private OrderDao orderDao = new OrderDao();
 	 * @param pc
 	 * @return
 	 */
-	public PageBean<Order> myOrders(String uid, int pc) {
+	public PageBean2<Order> myOrders(String uid, int pc) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean<Order> pb = orderDao.findByUser(uid, pc);
+			PageBean2<Order> pb = orderDao.findByUser(uid, pc);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {
@@ -104,10 +104,10 @@ private OrderDao orderDao = new OrderDao();
 	 * @param pc
 	 * @return
 	 */
-	public PageBean<Order> findByStatus(int status, int pc) {
+	public PageBean2<Order> findByStatus(int status, int pc) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean<Order> pb = orderDao.findByStatus(status, pc);
+			PageBean2<Order> pb = orderDao.findByStatus(status, pc);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {
@@ -123,10 +123,10 @@ private OrderDao orderDao = new OrderDao();
 	 * @param pc
 	 * @return
 	 */
-	public PageBean<Order> findAll(int pc) {
+	public PageBean2<Order> findAll(int pc) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean<Order> pb = orderDao.findAll(pc);
+			PageBean2<Order> pb = orderDao.findAll(pc);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {

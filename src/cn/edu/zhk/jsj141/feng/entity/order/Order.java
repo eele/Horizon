@@ -2,7 +2,7 @@ package cn.edu.zhk.jsj141.feng.entity.order;
 
 import java.util.List;
 
-import cn.edu.zhk.jsj141.feng.entity.user.User;
+import cn.edu.zhk.jsj141.feng.entity.User;
 
 public class Order {
 	private String oid;//主键
@@ -56,6 +56,9 @@ public class Order {
 	public void setOwner(User owner) {
 		this.owner = owner;
 	}
-	
+	@Override
+	public String toString() {
+		return "Order [oid=" + oid + ", orderItemList=" + orderItemList + "]";
+	}
 	
 }

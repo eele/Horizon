@@ -2,11 +2,30 @@
  * 当浏览器窗口变化时元素位置自适应
  */
 $(document).ready(function(){ 
+	$(".mainArea").height($(window).height()-80);
+	var w=$(window).width();
+	var changeWidth = 930;
+	if(w < 1200) {
+		$(".bodyArea").width(changeWidth);
+		if(w < changeWidth) {
+			$(".bodyArea").css("left",(changeWidth/2)+"px");
+			$(".bodyArea").css("margin-left",(-changeWidth/2)+"px");
+		} else {
+			$(".bodyArea").css("left","50%");
+			$(".bodyArea").css("margin-left",(-changeWidth/2)+"px");
+		}
+	} else {
+		$(".bodyArea").width(1200);
+		$(".bodyArea").css("left","50%");
+		$(".bodyArea").css("margin-left","-600px");
+	}
 	window.onresize = function() {
+		$(".mainArea").height($(window).height()-80);
 		var w=$(window).width();
 		var changeWidth = 930;
 		if(w < 1200) {
 			$(".bodyArea").width(changeWidth);
+			$(".searchArea").css({"margin-left": "10px"});
 			if(w < changeWidth) {
 				$(".bodyArea").css("left",(changeWidth/2)+"px");
 				$(".bodyArea").css("margin-left",(-changeWidth/2)+"px");
@@ -18,10 +37,7 @@ $(document).ready(function(){
 			$(".bodyArea").width(1200);
 			$(".bodyArea").css("left","50%");
 			$(".bodyArea").css("margin-left","-600px");
-		}
-		if($(".searchArea").css("position")=="fixed") {
-			$(".searchArea").css("left", $(".bodyArea").css("left"));
-			$(".listContent").height($(window).height()-115);
+			$(".searchArea").css({"margin-left": "100px"});
 		}
 	};
 }); 
@@ -41,12 +57,14 @@ $(document).ready(function(){
 		$("#select1").css("color","white");
 		$("#select2").css("background-color","white");
 		$("#select2").css("color","black");
+		$("#panduan").val("dianpu");
 	});
 	$("#select2").click(function() {
 		$("#select2").css("background-color","#FF6600");
 		$("#select2").css("color","white");
 		$("#select1").css("background-color","white");
 		$("#select1").css("color","black");
+		$("#panduan").val("shangping");
 	});
 });
 
@@ -107,27 +125,13 @@ $(document).ready(function(){
 })(jQuery);
 
 /**
- * 排行榜按钮样式
- */
-$(document).ready(function(){
-	$(".listItem1").css({ "background-color": "#FF4646" });
-	$(".listLayer2").click(function(){
-		$(".listItem1").css({ "background-color": "#FFB482" });
-	});
-	$(".listItem1").click(function(){
-		$(".listItem1").css({ "background-color": "#FF4646" });
-		$("div[id^='l2']").slideUp(200);
-	});
-});
-
-/**
- * 获取并显示商品类别列表
+ * 获取列表项
  */
 $(document).ready(function() {
 	var num = 0;
 	$.ajax({
 		type: "get",
-		url: "/Horizon/category_product/GetCategoryListCtrl",
+		url: "/Horizon/CategoryList",
 		success: function(html) {
 			$(".listContent").html(html);
 			num = $("#getParNum").val() + 1;
@@ -146,6 +150,12 @@ $(document).ready(function() {
 					});
 				})();
 			}
+			$(".listLayer2").click(function(){
+				$(".listItem1").css({ "background-color": "#7fc6d2" });
+			});
+			$(".listLayer1").click(function(){
+				$(".listItem1").css({ "background-color": "#7fc6d2" });
+			});
 			//二级分类单击效果
 			$(".listLayer2,this").click(function(){
 				$(".listLayer2").css({"border-left-width": "1px"});
@@ -155,5 +165,47 @@ $(document).ready(function() {
 		error: function() {
 			$(".listContent").html("<h3 align='center'><font color='white'>Error</font><h3>");
 		}
+	});
+});
+
+/**
+ * 排行榜按钮样式
+ */
+$(document).ready(function(){
+	$(".listItem1").css({ "background-color": "#FF4646" });
+	$(".listItem1").click(function(){
+		url="/Horizon/ProductServlet?method=findrank",
+		$(".zz").attr("src",url);
+		$(".listItem1").css({ "background-color": "#FF4646" });
+		$("div[id^='l2']").slideUp(200);
+	});
+});
+
+/**
+ * 显示排行榜列表
+ */
+$(document).ready(function(){ 
+	url="/Horizon/ProductServlet?method=findrank",
+		$(".zz").attr("src",url);
+});
+
+/**
+ * 搜索商品
+ */
+$(document).ready(function(){ 
+	$(".searchButton").click(function() {
+		var aaa=$("input[name='inputBox']").val();
+		var panduan=$("#panduan").val();
+		if(panduan=="shangping")
+		{url="/Horizon/ProductServlet?method=findByBname&productName="+aaa;
+		$(".zz").attr("src",url);}
+		else if(panduan=="dianpu"){
+			url="/Horizon/ProductServlet?method=findByShop&shopid="+aaa;
+			$(".zz").attr("src",url);
+		}
+	});
+	// 监听输入框的回车操作
+	$("input[name='inputBox']").bind('keypress',function(event){  
+	    if(event.keyCode == "13") $(".searchButton").click();  
 	});
 });
