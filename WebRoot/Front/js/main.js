@@ -200,7 +200,7 @@ $(document).ready(function(){
 		{url="/Horizon/ProductServlet?method=findByBname&productName="+aaa;
 		$(".zz").attr("src",url);}
 		else if(panduan=="dianpu"){
-			url="/Horizon/ProductServlet?method=findByShop&shopid="+aaa;
+			url="/Horizon/ProductServlet?method=findShop&shopname="+aaa;
 			$(".zz").attr("src",url);
 		}
 	});

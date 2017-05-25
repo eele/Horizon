@@ -45,8 +45,8 @@ public class OrderServlet extends BaseServlet {
 	 * @return
 	 */
 	/*
-	 * http://localhost:8080/goods/BookServlet?methed=findByCategory&cid=xxx&pc=3
-	 * /goods/BookServlet + methed=findByCategory&cid=xxx&pc=3
+	 * http://localhost:8080/Horizon/ProductServlet?methed=findByCategory&cid=xxx&pc=3
+	 * /Horizon/ProductServlet + methed=findByCategory&cid=xxx&pc=3
 	 */
 	private String getUrl(HttpServletRequest req) {
 		String url = req.getRequestURI() + "?" + req.getQueryString();
@@ -287,7 +287,7 @@ public class OrderServlet extends BaseServlet {
 		 */
 		PageBean2<Order> pb = orderService.myOrders(user.getUid(), pc);
 		/*
-		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/book/list.jsp
+		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/Product/list.jsp
 		 */
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);

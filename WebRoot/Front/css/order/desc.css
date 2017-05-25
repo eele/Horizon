@@ -65,14 +65,14 @@ dt {
 
 .title {
 	border: 1px solid #d0d0d0;
-	background: url(/goods/images/bg_btns.png) repeat-x;
+	background: url(/Horizon/Front/images/bg_btns.png) repeat-x;
 	background-position: 0 -132px;
 	margin-left: 2px;
 	height: 30px;
 	width: 99.8%;
 }
 
-td .bookname {
+td .Productname {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-break: keep-all;
@@ -81,7 +81,7 @@ td .bookname {
 }
 
 .pay {
-	background: url(/goods/images/sprites_orderdetails.gif)
+	background: url(/Horizon/Front/images/sprites_orderdetails.gif)
 		no-repeat;
 	display: inline-block;
 	background-position: 0 -200px;
@@ -112,7 +112,7 @@ a {
 }
 
 #confirm {
-	background: url(/goods/images/confirm.jpg) no-repeat;
+	background: url(/Horizon/Front/images/confirm.jpg) no-repeat;
 	display: inline-block;
 	height: 34px;
 	width: 142px;
@@ -125,7 +125,7 @@ a {
 }
 
 #cancel {
-	background: url(/goods/images/hei_1_btn.jpg) no-repeat;
+	background: url(/Horizon/Front/images/hei_1_btn.jpg) no-repeat;
 	display: inline-block;
 	height: 34px;
 	width: 142px;

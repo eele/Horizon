@@ -14,6 +14,7 @@ import cn.edu.zhk.jsj141.yin.util.BeanMapUtil;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
 import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 import cn.edu.zhk.jsj144.liao.entity.product.Product;
+import cn.edu.zhk.jsj144.liao.entity.shop.SearchShopInfo;
 import cn.edu.zhk.jsj141.feng.entity.pager.PageBean2;
 import cn.edu.zhk.jsj141.feng.entity.pager.Expression;
 import cn.edu.zhk.jsj141.feng.entity.pager.PageConstants;
@@ -213,7 +214,7 @@ public class ProductDao {
 	
 	
 	/**
-	 * 按商铺id模糊查询
+	 * 按商铺id查询
 	 * @param bname
 	 * @param pc
 	 * @return
@@ -221,7 +222,7 @@ public class ProductDao {
 	 */
 	public PageBean2<Product> findByShop(String shopid, int pc) throws SQLException {
 		List<Expression> exprList = new ArrayList<Expression>();
-		exprList.add(new Expression("shopid", "like", "%" + shopid + "%"));
+		exprList.add(new Expression("shopid", "=", shopid));
 		return findByCriteria(exprList, pc);
 	}
 	
@@ -294,5 +295,32 @@ public class ProductDao {
 		pb.setPs(ps);
 		pb.setTr(tr);
 		return pb;
+	}
+
+	/**
+	 * 按店铺名查询
+	 * @param pc
+	 * @return
+	 * @throws SQLException 
+	 */
+	public PageBean2<SearchShopInfo> findShop(String shopname, int pc) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql="select shopid, shopname, busi from shop where shopname like ?";
+		List<SearchShopInfo> beanList=qr.query(sql, new BeanListHandler<SearchShopInfo>(SearchShopInfo.class), "%"+shopname+"%");
+		int ps = 6;
+		int tr = 6;
+		PageBean2<SearchShopInfo> pb = new PageBean2<SearchShopInfo>();
+		pb.setBeanList(beanList);
+		pb.setPc(pc);
+		pb.setPs(ps);
+		pb.setTr(tr);
+		return pb;
+	}
+
+	public String getProImgPath(String shopid, String imgNum) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql="select image_b from product WHERE shopid=? order by salesNum desc limit " + imgNum + ",1";
+		Map<String,Object> map = qr.query(sql, new MapHandler(), shopid);
+		return (String) map.get("image_b");
 	}
 }

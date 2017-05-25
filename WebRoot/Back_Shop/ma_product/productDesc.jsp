@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <div id="show">
 	    <div class="sm">${product.productName }</div>
 	    <img align="top" src="${product.image_w }" class="tp"/>
-	    <div id="book" style="float:left;">
+	    <div id="Product" style="float:left;">
 		    <ul class="ulStyle">
 		    	<li class="liStyle" >商品编号：${product.productid }</li>
 		    	<li class="liStyle" >促销价：<span class="price_n">&yen;${product.currPrice }</span></li>

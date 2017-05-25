@@ -17,7 +17,6 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/pager/pager.css'/>" />
-    <script type="text/javascript" src="<c:url value='/pager/pager.js'/>"></script>
 	 <script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value='/Front/css/product/desc.css'/>">
 	<script type="text/javascript" src="<c:url value='/Front/js/product/desc.js'/>"></script>

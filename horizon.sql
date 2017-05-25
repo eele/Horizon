@@ -46,7 +46,7 @@ CREATE TABLE `cartitem` (
   PRIMARY KEY (`cartItemId`),
   KEY `orderBy` (`orderBy`),
   KEY `FK_cartitem_user` (`uid`),
-  KEY `FK_cartitem_book` (`bid`)
+  KEY `FK_cartitem_Product` (`bid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------

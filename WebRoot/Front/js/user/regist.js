@@ -101,7 +101,7 @@ function validateLoginname() {
 	 * 3. 是否注册校验
 	 */
 	$.ajax({
-		url:"/goods/UserServlet",//要请求的servlet
+		url:"/Horizon/UserServlet",//要请求的servlet
 		data:{method:"ajaxValidateLoginname", loginname:value},//给服务器的参数
 		type:"POST",
 		dataType:"json",

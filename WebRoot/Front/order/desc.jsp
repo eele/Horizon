@@ -54,7 +54,7 @@
 <c:forEach items="${order.orderItemList }" var="item">
 						<tr style="padding-top: 20px; padding-bottom: 20px;">
 							<td class="td" width="400px">
-								<div class="bookname">
+								<div class="Productname">
 								  <img align="middle" width="70" src="${item.product.image_b }"/>
 								  <a href="<c:url value='/ProductServlet?method=load&bid=${item.product.productid }'/>">${item.product.productName }</a>
 								</div>

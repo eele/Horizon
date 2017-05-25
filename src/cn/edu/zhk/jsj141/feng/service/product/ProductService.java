@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import cn.edu.zhk.jsj141.feng.entity.pager.PageBean2;
 import cn.edu.zhk.jsj141.yin.dao.product.ProductDao;
 import cn.edu.zhk.jsj144.liao.entity.product.Product;
+import cn.edu.zhk.jsj144.liao.entity.shop.SearchShopInfo;
 
 public class ProductService {
 	private ProductDao productDao = new ProductDao();
@@ -14,7 +15,7 @@ public class ProductService {
 	 * @param cid
 	 * @return
 	 */
-	public int findBookCountByCategory(String cid) {
+	public int findProductCountByCategory(String cid) {
 		try {
 			return productDao.findproductCountByCategory(cid);
 		} catch(SQLException e) {
@@ -87,6 +88,30 @@ public class ProductService {
 		try {
 			return productDao.findByRank(pc);
 		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 * 按店铺名查
+	 * @param shopid
+	 * @param pc
+	 * @return
+	 */
+	public PageBean2<SearchShopInfo> findShop(String shopname, int pc) {
+		try {
+			return productDao.findShop(shopname, pc);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+	}
+	public String getProImgPath(String shopid, String imgNum) {
+		// TODO Auto-generated method stub
+		try {
+			return productDao.getProImgPath(shopid, imgNum);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			throw new RuntimeException(e);
 		}
 	}

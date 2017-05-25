@@ -1,6 +1,7 @@
 package cn.edu.zhk.jsj141.feng.ctrl.product;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import cn.edu.zhk.jsj141.feng.entity.pager.PageBean2;
 import cn.edu.zhk.jsj144.liao.entity.product.Product;
 import cn.edu.zhk.jsj141.feng.service.product.ProductService;
+import cn.edu.zhk.jsj144.liao.entity.shop.SearchShopInfo;
 import cn.edu.zhk.jsj144.liao.entity.shop.ShopInfo;
 import cn.edu.zhk.jsj141.feng.service.shop.ShopService;
 import cn.edu.zhk.jsj141.feng.servlet.BaseServlet;
@@ -43,8 +45,8 @@ public class ProductServlet extends BaseServlet {
 	 * @return
 	 */
 	/*
-	 * http://localhost:8080/goods/BookServlet?methed=findByCategory&cid=xxx&pc=3
-	 * /goods/BookServlet + methed=findByCategory&cid=xxx&pc=3
+	 * http://localhost:8080/Horizon/ProductServlet?methed=findByCategory&cid=xxx&pc=3
+	 * /Horizon/ProductServlet + methed=findByCategory&cid=xxx&pc=3
 	 */
 	private String getUrl(HttpServletRequest req) {
 		String url = req.getRequestURI() + "?" + req.getQueryString();
@@ -108,7 +110,7 @@ public class ProductServlet extends BaseServlet {
 		 */
 		PageBean2<Product> pb = proService.findByCategory(cid, pc);
 		/*
-		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/book/list.jsp
+		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/Product/list.jsp
 		 */
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
@@ -142,7 +144,7 @@ public class ProductServlet extends BaseServlet {
 		 */
 		PageBean2<Product> pb = proService.findByBname(bname, pc);
 		/*
-		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/book/list.jsp
+		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/Product/list.jsp
 		 */
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
@@ -176,7 +178,7 @@ public class ProductServlet extends BaseServlet {
 		 */
 		PageBean2<Product> pb = proService.findByShop(shopid, pc);
 		/*
-		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/book/list.jsp
+		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/Product/list.jsp
 		 */
 		ShopInfo sp = shopService.getShopInfo2(shopid);
 		pb.setUrl(url);
@@ -217,5 +219,56 @@ public class ProductServlet extends BaseServlet {
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
 		return "f:/Front/product/list2.jsp";
+	}
+	
+	/**
+	 * 按店铺名查
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public String findShop(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		/*
+		 * 1. 得到pc：如果页面传递，使用页面的，如果没传，pc=1
+		 */
+		int pc = getPc(req);
+		/*
+		 * 2. 得到url：...
+		 */
+		String url = getUrl(req);
+		/*
+		 * 3. 获取查询条件，本方法就是cid，即分类的id
+		 */
+		String shopid = req.getParameter("shopname");
+		/*
+		 * 4. 使用pc和cid调用service#findByCategory得到PageBean
+		 */
+		PageBean2<SearchShopInfo> pb = proService.findShop(shopid, pc);
+		/*
+		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/Product/list.jsp
+		 */
+		pb.setUrl(url);
+		req.setAttribute("pb", pb);
+		return "f:/Front/product/shopList.jsp";
+	}
+	
+	/**
+	 * 获取商品图片路径
+	 * @param req
+	 * @param resp
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getProImgPath(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String path = proService.getProImgPath(req.getParameter("shopid"), req.getParameter("imgNum"));
+		
+		PrintWriter out = resp.getWriter();
+		out.print(path);
+		out.flush();
+		out.close();
 	}
 }

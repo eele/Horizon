@@ -66,7 +66,7 @@
 <c:forEach items="${order.orderItemList }" var="item">
 						<tr style="padding-top: 20px; padding-bottom: 20px;">
 							<td class="td" width="350px">
-								<div class="bookname">
+								<div class="Productname">
 								  <img align="middle" width="50" src="${item.product.image_b }"/>
 								  <a style="margin-left:28px" href="<c:url value='/ProductServlet?method=load&bid=${item.product.productid }'/>">${item.product.productName }</a>
 								</div>

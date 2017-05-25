@@ -89,7 +89,7 @@ public class OrderManagementCtrl extends HttpServlet {
 		
 		// 使用pc和cid调用service#findByCategory得到PageBean2
 		PageBean2<Order> pb = orderService.findAll(pc);
-		// 给PageBean2设置url，保存PageBean2，转发到/jsps/book/list.jsp
+		// 给PageBean2设置url，保存PageBean2，转发到/jsps/Product/list.jsp
 		pb.setUrl(url);
 		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_order/orderMain.jsp");
@@ -113,7 +113,7 @@ public class OrderManagementCtrl extends HttpServlet {
 		int status = Integer.parseInt(request.getParameter("status"));
 		// 使用pc和cid调用service#findByCategory得到PageBean2
 		PageBean2<Order> pb = orderService.findByStatus(status, pc);
-		// 给PageBean2设置url，保存PageBean2，转发到/jsps/book/list.jsp
+		// 给PageBean2设置url，保存PageBean2，转发到/jsps/Product/list.jsp
 		pb.setUrl(url);
 		request.setAttribute("pb", pb);
 		RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_order/orderMain.jsp");
