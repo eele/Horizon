@@ -48,6 +48,8 @@
 		  <a href="<c:url value='/Front/user/edit.jsp'/>" target="zz">修改账号信息</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 		  <a href="<c:url value='/Front/user/pwd.jsp'/>" target="zz">修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 		  <a href="<c:url value='/UserServlet?method=quit'/>" target="_parent">退出</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  <a href="<c:url value='/UserServlet?method=setUpShop'/>" target="zz"><font color="blue">我要开店</font></a>
 	</c:otherwise>
 </c:choose>
   </body>

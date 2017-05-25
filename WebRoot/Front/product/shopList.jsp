@@ -76,7 +76,7 @@ td {
     </tr>
 <c:forEach items="${pb.beanList }" var="shop">
     <tr height="50">
-      <td width="228" align="left">&nbsp;&nbsp;${shop.shopname }</td>
+      <td width="228" align="left">&nbsp;&nbsp;<a href="/Horizon/ProductServlet?method=findByShop&shopid=${shop.shopid }">${shop.shopname }</a></td>
       <td align="left">&nbsp;&nbsp;主营：${shop.busi }</td>
       <td width="230" align="center">
       	<div id="i_${shop.shopid }"></div>
