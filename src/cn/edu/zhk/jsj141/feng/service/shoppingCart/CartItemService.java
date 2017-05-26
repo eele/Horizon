@@ -55,9 +55,9 @@ public class CartItemService {
 	public void add(CartItem cartItem) {
 		try {
 			/*
-			 * 1. 使用uid和bid去数据库中查询这个条目是否存在
+			 * 1. 使用uid和productid去数据库中查询这个条目是否存在
 			 */
-			CartItem _cartItem = cartItemDao.findByUidAndBid(
+			CartItem _cartItem = cartItemDao.findByUidAndproductid(
 					cartItem.getUser().getUid(),
 					cartItem.getProduct().getProductid());
 			if(_cartItem == null) {//如果原来没有这个条目，那么添加条目

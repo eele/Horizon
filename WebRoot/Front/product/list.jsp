@@ -16,12 +16,12 @@
 <c:forEach items="${pb.beanList }" var="product">
   <li>
   <div class="inner">
-    <a class="pic" href="<c:url value='/ProductServlet?method=load&bid=${product.productid }&shopid=${product.shopid }'/>"><img src="${product.image_b }" border="0"/></a>
+    <a class="pic" href="<c:url value='/ProductServlet?method=load&productid=${product.productid }&shopid=${product.shopid }'/>"><img src="${product.image_b }" border="0"/></a>
     <p class="price">
 		<span class="price_n">&yen;${product.currPrice }</span>
 		<span class="price_r">&yen;${product.price }</span>
 	</p>
-	<p><a id="Productname" title="${product.productName }" href="<c:url value='/ProductServlet?method=load&bid=${product.productid }&shopid=${product.shopid }'/>">${product.productName }</a></p>
+	<p><a id="Productname" title="${product.productName }" href="<c:url value='/ProductServlet?method=load&productid=${product.productid }&shopid=${product.shopid }'/>">${product.productName }</a></p>
 	<%-- url标签会自动对参数进行url编码
 	<c:url value="/ProductServlet" var="authorUrl">
 		<c:param name="method" value="findByAuthor"/>

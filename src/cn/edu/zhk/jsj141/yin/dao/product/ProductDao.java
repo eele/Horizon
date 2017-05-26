@@ -161,7 +161,7 @@ public class ProductDao {
 			 */
 			whereSql.append(" and ").append(expr.getName())
 				.append(" ").append(expr.getOperator()).append(" ");
-			// where 1=1 and bid = ?
+			// where 1=1 and productid = ?
 			if(!expr.getOperator().equals("is null")) {
 				whereSql.append("?");
 				params.add(expr.getValue());
@@ -229,14 +229,14 @@ public class ProductDao {
 	
 	/**
 	 * 按productid查询
-	 * @param bid
+	 * @param productid
 	 * @return
 	 * @throws SQLException
 	 */
-	public Product findByBid(String bid) throws SQLException {
+	public Product findByproductid(String productid) throws SQLException {
 		String sql = "SELECT * FROM product b, category c WHERE b.cid=c.cid AND b.productid=?";
 		// 一行记录中，包含了很多的product的属性，还有一个cid属性
-		Map<String,Object> map = qr.query(sql, new MapHandler(), bid);
+		Map<String,Object> map = qr.query(sql, new MapHandler(), productid);
 		// 把Map中除了cid以外的其他属性映射到product对象中
 		Product product = CommonUtils.toBean(map, Product.class);
 		// 把Map中cid属性映射到Category中，即这个Category只有cid

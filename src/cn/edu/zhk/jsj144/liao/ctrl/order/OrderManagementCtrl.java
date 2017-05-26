@@ -88,7 +88,7 @@ public class OrderManagementCtrl extends HttpServlet {
 		String url = getUrl(request);
 		
 		// 使用pc和cid调用service#findByCategory得到PageBean2
-		PageBean2<Order> pb = orderService.findAll(pc);
+		PageBean2<Order> pb = orderService.findAll(pc,request.getParameter("shopid"));
 		// 给PageBean2设置url，保存PageBean2，转发到/jsps/Product/list.jsp
 		pb.setUrl(url);
 		request.setAttribute("pb", pb);
@@ -112,7 +112,7 @@ public class OrderManagementCtrl extends HttpServlet {
 		// 获取链接参数：status
 		int status = Integer.parseInt(request.getParameter("status"));
 		// 使用pc和cid调用service#findByCategory得到PageBean2
-		PageBean2<Order> pb = orderService.findByStatus(status, pc);
+		PageBean2<Order> pb = orderService.findByStatus(status, pc, request.getParameter("shopid"));
 		// 给PageBean2设置url，保存PageBean2，转发到/jsps/Product/list.jsp
 		pb.setUrl(url);
 		request.setAttribute("pb", pb);

@@ -63,7 +63,7 @@ public class CommentServlet extends BaseServlet {
 		return "f:/Front/msg3.jsp";
 	}
 		/*
-		 * 1. 封装表单数据到CartItem(bid, quantity)
+		 * 1. 封装表单数据到CartItem(productid, quantity)
 		 */
 //		Map map = req.getParameterMap();
 //		CartItem orderitem = CommonUtils.toBean(map, CartItem.class);

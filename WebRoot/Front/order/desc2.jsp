@@ -68,7 +68,7 @@
 							<td class="td" width="350px">
 								<div class="Productname">
 								  <img align="middle" width="50" src="${item.product.image_b }"/>
-								  <a style="margin-left:28px" href="<c:url value='/ProductServlet?method=load&bid=${item.product.productid }'/>">${item.product.productName }</a>
+								  <a style="margin-left:28px" href="<c:url value='/ProductServlet?method=load&productid=${item.product.productid }'/>">${item.product.productName }</a>
 								</div>
 							</td>
 							<td class="td">

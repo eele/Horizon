@@ -91,7 +91,7 @@ public class CartItemDao {
 	 * 查询某个用户的某个商品的购物车条目是否存在
 	 * @throws SQLException 
 	 */
-	public CartItem findByUidAndBid(String uid, String productid) throws SQLException {
+	public CartItem findByUidAndproductid(String uid, String productid) throws SQLException {
 		String sql = "select * from cartitem where uid=? and productid=?";
 		Map<String,Object> map = qr.query(sql, new MapHandler(), uid, productid);
 		CartItem cartItem = toCartItem(map);

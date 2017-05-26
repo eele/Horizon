@@ -70,11 +70,11 @@ public class ProductServlet extends BaseServlet {
 	 */
 	public String load(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String bid = req.getParameter("bid");//获取链接的参数bid
+		String productid = req.getParameter("productid");//获取链接的参数productid
 		String shopid = req.getParameter("shopid");//获取链接的参数shopid
-		Product product = proService.load(bid);//通过bid得到product对象
+		Product product = proService.load(productid);//通过productid得到product对象
 		
-		List<Comment> cmlist = commentService.find(bid);//通过bid得到product对象
+		List<Comment> cmlist = commentService.find(productid);//通过productid得到product对象
 		
 		ShopInfo sp = shopService.getShopInfo2(shopid);//通过shopid得到shopinfo对象
 		req.setAttribute("sp", sp);//保存到req中

@@ -38,12 +38,12 @@ public class ProductService {
 	
 	/**
 	 * 加载商品
-	 * @param bid
+	 * @param productid
 	 * @return
 	 */
-	public Product load(String bid) {
+	public Product load(String productid) {
 		try {
-			return productDao.findByBid(bid);
+			return productDao.findByproductid(productid);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

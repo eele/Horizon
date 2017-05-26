@@ -95,7 +95,7 @@ public class CartItemServlet extends BaseServlet {
 	public String add(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		/*
-		 * 1. 封装表单数据到CartItem(bid, quantity)
+		 * 1. 封装表单数据到CartItem(productid, quantity)
 		 */
 		Map map = req.getParameterMap();
 		CartItem cartItem = CommonUtils.toBean(map, CartItem.class);

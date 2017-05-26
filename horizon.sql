@@ -40,13 +40,13 @@ DROP TABLE IF EXISTS `cartitem`;
 CREATE TABLE `cartitem` (
   `cartItemId` char(32) NOT NULL,
   `quantity` int(11) DEFAULT NULL,
-  `bid` char(32) DEFAULT NULL,
+  `productid` char(32) DEFAULT NULL,
   `uid` char(32) DEFAULT NULL,
   `orderBy` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`cartItemId`),
   KEY `orderBy` (`orderBy`),
   KEY `FK_cartitem_user` (`uid`),
-  KEY `FK_cartitem_Product` (`bid`)
+  KEY `FK_cartitem_Product` (`productid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -168,7 +168,7 @@ CREATE TABLE `orderitem` (
   `orderItemId` char(32) NOT NULL,
   `quantity` int(11) DEFAULT NULL,
   `subtotal` decimal(8,2) DEFAULT NULL,
-  `bid` char(32) DEFAULT NULL,
+  `productid` char(32) DEFAULT NULL,
   `bname` varchar(200) DEFAULT NULL,
   `currPrice` decimal(8,2) DEFAULT NULL,
   `image_b` varchar(100) DEFAULT NULL,

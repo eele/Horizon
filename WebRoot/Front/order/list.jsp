@@ -46,7 +46,7 @@
 
 
   <c:forEach items="${order.orderItemList }" var="orderItem">
-	<a class="link2" href="<c:url value='/ProductServlet?method=load&bid=${orderItem.product.productid }'/>">
+	<a class="link2" href="<c:url value='/ProductServlet?method=load&productid=${orderItem.product.productid }'/>">
 	    <img border="0" width="70" src="${orderItem.product.image_b }"/>
 	</a>
   </c:forEach>

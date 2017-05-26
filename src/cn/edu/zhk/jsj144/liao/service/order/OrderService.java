@@ -84,10 +84,10 @@ private OrderDao orderDao = new OrderDao();
 	 * @param pc
 	 * @return
 	 */
-	public PageBean2<Order> myOrders(String uid, int pc) {
+	public PageBean2<Order> myOrders(String uid, int pc, String shopid) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean2<Order> pb = orderDao.findByUser(uid, pc);
+			PageBean2<Order> pb = orderDao.findByUser(uid, pc, shopid);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {
@@ -104,10 +104,10 @@ private OrderDao orderDao = new OrderDao();
 	 * @param pc
 	 * @return
 	 */
-	public PageBean2<Order> findByStatus(int status, int pc) {
+	public PageBean2<Order> findByStatus(int status, int pc, String shopid) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean2<Order> pb = orderDao.findByStatus(status, pc);
+			PageBean2<Order> pb = orderDao.findByStatus(status, pc, shopid);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {
@@ -121,12 +121,13 @@ private OrderDao orderDao = new OrderDao();
 	/**
 	 * 查询所有
 	 * @param pc
+	 * @param shopid 
 	 * @return
 	 */
-	public PageBean2<Order> findAll(int pc) {
+	public PageBean2<Order> findAll(int pc, String shopid) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean2<Order> pb = orderDao.findAll(pc);
+			PageBean2<Order> pb = orderDao.findAll(pc, shopid);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {

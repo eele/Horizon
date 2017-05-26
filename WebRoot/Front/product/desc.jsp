@@ -54,7 +54,7 @@
   		</div>
 	</div>
   </div>
-  		<div>
+  		<div style="margin-top: 430px;">
   		<c:forEach items="${cmlist }" var="comm">
   		<br><br><span style="font-size:27px"> ${comm.loginname}的评论：</span><br><br>
   		<span style="font-size:20px"> ${comm.desc}</span><br>

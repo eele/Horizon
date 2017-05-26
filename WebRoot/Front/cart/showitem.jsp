@@ -58,11 +58,11 @@
 <c:forEach items="${cartItemList }" var="cartItem">
 	<tr align="center">
 		<td align="right">
-			<a class="linkImage" href="<c:url value='/ProductServlet?method=load&bid=${cartItem.product.productid }'/>"><img border="0" width="54" align="top" src="${cartItem.product.image_b }"/></a>
+			<a class="linkImage" href="<c:url value='/ProductServlet?method=load&productid=${cartItem.product.productid }'/>"><img border="0" width="54" align="top" src="${cartItem.product.image_b }"/></a>
 		<!-- href="<c:url value='/jsps/Product/desc.jsp'/>" -->
 		</td>
 		<td align="center">
-			<a href="<c:url value='/ProductServlet?method=load&bid=${cartItem.product.productid }'/>"><span>${cartItem.product.productName }</span></a>
+			<a href="<c:url value='/ProductServlet?method=load&productid=${cartItem.product.productid }'/>"><span>${cartItem.product.productName }</span></a>
 			<!-- href="<c:url value='/jsps/Product/desc.jsp'/>" -->
 		</td>
 		<td>&yen;${cartItem.product.currPrice }</td>

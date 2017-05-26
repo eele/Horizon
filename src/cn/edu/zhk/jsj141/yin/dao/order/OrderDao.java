@@ -16,9 +16,9 @@ import cn.edu.zhk.jsj141.feng.entity.order.OrderItem;
 import cn.edu.zhk.jsj141.feng.entity.pager.Expression;
 import cn.edu.zhk.jsj141.feng.entity.pager.PageBean2;
 import cn.edu.zhk.jsj141.feng.entity.pager.PageConstants;
+import cn.edu.zhk.jsj141.yin.util.BeanMapUtil;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
 import cn.edu.zhk.jsj144.liao.entity.product.Product;
-import cn.edu.zhk.jsj141.feng.commons.CommonUtils;
 
 public class OrderDao {
 private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
@@ -101,18 +101,19 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 	 * @return
 	 * @throws SQLException
 	 */
-	public PageBean2<Order> findByUser(String uid, int pc) throws SQLException {
+	public PageBean2<Order> findByUser(String uid, int pc, String shopid) throws SQLException {
 		List<Expression> exprList = new ArrayList<Expression>();
 		exprList.add(new Expression("uid", "=", uid));
-		return findByCriteria(exprList, pc);
+		return findByCriteria(exprList, pc, shopid);
 	}
 	
 	/**
 	 * 查询所有
+	 * @param shopid 
 	 */
-	public PageBean2<Order> findAll(int pc) throws SQLException {
+	public PageBean2<Order> findAll(int pc, String shopid) throws SQLException {
 		List<Expression> exprList = new ArrayList<Expression>();
-		return findByCriteria(exprList, pc);
+		return findByCriteria(exprList, pc, shopid);
 	}
 	
 	/**
@@ -122,13 +123,13 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 	 * @return
 	 * @throws SQLException
 	 */
-	public PageBean2<Order> findByStatus(int status, int pc) throws SQLException {
+	public PageBean2<Order> findByStatus(int status, int pc, String shopid) throws SQLException {
 		List<Expression> exprList = new ArrayList<Expression>();
 		exprList.add(new Expression("status", "=", status + ""));
-		return findByCriteria(exprList, pc);
+		return findByCriteria(exprList, pc, shopid);
 	}
 	
-	private PageBean2<Order> findByCriteria(List<Expression> exprList, int pc) throws SQLException {
+	private PageBean2<Order> findByCriteria(List<Expression> exprList, int pc, String shopid) throws SQLException {
 		/*
 		 * 1. 得到ps
 		 * 2. 得到tr
@@ -154,12 +155,14 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 			 */
 			whereSql.append(" and ").append(expr.getName())
 				.append(" ").append(expr.getOperator()).append(" ");
-			// where 1=1 and bid = ?
+			// where 1=1 and productid = ?
 			if(!expr.getOperator().equals("is null")) {
 				whereSql.append("?");
 				params.add(expr.getValue());
 			}
 		}
+		whereSql.append(" and shopid=?"); // 指定店铺ID
+		params.add(shopid);
 
 		/*
 		 * 3. 总记录数 
@@ -231,21 +234,11 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 	 * 把一个Map转换成一个OrderItem
 	 */
 	private OrderItem toOrderItem(Map<String, Object> map) {
-		OrderItem orderItem = CommonUtils.toBean(map, OrderItem.class);
-		Product product = CommonUtils.toBean(map, Product.class);
-		orderItem.setProduct(product);
-		return orderItem;
-	}
-	
-	/*
-	 * 把一个Map转换成一个OrderItem
-	 
-	private OrderItem toOrderItem(Map<String, Object> map) {
 		OrderItem orderItem = new OrderItem();
 		BeanMapUtil.mapToBean(map, orderItem);
 		Product product = new Product();
 		BeanMapUtil.mapToBean(map, product);
 		orderItem.setProduct(product);
 		return orderItem;
-	}*/
+	}
 }

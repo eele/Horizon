@@ -209,7 +209,7 @@ public class OrderServlet extends BaseServlet {
 		List<CartItem> cartItemList = cartItemService.loadCartItems(cartItemIds);
 		if(cartItemList.size() == 0) {
 			req.setAttribute("code", "error");
-			req.setAttribute("msg", "您没有选择要购买的图书，不能下单！");
+			req.setAttribute("msg", "您没有选择要购买的商品，不能下单！");
 			return "f:/Front/msg2.jsp";
 		}
 		/*
