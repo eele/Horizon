@@ -8,20 +8,27 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import net.sf.json.JSONObject;
 
 import cn.edu.zhk.jsj141.feng.entity.User;
 import cn.edu.zhk.jsj141.yin.util.JsonUtil;
-import cn.edu.zhk.jsj144.liao.entity.shop.ShopInfo;
+import cn.edu.zhk.jsj144.liao.entity.shop.ShopVerify;
 import cn.edu.zhk.jsj144.liao.service.shop.ShopService;
 
-public class UpdateShopInfoCtrl extends HttpServlet {
+/**
+ * 开店申请控制层
+ * @author ele
+ *
+ */
+public class SetUpShopCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Constructor of the object.
 	 */
-	public UpdateShopInfoCtrl() {
+	public SetUpShopCtrl() {
 		super();
 	}
 
@@ -39,8 +46,6 @@ public class UpdateShopInfoCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		ShopService shopService = new ShopService();
-		
 		BufferedReader reader = new BufferedReader(
 				new InputStreamReader(request.getInputStream(), "utf-8"));  
 		String data = "", str = "";
@@ -48,15 +53,17 @@ public class UpdateShopInfoCtrl extends HttpServlet {
 			data = data + str;
 		}
 		JSONObject jsonObject = JSONObject.fromObject(JsonUtil.urlToJson(data));
+		ShopVerify shopVerify = (ShopVerify) JSONObject.toBean(jsonObject, ShopVerify.class);
 		
-		ShopInfo shopInfo = (ShopInfo) JSONObject.toBean(jsonObject, ShopInfo.class);
-		User user = (User) request.getSession().getAttribute("sessionUser");
-		String loginname = user.getLoginname();
-		shopInfo.setSellerid(loginname);
-		shopService.editShopInfo(shopInfo);
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("sessionUser");
+		shopVerify.setLoginname(user.getLoginname());
+		shopVerify.setStatus("");
 		
-		GetShopInfoCtrl ctrl = new GetShopInfoCtrl();
-		ctrl.doGet(request, response);
+		ShopService shopService = new ShopService();
+		shopService.setUpShop(shopVerify);
+		
+		response.sendRedirect("/Horizon/Front/user/setUpShopMsg.jsp?msg=w");
 	}
 
 	/**

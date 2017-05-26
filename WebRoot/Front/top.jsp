@@ -49,7 +49,23 @@
 		  <a href="<c:url value='/Front/user/pwd.jsp'/>" target="zz">修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 		  <a href="<c:url value='/UserServlet?method=quit'/>" target="_parent">退出</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		  <a href="<c:url value='/UserServlet?method=setUpShop'/>" target="zz"><font color="blue">我要开店</font></a>
+		  <c:choose>
+			<c:when test="${empty param.SetUpShop }">
+		 	 <a href="<c:url value='/Front/user/setUpShop.jsp'/>" target="zz"><font color="blue">我要开店</font></a>
+		  	</c:when>
+		  	<c:when test="${param.SetUpShop eq 'w' }">
+		 	 <a href="<c:url value='/Front/user/setUpShopMsg.jsp?msg=w'/>" target="zz"><font color="blue">开店申请 · 审核中</font></a>
+		  	</c:when>
+		  	<c:when test="${param.SetUpShop eq '0' }">
+		 	 <a href="<c:url value='/Front/user/setUpShopMsg.jsp?msg=0'/>" target="zz"><font color="#FF6600">开店申请 · 审核结果</font></a>
+		  	</c:when>
+		  	<c:when test="${param.SetUpShop eq '1' }">
+		 	 <a href="<c:url value='/Front/user/setUpShopMsg.jsp?msg=1'/>" target="zz"><font color="#FF6600">开店申请 · 审核结果</font></a>
+		  	</c:when>
+		  	<c:when test="${param.SetUpShop eq '2' }">
+		 	 <a href="<c:url value='/Back_Shop/main.jsp'/>" target="_Blank"><font color="blue">进入我的店铺</font></a>
+		  	</c:when>
+		  </c:choose>
 	</c:otherwise>
 </c:choose>
   </body>

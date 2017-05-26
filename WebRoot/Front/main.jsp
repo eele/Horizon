@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>Horizon商城</title>
+    <title>Horizon购物商城</title>
 
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
@@ -21,13 +21,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
     <script type="text/javascript" src="/Horizon/jQuery/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="/Horizon/Front/js/main.js"></script>
+    <script type="text/javascript">
+    	/**
+		 * 检查开店申请审核状态
+		 */
+		function CheckShopApplicationStatus() {
+			$.ajax({
+				type: "get",
+				url: "/Horizon/shop/CheckShopApplicationStatusCtrl",
+				data: {
+					loginname: "${sessionScope.sessionUser.loginname }"
+				},
+				success: function(data) {
+					if(data == "n") {
+						$("#top").attr("src", "/Horizon/Front/top.jsp");
+					}
+					if(data == "w") {
+						$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=w");
+					}
+					if(data.substring(0,1) == "0") {
+						$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=0");
+					}
+					if(data == "1") {
+						$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=1");
+					}
+				},
+			});
+		}
+		
+		$(document).ready(function(){ 
+			if("${sessionScope.sessionUser.loginname }" != "" ) {
+				$.ajax({
+					type: "get",
+					url: "/Horizon/shopInfo/GetShopInfoCtrl",
+					data: {
+						check: "1"
+					},
+					success: function(data) {
+						if(data == "0") {  // 该用户没有店铺
+							CheckShopApplicationStatus();
+							$("#zz").load(function(){
+								CheckShopApplicationStatus();
+							});
+						}
+						if(data == "1") {  // 该用户已有店铺
+							$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=2");
+						}
+					},
+				});
+			}
+		});
+    </script>
  	<style type="text/css">
  	iframe {width: 100%; height: 100%}
  	</style>
 </head>
   
   <body>
-  <div class="topBar"><iframe frameborder="0" scrolling="no" src="<c:url value='/Front/top.jsp'/>" name="top"></iframe></div>
+  <div class="topBar"><iframe frameborder="0" scrolling="no" src="<c:url value='/Front/top.jsp'/>" id="top" name="top"></iframe></div>
   
   <div class="bodyArea">
 	<div class="list">
@@ -54,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  </div>
 	  </div>
 	  <div id="scrollFlag">
-	  <iframe frameborder="0" name="zz" class="zz"></iframe>
+	  <iframe frameborder="0" id="zz" name="zz" class="zz"></iframe>
 	  </div>
 	</div>
   </div>

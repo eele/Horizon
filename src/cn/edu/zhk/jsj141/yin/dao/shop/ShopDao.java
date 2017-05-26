@@ -1,15 +1,20 @@
 package cn.edu.zhk.jsj141.yin.dao.shop;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
 import cn.edu.zhk.jsj141.yin.util.BeanMapUtil;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
 import cn.edu.zhk.jsj144.liao.entity.shop.ShopInfo;
+import cn.edu.zhk.jsj144.liao.entity.shop.ShopVerify;
 
 //店铺信息Dao层
 public class ShopDao {
@@ -90,5 +95,38 @@ public class ShopDao {
 		
 		String sql = "update shop set " + attr + "where shopid = '" + shopInfo.getShopid() + "'";
 		qr.update(sql, map.values().toArray());
+	}
+
+	/**
+	 * 添加开店申请信息
+	 * @param shopVerify
+	 * @throws SQLException
+	 */
+	public void setUpShop(ShopVerify shopVerify) throws SQLException {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = (Map<String, Object>) BeanMapUtil.beanToMap(shopVerify);
+		map.put("vid", UUID.randomUUID().toString());
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式  
+		map.put("datetime", df.format(new Date()));
+		
+		String attr = (String) map.keySet().toArray()[0];
+		for (int i = 1; i < 12; i++) {  // 拼接属性字段
+			attr = attr + "," + (String) map.keySet().toArray()[i];
+		}
+		
+		String sql = "insert into shopVerify(" + attr + ") values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		qr.update(sql, map.values().toArray());
+	}
+
+	/**
+	 * 检查开店申请状态
+	 * @param loginname
+	 * @return
+	 * @throws SQLException
+	 */
+	public Map<String, Object> CheckShopApplicationStatus(String loginname) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "select status, reason from shopVerify where loginname = ? and datetime=(select max(datetime) from shopVerify where loginname = ?)";
+		return qr.query(sql, new MapHandler(), loginname, loginname);
 	}
 }

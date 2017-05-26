@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 <script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
-<script language="javascript">
+<script type="text/javascript">
 $(function() {
 	// 提交按钮
 	$("#submit").click(function() {

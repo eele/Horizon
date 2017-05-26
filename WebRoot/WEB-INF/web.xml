@@ -133,6 +133,16 @@
     <servlet-name>AdminLogoutCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.admin.AdminLogoutCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SetUpShopCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.shop.SetUpShopCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckShopApplicationStatusCtrl</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.shop.CheckShopApplicationStatusCtrl</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -260,6 +270,14 @@
   <servlet-mapping>
     <servlet-name>AdminLogoutCtrl</servlet-name>
     <url-pattern>/admin_logout/AdminLogoutCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SetUpShopCtrl</servlet-name>
+    <url-pattern>/shop/SetUpShopCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckShopApplicationStatusCtrl</servlet-name>
+    <url-pattern>/shop/CheckShopApplicationStatusCtrl</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

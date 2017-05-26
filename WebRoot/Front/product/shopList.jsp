@@ -38,7 +38,7 @@ td {
 -->
     </style>
     <script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
-    <script language="javascript">
+    <script type="text/javascript">
 		function getImg(shopid) {
 			$.ajax({
 				type: "get",
@@ -82,7 +82,7 @@ td {
       	<div id="i_${shop.shopid }"></div>
       </td>
     </tr>
-    <script language="javascript">getImg("${shop.shopid }");</script>
+    <script type="text/javascript">getImg("${shop.shopid }");</script>
 </c:forEach>
   </table>
   </body>
