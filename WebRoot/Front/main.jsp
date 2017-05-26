@@ -33,24 +33,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					loginname: "${sessionScope.sessionUser.loginname }"
 				},
 				success: function(data) {
-					if(data == "n") {
-						$("#top").attr("src", "/Horizon/Front/top.jsp");
+					if(data == "n") {   //未申请开通店铺
+						if($("#top").attr("src") != "/Horizon/Front/top.jsp") {
+							$("#top").attr("src", "/Horizon/Front/top.jsp");
+						}
 					}
-					if(data == "w") {
-						$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=w");
+					if(data == "w") {   // 开店申请审核中
+						if($("#top").attr("src") != "/Horizon/Front/top.jsp?SetUpShop=w") {
+							$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=w");
+						}
 					}
-					if(data.substring(0,1) == "0") {
-						$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=0");
+					if(data.substring(0,1) == "0") {   // 开店申请被拒绝
+						if($("#top").attr("src") != "/Horizon/Front/top.jsp?SetUpShop=0") {
+							$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=0");
+						}
 					}
-					if(data == "1") {
-						$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=1");
+					if(data == "1") {   // 开店申请已通过审核
+						if($("#top").attr("src") != "/Horizon/Front/top.jsp?SetUpShop=1") {
+							$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=1");
+						}
 					}
 				},
 			});
 		}
 		
-		$(document).ready(function(){ 
-			if("${sessionScope.sessionUser.loginname }" != "" ) {
+		/**
+		 * 检查用户是否有店铺
+		 */
+		function CheckHavingShop() {
+			if("${sessionScope.sessionUser.loginname }" != "" ) {  // 用户有登录
 				$.ajax({
 					type: "get",
 					url: "/Horizon/shopInfo/GetShopInfoCtrl",
@@ -60,16 +71,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					success: function(data) {
 						if(data == "0") {  // 该用户没有店铺
 							CheckShopApplicationStatus();
-							$("#zz").load(function(){
-								CheckShopApplicationStatus();
-							});
 						}
 						if(data == "1") {  // 该用户已有店铺
-							$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=2");
+							if($("#top").attr("src") != "/Horizon/Front/top.jsp?SetUpShop=2") {
+								$("#top").attr("src", "/Horizon/Front/top.jsp?SetUpShop=2");
+							}
 						}
 					},
 				});
 			}
+		}
+		
+		$(document).ready(function(){ 
+			CheckHavingShop();
+			$("#zz").load(function(){
+				CheckHavingShop();
+			});
 		});
     </script>
  	<style type="text/css">

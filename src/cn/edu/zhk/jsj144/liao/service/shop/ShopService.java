@@ -17,13 +17,13 @@ public class ShopService {
 	
 	/**
 	 * 获取店铺信息
-	 * @param uid
+	 * @param loginname
 	 * @return
 	 */
-	public ShopInfo getShopInfo(String uid) {
+	public ShopInfo getShopInfo(String loginname) {
 		ShopInfo shopInfo = null;
 		try {
-			shopInfo = shopDao.getShopInfo(uid);
+			shopInfo = shopDao.getShopInfo(loginname);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -31,18 +31,6 @@ public class ShopService {
 		return shopInfo;
 	}
 	
-	/**
-	 * 添加店铺信息
-	 * @param shopInfo
-	 */
-	public void addShopInfo(ShopInfo shopInfo) {
-		try {
-			shopDao.addShopInfo(shopInfo);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	/**
 	 * 修改店铺信息
@@ -50,13 +38,21 @@ public class ShopService {
 	 */
 	public void editShopInfo(ShopInfo shopInfo) {
 		try {
-			shopDao.editShopInfo(shopInfo);
+			if(shopDao.getShopInfo(shopInfo.getSellerid()) == null) {
+				shopDao.addShopInfo(shopInfo);
+			} else {
+				shopDao.editShopInfo(shopInfo);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * 添加开店申请
+	 * @param shopVerify
+	 */
 	public void setUpShop(ShopVerify shopVerify) {
 		// TODO Auto-generated method stub
 		try {
@@ -67,6 +63,11 @@ public class ShopService {
 		}
 	}
 
+	/**
+	 * 检查开店审核状态
+	 * @param loginname
+	 * @return
+	 */
 	public Map<String, Object> CheckShopApplicationStatus(String loginname) {
 		// TODO Auto-generated method stub
 		try {

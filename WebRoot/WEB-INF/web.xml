@@ -141,6 +141,11 @@
     <servlet-name>CheckShopApplicationStatusCtrl</servlet-name>
     <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.shop.CheckShopApplicationStatusCtrl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DelShopVerifyInfo</servlet-name>
+    <servlet-class>cn.edu.zhk.jsj144.liao.ctrl.shop.DelShopVerifyInfo</servlet-class>
+  </servlet>
+
 
 
 
@@ -278,6 +283,10 @@
   <servlet-mapping>
     <servlet-name>CheckShopApplicationStatusCtrl</servlet-name>
     <url-pattern>/shop/CheckShopApplicationStatusCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelShopVerifyInfo</servlet-name>
+    <url-pattern>/shop/DelShopVerifyInfo</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

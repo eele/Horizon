@@ -1,8 +1,6 @@
 package cn.edu.zhk.jsj141.yin.dao.shop;
 
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -23,13 +21,13 @@ public class ShopDao {
 	/**
 	 * 获取店铺信息
 	 * 
-	 * @param uid
+	 * @param loginname
 	 * @return
 	 * @throws SQLException
 	 */
-	public ShopInfo getShopInfo(String uid) throws SQLException {
+	public ShopInfo getShopInfo(String loginname) throws SQLException {
 		String sql = "select * from shop where sellerid = ?";
-		List<Map<String, Object>> mapList = qr.query(sql, new MapListHandler(), uid);
+		List<Map<String, Object>> mapList = qr.query(sql, new MapListHandler(), loginname);
 		ShopInfo shopInfo = null;
 		if (!mapList.isEmpty()) {
 			shopInfo = new ShopInfo();
@@ -67,6 +65,7 @@ public class ShopDao {
 	 * @throws InstantiationException
 	 */
 	public void addShopInfo(ShopInfo shopInfo) throws SQLException {
+		shopInfo.setShopid(UUID.randomUUID().toString());
 		Map<String, Object> map = (Map<String, Object>) BeanMapUtil.beanToMap(shopInfo);
 		
 		String attr = (String) map.keySet().toArray()[0];
@@ -105,16 +104,12 @@ public class ShopDao {
 	public void setUpShop(ShopVerify shopVerify) throws SQLException {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = (Map<String, Object>) BeanMapUtil.beanToMap(shopVerify);
-		map.put("vid", UUID.randomUUID().toString());
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式  
-		map.put("datetime", df.format(new Date()));
-		
 		String attr = (String) map.keySet().toArray()[0];
-		for (int i = 1; i < 12; i++) {  // 拼接属性字段
+		for (int i = 1; i < 10; i++) {  // 拼接属性字段
 			attr = attr + "," + (String) map.keySet().toArray()[i];
 		}
 		
-		String sql = "insert into shopVerify(" + attr + ") values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into shopVerify(" + attr + ") values(?,?,?,?,?,?,?,?,?,?)";
 		qr.update(sql, map.values().toArray());
 	}
 
@@ -126,7 +121,7 @@ public class ShopDao {
 	 */
 	public Map<String, Object> CheckShopApplicationStatus(String loginname) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql = "select status, reason from shopVerify where loginname = ? and datetime=(select max(datetime) from shopVerify where loginname = ?)";
-		return qr.query(sql, new MapHandler(), loginname, loginname);
+		String sql = "select status, reason from shopVerify where loginname = ?";
+		return qr.query(sql, new MapHandler(), loginname);
 	}
 }
