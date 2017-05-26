@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import cn.edu.zhk.jsj141.yin.dao.category.product.CategoryDao;
+import cn.edu.zhk.jsj141.yin.dao.product.ProductDao;
 import cn.edu.zhk.jsj144.liao.entity.category.product.Category;
 
 /**
@@ -13,6 +14,7 @@ import cn.edu.zhk.jsj144.liao.entity.category.product.Category;
  */
 public class CategoryService {
 	private CategoryDao categoryDao = new CategoryDao();
+	private ProductDao productDao = new ProductDao();
 	
 	/**
 	 * 返回指定一级分类下二级分类的个数
@@ -33,12 +35,11 @@ public class CategoryService {
 	 * @return
 	 */
 	public int findProductCountByCategory(String cid) {
-		return 0;
-//		try {
-//			return productDao.findproductCountByCategory(cid);
-//		} catch(SQLException e) {
-//			throw new RuntimeException(e);
-//		}
+		try {
+			return productDao.findproductCountByCategory(cid);
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	/**

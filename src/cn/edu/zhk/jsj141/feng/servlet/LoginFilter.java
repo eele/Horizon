@@ -25,7 +25,9 @@ public class LoginFilter implements Filter {
 		 */
 		HttpServletRequest req = (HttpServletRequest) request;
 		Object user = req.getSession().getAttribute("sessionUser");
+		
 		if(user == null) {
+			System.out.println("block   " + req.getServletPath());
 			req.setAttribute("code", "error");//为了显示X图片
 			req.setAttribute("msg", "您还没有登录，不能访问本资源");
 			req.getRequestDispatcher("/Front/msg.jsp").forward(req, response);

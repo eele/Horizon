@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-05-23 22:31:30
+Date: 2017-05-26 21:58:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,12 +46,14 @@ CREATE TABLE `cartitem` (
   PRIMARY KEY (`cartItemId`),
   KEY `orderBy` (`orderBy`),
   KEY `FK_cartitem_user` (`uid`),
-  KEY `FK_cartitem_Product` (`productid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `FK_cartitem_book` (`productid`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cartitem
 -- ----------------------------
+INSERT INTO `cartitem` VALUES ('1132DE7D185543A39A2FA1FB07AEE1C9', '1', 'FFABBED1E5254B10B2726ECrED8AC1DA', '6171DD8CE6D34AAAAA8925232EE56B27', '16');
+INSERT INTO `cartitem` VALUES ('81335CF2C9E241219381B3BCA0D639BF', '1', 'F78C94641DB4475BBA1E72A07DF9B3AE', '6171DD8CE6D34AAAAA8925232EE56B27', '17');
 
 -- ----------------------------
 -- Table structure for category
@@ -80,59 +82,44 @@ INSERT INTO `category` VALUES ('b09908da-8e44-4efd-836f-371bb4bb0afe', '12', '66
 INSERT INTO `category` VALUES ('f3dc4a21-c96d-4cc0-bdb3-e1b4beeb0251', '一级', null, '一级', '29');
 
 -- ----------------------------
+-- Table structure for comment
+-- ----------------------------
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `commentid` varchar(40) NOT NULL,
+  `productid` char(40) DEFAULT NULL,
+  `desc` varchar(80) DEFAULT NULL,
+  `loginname` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`commentid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of comment
+-- ----------------------------
+INSERT INTO `comment` VALUES ('4831DE0F6991453087B2DFB4C5C71F79', 'FF1BBED1E5254BffB2726EC4ED8AC1DA', 'ewfwqef23e', 'xxx');
+INSERT INTO `comment` VALUES ('64F08435DDF24541805F15BE07120D66', 'FFAB2ED1E5254BffB2726EC4ED8AC1DA', 'awfasdfasd', 'xxx');
+INSERT INTO `comment` VALUES ('7D0C6FE61646436D83B1200CC3C66B11', 'FFABBED1E5254B10B2726ECrED8AC1DA', 'fefefef', 'xxx');
+INSERT INTO `comment` VALUES ('BBBE633BF66743F1B0048A9F4752AEED', 'FF1BBED1E5254BffB2726EC4ED8AC1DA', '213213123', 'xxx');
+INSERT INTO `comment` VALUES ('D0CFA4D3116343ACA27F853B2E8F2114', 'FFABBED1E5254B10B2726ECrED8AC1DA', 'sadfdasf', 'xxx');
+
+-- ----------------------------
 -- Table structure for issue
 -- ----------------------------
 DROP TABLE IF EXISTS `issue`;
 CREATE TABLE `issue` (
+  `issueid` varchar(40) NOT NULL,
   `loginname` varchar(50) NOT NULL,
   `email` varchar(40) NOT NULL,
   `issue_title` varchar(100) NOT NULL,
   `issue_con` varchar(600) DEFAULT NULL,
   `datetime` varchar(20) NOT NULL,
-  PRIMARY KEY (`loginname`)
+  PRIMARY KEY (`issueid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of issue
 -- ----------------------------
-INSERT INTO `issue` VALUES ('a1a', 'aaaaaaa', '中文', '中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('a1qghqa', 'aaaaaaa', '中文', '中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('a1qhj1qqa', 'aaaaaaa', '中文', '中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('a1qqdfa', 'aaaaaaa', '中文', '中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('a1qqjka', 'aaaaaaa', '中文', '中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('aa3', 'aaaaaaa', '中文', '中文1中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('aah', 'aaaaaaa', '中文', '中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('afhqa', 'aaaaaaa', '中文', '中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('ai8qa', 'aaaaaaa', '中文', '中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('ai8yuqa', 'aaaaaaa', '中文', '中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('ao9qa', 'aaaaaaa', '中文', '中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('ao9uiqa', 'aaaaaaa', '中文', '中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq1a', 'aaaaaaa', '中文', '中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq1asqa', 'aaaaaaa', '中文', '中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq1lqa', 'aaaaaaa', '中文', '中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq1qa', 'aaaaaaa', '中文', '中文中中文中文1中文中中文中文1中文中中文中文1中文中中文中文1', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq2a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq3a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq4a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq5a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq6a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq7a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aq9a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqa', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqa8', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqakl1q', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqdfdfq2a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqdqfdfq2a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqert5a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqfg1qa', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqop1qa', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqp0a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqpio0a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqp[1qa', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqq2a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqqww3a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqr4a', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
-INSERT INTO `issue` VALUES ('aqsd1qa', 'aaaaaaa', '中文', '中文中中文中文', '2001-01-01');
+INSERT INTO `issue` VALUES ('d60368cb-0e1b-4bb0-aa7e-dcc4e04d5bdd', '123', 'qweqew', 'qweqew', 'qewqwe', '2017-05-26 16:15:34');
 
 -- ----------------------------
 -- Table structure for order
@@ -140,25 +127,27 @@ INSERT INTO `issue` VALUES ('aqsd1qa', 'aaaaaaa', '中文', '中文中中文中�
 DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
   `oid` char(32) NOT NULL,
+  `shopid` varchar(40) DEFAULT NULL,
   `ordertime` char(19) DEFAULT NULL,
   `total` decimal(10,2) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `address` varchar(1000) DEFAULT NULL,
   `uid` char(32) DEFAULT NULL,
   PRIMARY KEY (`oid`),
-  KEY `FK_order_user` (`uid`)
+  KEY `FK_order_user` (`uid`),
+  CONSTRAINT `FK_order_user` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of order
 -- ----------------------------
-INSERT INTO `order` VALUES ('a', '2017-02-05 17:47:13', '123.20', '2', 'test 淘淘', 'aaa');
-INSERT INTO `order` VALUES ('b', '2017-03-05 18:18:53', '319.40', '2', 'test2', 'aa');
-INSERT INTO `order` VALUES ('c', '2017-05-06 09:29:15', '47.40', '5', '', 'aa');
-INSERT INTO `order` VALUES ('e', '2017-05-07 14:08:06', '54.50', '3', 'test', 'aaa');
-INSERT INTO `order` VALUES ('f', '2017-05-05 18:19:58', '66.10', '4', '', 'aaa');
-INSERT INTO `order` VALUES ('g', '2017-05-06 14:08:06', '54.50', '1', 'test', 'aaa');
-INSERT INTO `order` VALUES ('h', '2017-05-13 14:08:06', '54.50', '3', 'test', 'aaa');
+INSERT INTO `order` VALUES ('0A3967AF644644C79E779B37A501DBF7', '123123213', '2017-05-22 22:27:19', '8.00', '4', '12345678910', 'EFF8D9A984E04BB59CD7F04DA7EF189B');
+INSERT INTO `order` VALUES ('1D0A76AD64FE459589AFE1F03700D031', '123123213', '2017-05-26 16:34:33', '24.00', '2', '123123', '6171DD8CE6D34AAAAA8925232EE56B27');
+INSERT INTO `order` VALUES ('74EBE596471647A9B5336D7071D69270', '123123213', '2017-05-26 17:16:02', '80.00', '5', '123123', '6171DD8CE6D34AAAAA8925232EE56B27');
+INSERT INTO `order` VALUES ('C8538C680C1D422B87076AB918AA8333', null, '2017-05-22 22:24:11', '8.00', '2', '12345678910', 'EFF8D9A984E04BB59CD7F04DA7EF189B');
+INSERT INTO `order` VALUES ('C93711562F2E400696FE67A8046FBE78', null, '2017-05-26 16:52:53', '8.00', '4', '123123', '6171DD8CE6D34AAAAA8925232EE56B27');
+INSERT INTO `order` VALUES ('E2BEC57E99D048FB8339935980D645E5', null, '2017-05-24 18:00:26', '16.00', '4', '12312312312', 'EFF8D9A984E04BB59CD7F04DA7EF189B');
+INSERT INTO `order` VALUES ('F77DA1CA8F9E4B898DB4D806F28F77E5', null, '2017-05-25 11:36:49', '32.00', '2', '123123', '6171DD8CE6D34AAAAA8925232EE56B27');
 
 -- ----------------------------
 -- Table structure for orderitem
@@ -169,24 +158,30 @@ CREATE TABLE `orderitem` (
   `quantity` int(11) DEFAULT NULL,
   `subtotal` decimal(8,2) DEFAULT NULL,
   `productid` char(32) DEFAULT NULL,
-  `bname` varchar(200) DEFAULT NULL,
+  `productName` varchar(200) DEFAULT NULL,
   `currPrice` decimal(8,2) DEFAULT NULL,
   `image_b` varchar(100) DEFAULT NULL,
   `oid` char(32) DEFAULT NULL,
   PRIMARY KEY (`orderItemId`),
-  KEY `FK_orderitem_order` (`oid`)
+  KEY `FK_orderitem_order` (`oid`),
+  CONSTRAINT `FK_orderitem_order` FOREIGN KEY (`oid`) REFERENCES `order` (`oid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of orderitem
 -- ----------------------------
-INSERT INTO `orderitem` VALUES ('2A947313F06A49C68E2A87F74B31A31A', '1', '47.40', 'FFABBED1E5254BC0B2726EC4ED8ACCDA', '深入理解OSGi：Equinox原理、应用与最佳实践（《深入理解Java虚拟机》作者新作！全面解读最新OSGi R5.0规范，深入讲解OSGi原理和服务，以及Equinox框架的用法和原理）', '47.40', 'producimg/23179003-1_b.jpg', '805143D3AE99434C91EE7C365A96D5E4');
-INSERT INTO `orderitem` VALUES ('80572102035644E7B59C5B675E834518', '1', '54.50', 'FFABBED1E5254BC0B2726EC4ED8ACCDA', '深入理解OSGi：Equinox原理、应用与最佳实践（《深入理解Java虚拟机》作者新作！全面解读最新OSGi R5.0规范，深入讲解OSGi原理和服务，以及Equinox框架的用法和原理）', '54.50', 'producimg/23179003-1_b.jpg', 'C73BB10850394310BF9BEC5F9443051B');
-INSERT INTO `orderitem` VALUES ('ACB99B290AB9437EB05B0758BE00FD07', '1', '68.70', 'F693239BC3B3444C8538ABE7411BB38E', 'Java Web典型模块与项目实战大全（配光盘）', '68.70', 'producimg/20988080-1_b.jpg', '1EE9C48AA3464119A4CFAB9FD529CAD6');
-INSERT INTO `orderitem` VALUES ('C85F585A6F7A485CB004033C0CC6ECDC', '1', '54.50', 'F6162799E913423EA5CB57BEC65AB1E9', 'JUnit实战(第2版)', '54.50', 'producimg/22633574-1_b.jpg', '4E6E4712ECF6481E9F93D1CDA165E29D');
-INSERT INTO `orderitem` VALUES ('E8862C4998F24A469511FD854A1EF633', '3', '264.90', 'FEC3740CF30E442A94021911A25EF0D7', 'Spring攻略(第2版)(Spring攻略(第2版))', '88.30', 'producimg/22623020-1_b.jpg', '4E6E4712ECF6481E9F93D1CDA165E29D');
-INSERT INTO `orderitem` VALUES ('F6D0C603521344E486C4B5C42191C4B8', '1', '54.50', 'FFABBED1E5254BC0B2726EC4ED8ACCDA', '深入理解OSGi：Equinox原理、应用与最佳实践（《深入理解Java虚拟机》作者新作！全面解读最新OSGi R5.0规范，深入讲解OSGi原理和服务，以及Equinox框架的用法和原理）', '54.50', 'producimg/23179003-1_b.jpg', '1EE9C48AA3464119A4CFAB9FD529CAD6');
-INSERT INTO `orderitem` VALUES ('F7AD9C4363784DF8842EFEAD2B0C48DE', '1', '54.50', 'FFABBED1E5254BC0B2726EC4ED8ACCDA', '深入理解OSGi：Equinox原理、应用与最佳实践（《深入理解Java虚拟机》作者新作！全面解读最新OSGi R5.0规范，深入讲解OSGi原理和服务，以及Equinox框架的用法和原理）', '54.50', 'producimg/23179003-1_b.jpg', 'A8C4D5597A9A48B3A3D73734F31CDF41');
+INSERT INTO `orderitem` VALUES ('04C2273D45C54137B7208EEBBD1664A8', '3', '24.00', 'FFAB2ED1E5254BffB2726EC4ED8AC1DA', '商品商品qwe商品商品商品1', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', 'F77DA1CA8F9E4B898DB4D806F28F77E5');
+INSERT INTO `orderitem` VALUES ('07ED34F66BDB4FFBA5FC06088E846140', '1', '8.00', 'FFABBED1E5254B10B2726ECrED8AC1DA', '商品商品qwe商品商品商品', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', 'E2BEC57E99D048FB8339935980D645E5');
+INSERT INTO `orderitem` VALUES ('138366F0406B4C7BB8AD0877FD0DE6F5', '1', '8.00', 'FFABBED1E5254B10B2726ECrED8AC1DA', '商品商品qwe商品商品商品3', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', 'C93711562F2E400696FE67A8046FBE78');
+INSERT INTO `orderitem` VALUES ('3D174014455340E2979D21357200092F', '2', '16.00', 'FFABBED1E5254B10B2726ECrED8AC1DA', '商品商品qwe商品商品商品3', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '1D0A76AD64FE459589AFE1F03700D031');
+INSERT INTO `orderitem` VALUES ('4D8DD3C3B77C4BF3B4369FEB46E11A10', '1', '8.00', 'FFAB2ED1E5254BffB2726EC4ED8AC1DA', '商品商品qwe商品商品商品', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '0A3967AF644644C79E779B37A501DBF7');
+INSERT INTO `orderitem` VALUES ('62C1A8FFCC724A959427A478EEDF6D2E', '4', '32.00', 'FFAB2ED1E5254BffB2726EC4ED8AC1DA', '商品商品qwe商品商品商品1', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '74EBE596471647A9B5336D7071D69270');
+INSERT INTO `orderitem` VALUES ('646EB11997A548269EEFB84E26005A10', '1', '8.00', 'FF1BBED1E5254BffB2726EC4ED8AC1DA', '商品商品qwe商品商品商品', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', 'E2BEC57E99D048FB8339935980D645E5');
+INSERT INTO `orderitem` VALUES ('C20920771FFD4FFE8C57E51337E12BA1', '1', '8.00', 'F78C94641DB4475BBA1E72A07DF9B3AE', '商品商品qwe商品商品商品', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '1D0A76AD64FE459589AFE1F03700D031');
+INSERT INTO `orderitem` VALUES ('DE0892A76FE24D82B0F78F111C49AB80', '6', '48.00', 'FFABBED1E5254B10B2726ECrED8AC1DA', '商品商品qwe商品商品商品3', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '74EBE596471647A9B5336D7071D69270');
+INSERT INTO `orderitem` VALUES ('EC05C6D14AE04ECAB3E2FF8E3C6B1433', '1', '8.00', 'FC232CD9B6E6411BBBB1A5B781D2C3C9', '商品商品qwe商品商品商品', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', 'C8538C680C1D422B87076AB918AA8333');
+INSERT INTO `orderitem` VALUES ('F86CFEBBF7EB452D89BA79C7230EBDF9', '1', '8.00', 'FF1BBED1E5254BffB2726EC4ED8AC1DA', '商品商品qwe商品商品商品2', '8.00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', 'F77DA1CA8F9E4B898DB4D806F28F77E5');
+INSERT INTO `orderitem` VALUES ('FFAB2ED1E5254BffB2726EC4ED8AC1BA', '2', null, 'FFAB2ED1E5254BffB2726EC4ED8AC1DA', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for product
@@ -210,24 +205,22 @@ CREATE TABLE `product` (
   `orderBy` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`productid`),
   KEY `orderBy` (`orderBy`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('9ca72d3d-b14f-4091-b9fa-e1f562149226', '123123213', '1111王企鹅企鹅轻武器维权维', '/Horizon/Back_Shop/ma_product/product_img/96f33dc2-1fbd-4f70-862c-10e4b4b36801_1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/02a9ea76-e470-4895-bbac-98ae2ad48f7e_1-w.jpg', '8.1', '7.1', '12', '12', '0', '2017-05-05', '2017-05-19', '5869c1b0-064d-4dd9-8946-025dc2b79519', '1王企鹅企鹅轻武器维权维', '87');
-INSERT INTO `product` VALUES ('F6162799E913423EA5CB57BEC65AB1E9', '', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '80');
-INSERT INTO `product` VALUES ('F78C94641DB4475BBA1E72A07DF9B3AE', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '69');
-INSERT INTO `product` VALUES ('FC232CD9B6E6411BBBB1A5B781D2C3C9', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '67');
-INSERT INTO `product` VALUES ('FEC3740CF30E442A94021911A25EF0D7', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '82');
-INSERT INTO `product` VALUES ('FF1BBED1E5254BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
-INSERT INTO `product` VALUES ('FFAB2ED1E5254BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBED1E5154B10B2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
+INSERT INTO `product` VALUES ('F78C94641DB4475BBA1E72A07DF9B3AE', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '19', '9', '2012-01-01', '2014-04-01', 'af2ff657-8a65-4467-8674-7b9380baac02', 'aa', '69');
+INSERT INTO `product` VALUES ('FC232CD9B6E6411BBBB1A5B781D2C3C9', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', '2012-01-01', '2014-04-01', '3', 'aa', '67');
+INSERT INTO `product` VALUES ('FEC3740CF30E442A94021911A25EF0D7', '123123213', '商品商品qwe1', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌1', '20', '8', '2012-01-01', '2014-04-01', '3', 'aa', '82');
+INSERT INTO `product` VALUES ('FF1BBED1E5254BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品2', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '18', '10', '2012-01-01', '2014-04-01', '3', 'aa', '47');
+INSERT INTO `product` VALUES ('FFAB2ED1E5254BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品1', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '11', '17', '2012-01-01', '2014-04-01', '3', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBED1E5154B10B2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', '2012-01-01', null, '3', 'aa', '47');
 INSERT INTO `product` VALUES ('FFABBED1E5252B10B2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
 INSERT INTO `product` VALUES ('FFABBED1E5254B10B2726e44ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
 INSERT INTO `product` VALUES ('FFABBED1E5254B10B2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
 INSERT INTO `product` VALUES ('FFABBED1E5254B10B2726ECgED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBED1E5254B10B2726ECrED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBED1E5254B10B2726ECrED8AC1DA', '123123213', '商品商品qwe商品商品商品3', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '10', '24', null, null, '3', 'aa', '47');
 INSERT INTO `product` VALUES ('FFABBED1E5254B10B2726EvfED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
 INSERT INTO `product` VALUES ('FFABBED1E5254B10B2726tC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
 INSERT INTO `product` VALUES ('FFABBED1E5254B10B272hEw4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '3', 'aa', '47');
@@ -236,16 +229,17 @@ INSERT INTO `product` VALUES ('FFABBED1E5254B10B2g26EC4ED8AC1DA', '123123213', '
 INSERT INTO `product` VALUES ('FFABBED1E5254B10B3726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
 INSERT INTO `product` VALUES ('FFABBED1E5254B10Bss26EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
 INSERT INTO `product` VALUES ('FFABBED1E5254BC0B2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBED1E5254BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBED1E525vBffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBED1E52a4BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBED1E52dfBffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBED1E52f4BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBED1Ee254BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBED1z5254BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBEddE5254BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBEDwE5254BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
-INSERT INTO `product` VALUES ('FFABBqD1E5254BffB2726EC4ED8AC1DA', '123123213', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '20', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBED1E5254BC0B2726EC4ED8ACCDA', '111', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '16', '3', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBED1E5254BffB2726EC4ED8AC1DA', '111', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '15', '3', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBED1E525vBffB2726EC4ED8AC1DA', '111', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '17', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBED1E52a4BffB2726EC4ED8AC1DA', '111', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '18', '7', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBED1E52dfBffB2726EC4ED8AC1DA', '111', '商品商品qwe商品商品商品', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '10', '6', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBED1E52f4BffB2726EC4ED8AC1DA', '111', '00', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '10', '7', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBED1Ee254BffB2726EC4ED8AC1DA', '111', '5', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '10', '7', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBED1z5254BffB2726EC4ED8AC1DA', '111', '4', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '10', '5', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBEddE5254BffB2726EC4ED8AC1DA', '111', '3', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '10', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBEDwE5254BffB2726EC4ED8AC1DA', '111', '2', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '10', '7', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
+INSERT INTO `product` VALUES ('FFABBqD1E5254BffB2726EC4ED8AC1DA', '111', '1', '/Horizon/Back_Shop/ma_product/product_img/1-b.jpg', '/Horizon/Back_Shop/ma_product/product_img/1-w.jpg', '10', '8', '品牌', '10', '8', null, null, '5F79D0D246AD4216AC04E9C5FAB3199E', 'aa', '47');
 
 -- ----------------------------
 -- Table structure for shop
@@ -255,7 +249,7 @@ CREATE TABLE `shop` (
   `shopid` varchar(40) NOT NULL,
   `sellerid` varchar(40) NOT NULL,
   `shopName` varchar(100) DEFAULT NULL,
-  `shopCid` varchar(40) DEFAULT NULL,
+  `busi` varchar(40) DEFAULT NULL,
   `descr` varchar(400) DEFAULT NULL,
   `pro_src` varchar(2) DEFAULT NULL,
   `phy_store` tinyint(1) DEFAULT NULL,
@@ -270,8 +264,33 @@ CREATE TABLE `shop` (
 -- ----------------------------
 -- Records of shop
 -- ----------------------------
-INSERT INTO `shop` VALUES ('1', 'qwe', null, null, null, null, '0', '0', null, null, null, null);
-INSERT INTO `shop` VALUES ('123123213', '123', '123描述文件店铺店铺', '\"null\"', '描述文件描述文件描述文件描述文件描述文件描述111描述文件描述文件描述文件描述文件描述文件描述文件', '3', '1', '1', '描述文件1', '12334535435345', '123描述文件描述文件描述文件', '123567');
+INSERT INTO `shop` VALUES ('111', '123qwe', 'qwe1', '商品', null, null, '0', '0', null, null, null, null);
+INSERT INTO `shop` VALUES ('123123213', '123', '123描述文件描述文件', '主营主营', '描述文件描述文件描述文件描述文件描述文件描述文件描述文件描述文件描述文件描述文件描述文件描述文件', '3', '1', '1', '描述文件', '12334535435345', '123描述文件描述文件描述文件', '123567');
+INSERT INTO `shop` VALUES ('64947167-a34c-425b-acc6-c88dc9468f04', '1231', '12店铺名1', '店铺名', '店铺名', '3', '0', '1', '店铺名1', '店铺名', '店铺名123', '店铺名123');
+
+-- ----------------------------
+-- Table structure for shopverify
+-- ----------------------------
+DROP TABLE IF EXISTS `shopverify`;
+CREATE TABLE `shopverify` (
+  `loginname` varchar(40) NOT NULL,
+  `name` varchar(10) NOT NULL,
+  `idcardNum` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `bank` varchar(40) NOT NULL,
+  `bankcardNum` varchar(30) NOT NULL,
+  `status` varchar(3) NOT NULL,
+  `reason` varchar(300) DEFAULT NULL,
+  `notice` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`loginname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of shopverify
+-- ----------------------------
+INSERT INTO `shopverify` VALUES ('123', '12', '12', '12', '12', '12', '12', '1', null, '0');
+INSERT INTO `shopverify` VALUES ('aa1', '中1文', '231123123123123', '中文文字中文文字中文文字中文文字中文文字', '123123123123', '中文文字中文文字中', '1231231231232213123123', '1', null, null);
 
 -- ----------------------------
 -- Table structure for user
@@ -279,11 +298,11 @@ INSERT INTO `shop` VALUES ('123123213', '123', '123描述文件店铺店铺', '\
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `uid` char(32) NOT NULL,
-  `loginname` varchar(50) NOT NULL,
-  `loginpass` varchar(50) NOT NULL,
+  `loginname` varchar(50) DEFAULT NULL,
+  `loginpass` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `address` varchar(200) DEFAULT NULL,
+  `phone` varchar(11) DEFAULT NULL,
+  `address` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`uid`),
   UNIQUE KEY `loginname` (`loginname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -291,35 +310,8 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1FF8D9A984E04BB59CD7F04DA7EF189B', 'qwe2rt12312312312', '123213', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('2FF8D9A984E04BB59CD7F04DA7EF189B', 'qwe3rt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('aa', 'qwertr', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('aaa', 'qwe5rt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D7A984E04BB59CD7F04DA7EF189B', 'qwer8t', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A980E04BB59CD7F04DA7EF189B', 'qwetrt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59121204DA7EF189B', 'qwer1t', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CD7er4DA7EF189B', 'qwesdsrt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CD7F04DA7EF189B', 'qwert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CD7F04qqA7EF89B', 'qwccert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CD7F04sd7EF189B', 'qwzert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CD7F0aaA7EF189B', 'qwzcert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CD7FdfdA7EF189B', 'qwedzcrt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CD7Fklkl7EF189B', 'qwevvrt', '123', 'yuyu@163.com', '667676767', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CD7sdfaA7EF189B', 'qwerzt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CDasw4DA7EF189B', 'qwxcert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CDbdf4DA7EF189B', 'qwecsrt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59df7F04DA7EF189B', 'qwsdcert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB59hj7F04DA7EFdf9B', 'qzzwert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB5www7F04DA7EF189B', 'qw9ert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BB5yuD7F04DA7EFgh9B', 'qwexrt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04BBg9CD7F04DA7EF189B', 'qwerert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04qrB59CD7F04D7EF189B', 'qwexcrt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984E04yB59CD7F04DA7EF189B', 'qwhhert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A984Et4BB59CD7F04DA7EF189B', 'qwyyert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9A98qE04BB59CD7F04DA7EF189B', 'qqwert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9AdxfE04BB59CD7F04DA7EF189B', 'qwsdert', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8D9e98rE04BB59CD7F04DA7EF189B', 'qwefrt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
-INSERT INTO `user` VALUES ('EFF8Dase84E04BB59CD7F04DA7EF189B', 'qwerfswt', '123', 'zhangFei@163.com', '123123123123123123', '地址地址通讯地址地址地址通讯地址地址地址');
+INSERT INTO `user` VALUES ('6171DD8CE6D34AAAAA8925232EE56B27', '123', '123', '123@123.com', '12312312312', '123123');
+INSERT INTO `user` VALUES ('EFF8D9A984E04BB59CD7F04DA7EF189B', 'xxx', '123', 'fef@ff.cc', '12312312312', '12312312312');
 
 -- ----------------------------
 -- View structure for ordernumview
@@ -332,3 +324,10 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`skip-grants user`@`skip-grants host` SQL SEC
 -- ----------------------------
 DROP VIEW IF EXISTS `trans_record`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`skip-grants user`@`skip-grants host` SQL SECURITY DEFINER VIEW `trans_record` AS select `user`.`loginname` AS `loginname`,`ordernumview`.`orderNum` AS `orderNum`,max(`order`.`ordertime`) AS `ordertime`,sum(`order`.`total`) AS `price` from ((`order` join `user`) join `ordernumview`) where (((curdate() - interval 90 day) <= cast(`order`.`ordertime` as date)) and (`order`.`uid` = `user`.`uid`) and (`order`.`uid` = `ordernumview`.`uid`)) group by `order`.`uid` ;
+DROP TRIGGER IF EXISTS `changepro`;
+DELIMITER ;;
+CREATE TRIGGER `changepro` AFTER INSERT ON `orderitem` FOR EACH ROW BEGIN
+	UPDATE product SET productNum = productNum-new.quantity,salesNum = salesNum+new.quantity WHERE productid = new.productid;
+    END
+;;
+DELIMITER ;
