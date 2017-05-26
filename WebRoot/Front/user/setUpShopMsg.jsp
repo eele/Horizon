@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<h2 align="center">您的开店申请已被运营管理员拒绝。</h2><br>
   	<div style="margin-left:17%">
   		<h3 id="reason"></h3><br>
-  		您可联系Horizon客服或通过“问题反馈”进一步确认申请被拒绝的原因。<br>
+  		您可以直接联系Horizon客服或通过“问题反馈”进一步确认申请被拒绝的原因。<br>
 	  	Horizon客服联系电话：nnnn-nnnnnnnn<br>
 	  	Horizon客服E-Mail：service@horizon.com<br><br>
 	  	<a href="javascript:restartShop()">重新申请开店</a>

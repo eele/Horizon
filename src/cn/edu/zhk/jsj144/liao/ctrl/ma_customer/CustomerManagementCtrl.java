@@ -281,8 +281,8 @@ public class CustomerManagementCtrl extends HttpServlet {
 	 */
 	public void delIssueList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
-		String loginname = request.getParameter("loginname");
-		cuService.delIssueList(loginname);
+		String issueid = request.getParameter("issueid");
+		cuService.delIssueList(issueid);
 	}
 
 }

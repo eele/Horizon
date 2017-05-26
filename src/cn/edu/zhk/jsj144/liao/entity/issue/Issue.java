@@ -1,12 +1,19 @@
 package cn.edu.zhk.jsj144.liao.entity.issue;
 
 public class Issue {
+	String issueid; // 问题ID
 	String loginname; // 登录名
 	String issue_title; // 问题标题
 	String issue_con; // 问题内容
 	String datetime; // 发布日期
 	String email; // 回复邮箱地址
 	
+	public String getIssueid() {
+		return issueid;
+	}
+	public void setIssueid(String issueid) {
+		this.issueid = issueid;
+	}
 	public String getLoginname() {
 		return loginname;
 	}

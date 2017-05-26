@@ -23,6 +23,7 @@
 		text-decoration:none;
 		color: #000000;
 		font-weight: 900;
+		font-size: 14px;
 	} 
 	a:hover {
 		display:inline-block;
@@ -48,7 +49,6 @@
 		  <a href="<c:url value='/Front/user/edit.jsp'/>" target="zz">修改账号信息</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 		  <a href="<c:url value='/Front/user/pwd.jsp'/>" target="zz">修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 		  <a href="<c:url value='/UserServlet?method=quit'/>" target="_parent">退出</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-		  &nbsp;&nbsp;&nbsp;
 		  <c:choose>
 			<c:when test="${empty param.SetUpShop }">
 		 	 <a href="<c:url value='/Front/user/setUpShop.jsp'/>" target="zz"><font color="blue">我要开店</font></a>
@@ -66,6 +66,8 @@
 		 	 <a href="<c:url value='/Back_Shop/main.jsp'/>" target="_Blank"><font color="blue">进入我的店铺</font></a>
 		  	</c:when>
 		  </c:choose>
+		  &nbsp;&nbsp;|&nbsp;&nbsp;
+		  <a href="<c:url value='/Front/user/issue_feedback.jsp'/>" target="zz">问题反馈</a>
 	</c:otherwise>
 </c:choose>
   </body>
