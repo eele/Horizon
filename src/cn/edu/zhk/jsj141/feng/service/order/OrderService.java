@@ -81,7 +81,7 @@ public class OrderService {
 	public PageBean2<Order> myOrders(String uid, int pc) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean2<Order> pb = orderDao.findByUser(uid, pc);
+			PageBean2<Order> pb = orderDao.findByUser(uid, pc, null);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {
@@ -101,7 +101,7 @@ public class OrderService {
 	public PageBean2<Order> findByStatus(int status, int pc) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean2<Order> pb = orderDao.findByStatus(status, pc);
+			PageBean2<Order> pb = orderDao.findByStatus(status, pc, null);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {
@@ -120,7 +120,7 @@ public class OrderService {
 	public PageBean2<Order> findAll(int pc) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean2<Order> pb = orderDao.findAll(pc);
+			PageBean2<Order> pb = orderDao.findAll(pc, null);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {

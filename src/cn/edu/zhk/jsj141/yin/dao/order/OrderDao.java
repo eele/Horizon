@@ -161,8 +161,10 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 				params.add(expr.getValue());
 			}
 		}
-		whereSql.append(" and shopid=?"); // 指定店铺ID
-		params.add(shopid);
+		if(shopid != null) {
+			whereSql.append(" and shopid=?"); // 指定店铺ID
+			params.add(shopid);
+		}
 
 		/*
 		 * 3. 总记录数 
