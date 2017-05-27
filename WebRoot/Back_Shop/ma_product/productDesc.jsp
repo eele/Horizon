@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
   
   <body>
-  <div class="topBar">帐号区</div>
+  <div class="topBar"><iframe frameborder="0" scrolling="no" src="<c:url value='/Back_Shop/top.jsp'/>" style="width: 100%;" id="top" name="top"></iframe></div>
   
   <div class="bodyArea">
 	<div class="mallTitle">
