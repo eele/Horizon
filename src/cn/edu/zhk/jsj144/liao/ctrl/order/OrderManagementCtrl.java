@@ -158,7 +158,7 @@ public class OrderManagementCtrl extends HttpServlet {
 		} else {
 			orderService.updateStatus(oid, 5);//设置状态为取消！
 			request.setAttribute("code", "success");
-			request.setAttribute("msg", "您的订单已取消。");
+			request.setAttribute("msg", "本订单已取消。");
 		}
 		RequestDispatcher rd=request.getRequestDispatcher("/order/OrderManagementCtrl?method=load&oid="+oid);
 		rd.forward(request,response);
@@ -184,7 +184,7 @@ public class OrderManagementCtrl extends HttpServlet {
 		} else {
 			orderService.updateStatus(oid, 3);//设置状态为取消！
 			request.setAttribute("code", "success");
-			request.setAttribute("msg", "您的订单已发货！");
+			request.setAttribute("msg", "本订单的商品已发货！");
 		}
 		RequestDispatcher rd=request.getRequestDispatcher("/order/OrderManagementCtrl?method=load&oid="+oid);
 		rd.forward(request,response);

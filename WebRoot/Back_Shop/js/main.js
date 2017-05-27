@@ -4,7 +4,7 @@
 $(document).ready(function(){ 
 	$(".mainArea").height($(window).height()-80);
 	var w=$(window).width();
-	var changeWidth = 930;
+	var changeWidth = 940;
 	if(w < 1200) {
 		$(".bodyArea").width(changeWidth);
 		if(w < changeWidth) {
@@ -22,7 +22,7 @@ $(document).ready(function(){
 	window.onresize = function() {
 		$(".mainArea").height($(window).height()-80);
 		var w=$(window).width();
-		var changeWidth = 930;
+		var changeWidth = 940;
 		if(w < 1200) {
 			$(".bodyArea").width(changeWidth);
 			$(".searchArea").css({"margin-left": "10px"});

@@ -81,7 +81,7 @@ public class UserServlet extends BaseServlet {
 		userService.regist(formUser);
 		req.setAttribute("code", "success");
 		req.setAttribute("msg", "注册成功!");
-		return "f:/jsps/msg.jsp";
+		return "f:/Front/msg.jsp";
 	}
 	
 	/*

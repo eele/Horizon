@@ -98,6 +98,7 @@ public class ProductDao {
 	public void addProduct(Product product) throws SQLException {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = (Map<String, Object>) BeanMapUtil.beanToMap(product);
+		map.remove("category");
 		
 		String attr = (String) map.keySet().toArray()[0];
 		for (int i = 1; i < 14; i++) {  // 拼接属性字段
@@ -116,6 +117,7 @@ public class ProductDao {
 	public void updateProduct(Product product) throws SQLException {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = (Map<String, Object>) BeanMapUtil.beanToMap(product);
+		map.remove("category");
 		
 		String attr = "";
 		for (int i = 0; i < 14; i++) {  // 拼接属性字段

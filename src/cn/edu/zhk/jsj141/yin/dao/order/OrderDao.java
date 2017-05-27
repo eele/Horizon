@@ -70,8 +70,8 @@ private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		/*
 		 * 1. 插入订单
 		 */
-		String sql = "insert into `order` values(?,?,?,?,?,?)";
-		Object[] params = {order.getOid(), order.getOrdertime(),
+		String sql = "insert into `order` values(?,?,?,?,?,?,?)";
+		Object[] params = {order.getOid(), order.getShopid(), order.getOrdertime(),
 				order.getTotal(),order.getStatus(),order.getAddress(),
 				order.getOwner().getUid()};
 		qr.update(sql, params);

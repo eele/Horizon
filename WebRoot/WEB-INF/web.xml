@@ -342,4 +342,37 @@
     <filter-name>LoginFilter</filter-name>
     <servlet-name>OrderServlet</servlet-name>
   </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/Back_Shop/js/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/Back_Shop/ma_order/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/Back_Shop/ma_shopInfo/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/Back_Shop/main.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <servlet-name>IssueFeedbackCtrl</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <servlet-name>OrderManagementCtrl</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/shop/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/shopInfo/*</url-pattern>
+  </filter-mapping>
 </web-app>

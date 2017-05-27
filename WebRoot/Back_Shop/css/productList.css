@@ -10,6 +10,7 @@
 .price_r {color: #878787; text-decoration: line-through; padding-right: 10px; font-family: Arial; font-size: 15px; }
 #Productname {text-decoration:underline; color:#555555; display: block; overflow: hidden; width: 200px; font-family: Arial; }
 #Productname:hover {color:#FF6600; }
+.inner {width: 233px; }
 .inner a {color: #018BD3;}
 .inner a:hover {color:#FF6600; }
 .inner a:VISITED {color:#018BD3;}
