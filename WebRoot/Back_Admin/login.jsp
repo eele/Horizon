@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="/Horizon/Back_Admin/css/login.css"/>
 	<script type="text/javascript" src="/Horizon/jQuery/jquery1.42.min.js"></script>
 	<script type="text/javascript" src="/Horizon/jQuery/jquery.form.js"></script>
-	<script language="javascript">
+	<script type="text/javascript">
 	$(function() {
 		// 单击按钮提交表单
 		$(".but").click(function() {

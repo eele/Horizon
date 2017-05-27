@@ -1,13 +1,15 @@
 package cn.edu.zhk.jsj144.liao.ctrl.shop;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import cn.edu.zhk.jsj141.feng.entity.User;
+import cn.edu.zhk.jsj144.liao.entity.shop.ShopInfo;
 import cn.edu.zhk.jsj144.liao.service.shop.ShopService;
 
 /**
@@ -37,12 +39,24 @@ public class GetShopInfoCtrl extends HttpServlet {
 		response.setContentType("text/html");
 		ShopService shopService = new ShopService();
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("uid","123"); /////////////////////////////////
-		String uid = (String)session.getAttribute("uid");
-        request.setAttribute("shopInfo", shopService.getShopInfo(uid));
-        RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_shopInfo/infoMain.jsp");
-        rd.forward(request,response);
+		User user = (User) request.getSession().getAttribute("sessionUser");
+		String loginname = user.getLoginname();
+		ShopInfo shopInfo = shopService.getShopInfo(loginname);
+        
+        if(request.getParameter("check") != null) {  // 检查是否有店铺存在，只返回判断值0和1
+        	PrintWriter out = response.getWriter();
+        	if(shopInfo != null) {
+        		out.print("1");
+        	} else {
+        		out.print("0");
+        	}
+        	out.flush();
+        	out.close();
+        } else {  // 跳转到店铺信息页面
+        	request.setAttribute("shopInfo", shopInfo);
+        	RequestDispatcher rd=request.getRequestDispatcher("/Back_Shop/ma_shopInfo/infoMain.jsp");
+            rd.forward(request,response);
+        }
 	}
 
 	/**

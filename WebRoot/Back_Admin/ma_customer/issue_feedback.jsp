@@ -50,12 +50,12 @@
 			<tr align="center">
 				<td>${issue.loginname }</td>
 				<td>${issue.email }</td>
-				<td><span id="tit_${issue.loginname }">${issue.issue_title }</span></td>
+				<td><span id="tit_${issue.issueid }">${issue.issue_title }</span></td>
 				<td>${issue.datetime }</td>
-				<td width="100"><a href="javascript:showIssue('${issue.loginname }')">查看内容</a></td>
-				<td width="75"><a href="javascript:delIssue('${issue.loginname }')">删除</a></td>
+				<td width="100"><a href="javascript:showIssue('${issue.issueid }','${issue.loginname }')">查看内容</a></td>
+				<td width="75"><a href="javascript:delIssue('${issue.issueid }')">删除</a></td>
 			</tr>
-			<input type="hidden" id="con_${issue.loginname }" value="${issue.issue_con }">
+			<input type="hidden" id="con_${issue.issueid }" value="${issue.issue_con }">
 		</c:forEach>
 	</table>
 	<div class="pop_up" >

@@ -27,7 +27,7 @@
 		<div class="divContent">
 			<dl>
 				<dt>收货人信息</dt>
-				<dd>${order.address }</dd>
+				<dd>收货地址：${order.address }</dd>
 			</dl>
 		</div>
 		<div class="divContent">
@@ -49,7 +49,7 @@
 						<tr style="padding-top: 20px; padding-bottom: 20px;">
 							<td class="td" width="400px">
 								<div class="Productname">
-								  <img align="middle" width="70" src="<c:url value='/${orderItem.product.image_b }'/>"/>
+								  <img align="middle" width="70" src="${orderItem.product.image_b }"/>
 								  ${orderItem.product.productName }
 								</div>
 							</td>
@@ -64,10 +64,6 @@
 							</td>			
 						</tr>
 </c:forEach>
-
-							
-							
-							
 					</table>
 				</dd>
 			</dl>
@@ -84,6 +80,7 @@
 </c:if>
 		</div>
 	</div>
+	<div style="color: #ff6600;font-weight: 900;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${msg }</div>
 </body>
 </html>
 

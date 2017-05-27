@@ -85,7 +85,7 @@ function loadChildren() {
 	$.ajax({
 		async:true,
 		cache:false,
-		url:"/Horizon/admin/category_product/FindChildCategoryCtrl",
+		url:"/Horizon/category_product/FindChildCategoryCtrl",
 		data:{pid:pid},
 		type:"POST",
 		dataType:"json",
@@ -113,9 +113,9 @@ function loadChildren() {
 	    <ul class="addProUl">
 	    	<li class="addProLi">商品名：　<input id="productName" type="text" name="productName"  style="width:500px;"/></li>
 	    	<li class="addProLi">大图： 　
-	    	  <input id="image_w" type="file" name="image_w"/></li>
+	    	  <input id="image_w" type="file" name="image_w"/>350*350像素大小</li>
 	    	<li class="addProLi">小图： 　
-	    	  <input id="image_b" type="file" name="image_b"/></li>
+	    	  <input id="image_b" type="file" name="image_b"/>200*200像素大小</li>
 	    	<li class="addProLi">定&nbsp;价：&nbsp;
 	    	  <input id="price" type="text" name="price" style="width:60px;"/>	元</li>
 	    	<li class="addProLi">促销价：　

@@ -4,7 +4,7 @@
 $(document).ready(function(){ 
 	$(".mainArea").height($(window).height()-80);
 	var w=$(window).width();
-	var changeWidth = 930;
+	var changeWidth = 940;
 	if(w < 1200) {
 		$(".bodyArea").width(changeWidth);
 		if(w < changeWidth) {
@@ -22,7 +22,7 @@ $(document).ready(function(){
 	window.onresize = function() {
 		$(".mainArea").height($(window).height()-80);
 		var w=$(window).width();
-		var changeWidth = 930;
+		var changeWidth = 940;
 		if(w < 1200) {
 			$(".bodyArea").width(changeWidth);
 			$(".searchArea").css({"margin-left": "10px"});
@@ -87,7 +87,7 @@ $(document).ready(function(){
 		});
 	});
 	$("#tab3").click(function() {
-		$(".mainArea").html("<iframe src='/Horizon/order/OrderManagementCtrl?method=findAll'></iframe>");
+		$(".mainArea").html("<iframe src='/Horizon/order/OrderManagementCtrl?method=findAll&shopid="+ $(".shopID").val() + "'></iframe>");
 		$("iframe").height($(".mainArea").height());
 		$(window).resize(function() {
 			$("iframe").height($(".mainArea").height());

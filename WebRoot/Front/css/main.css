@@ -1,7 +1,6 @@
 body{
 	margin:0;
 }
-
 .list {
 	position: relative;
 	width: 190px;
@@ -32,7 +31,7 @@ body{
 	position: relative;
 	width: auto;
 	margin-left: 190px;
-	height: 1000px;
+	height: 750px;
 }
 .searchArea {
 	position: relative;
@@ -61,6 +60,7 @@ body{
 	height: 38px;
 	left: 0px;
 	top: 20px;
+	background-color: white;
 }
 .searchInput {
 	position: absolute;
@@ -100,14 +100,17 @@ ul{
 .listLayer1 {
 	position: relative;
 	height: 30px;
+	line-height: 30px;
 	width: auto;
 	font-weight: bold;
 	color: #FFFFFF;
 	background-color: #FF9D5B;
+	cursor:pointer;
 }
 .listItem1 {
 	position: relative;
 	height: 30px;
+	line-height: 30px;
 	width: auto;
 	background-color: #FFB482;
 	font-weight: bold;
@@ -118,10 +121,12 @@ ul{
 	border-left-style: solid;
 	border-right-color: #FFB482;
 	border-left-color: #FFB482;
+	cursor:pointer;
 }
 .listCategory {
 	position: relative;
 	height: 30px;
+	line-height: 30px;
 	width: auto;
 	font-weight: bold;
 	color: #FF0000;
@@ -142,8 +147,10 @@ ul{
 .listLayer2 {
 	position: relative;
 	height: 30px;
+	line-height: 30px;
 	width: auto;
 	background-color: #FFFFFF;
 	color: #000000;
 	border: 1px solid #FFDDC6;
+	cursor:pointer;
 }

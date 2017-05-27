@@ -1,5 +1,7 @@
 package cn.edu.zhk.jsj144.liao.entity.product;
 
+import cn.edu.zhk.jsj144.liao.entity.category.product.Category;
+
 public class Product {
 	private String productid = null;   // 商品ID
 	private String shopid = null;   // 店铺ID
@@ -15,9 +17,16 @@ public class Product {
 	private String purDate = null;   // 进货日期
 	private String cid = null;   // 商品种类ID
 	private String productDesc = null;   // 商品说明
+	private Category category;//所属分类
 	
 	public String getProductid() {
 		return productid;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	public void setProductid(String productid) {
 		this.productid = productid;

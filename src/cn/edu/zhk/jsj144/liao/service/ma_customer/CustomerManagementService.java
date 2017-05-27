@@ -6,6 +6,7 @@ import java.util.List;
 import cn.edu.zhk.jsj141.feng.entity.order.Order;
 import cn.edu.zhk.jsj141.feng.entity.user.User;
 import cn.edu.zhk.jsj141.yin.dao.customer.CustomerManagementDao;
+import cn.edu.zhk.jsj144.liao.entity.issue.Issue;
 import cn.edu.zhk.jsj144.liao.entity.ma_customer.Tr_record;
 import cn.edu.zhk.jsj144.liao.entity.pager.PageBean;
 
@@ -91,8 +92,18 @@ public class CustomerManagementService {
 	 * @param loginname
 	 * @throws SQLException
 	 */
-	public void delIssueList(String loginname) throws SQLException {
+	public void delIssueList(String issueid) throws SQLException {
 		// TODO Auto-generated method stub
-		customerManagementDao.delIssueList(loginname);
+		customerManagementDao.delIssueList(issueid);
+	}
+
+	/**
+	 * 添加问题反馈记录
+	 * @param issue
+	 * @throws SQLException 
+	 */
+	public void AddIssueFeedback(Issue issue) throws SQLException {
+		// TODO Auto-generated method stub
+		customerManagementDao.AddIssueFeedback(issue);
 	}
 }

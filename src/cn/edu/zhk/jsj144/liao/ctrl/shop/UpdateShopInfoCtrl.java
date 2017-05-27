@@ -8,10 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import net.sf.json.JSONObject;
 
+import cn.edu.zhk.jsj141.feng.entity.User;
 import cn.edu.zhk.jsj141.yin.util.JsonUtil;
 import cn.edu.zhk.jsj144.liao.entity.shop.ShopInfo;
 import cn.edu.zhk.jsj144.liao.service.shop.ShopService;
@@ -51,8 +50,9 @@ public class UpdateShopInfoCtrl extends HttpServlet {
 		JSONObject jsonObject = JSONObject.fromObject(JsonUtil.urlToJson(data));
 		
 		ShopInfo shopInfo = (ShopInfo) JSONObject.toBean(jsonObject, ShopInfo.class);
-		HttpSession session = request.getSession();
-		shopInfo.setSellerid((String) session.getAttribute("uid"));
+		User user = (User) request.getSession().getAttribute("sessionUser");
+		String loginname = user.getLoginname();
+		shopInfo.setSellerid(loginname);
 		shopService.editShopInfo(shopInfo);
 		
 		GetShopInfoCtrl ctrl = new GetShopInfoCtrl();

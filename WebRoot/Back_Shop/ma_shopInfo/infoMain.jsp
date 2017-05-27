@@ -37,9 +37,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <td colspan="2"><input name="shopName" type="text" class="inputText" value="${shopInfo.shopName}"></td>
       </tr>
       <tr>
-        <td align="right">店铺类别：</td>
+        <td align="right">主营：</td>
         <td align="right">&nbsp;</td>
-        <td height="40" colspan="2">&nbsp;</td>
+        <td height="40" colspan="2"><input name="busi" type="text" class="inputText" value="${shopInfo.busi}"></td>
       </tr>
       <tr>
         <td align="right" valign="top">店铺简介：</td>

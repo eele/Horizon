@@ -12,7 +12,7 @@ $(function(){
 				shopid: $("input.shopID").val(),
 				sellerid: null,
 				shopName: $("input[name='shopName']").val(),
-				shopCid: null,
+				busi: $("input[name='busi']").val(),
 				descr: $("textarea[name='desc']").val(),
 				pro_src: $("input[name='proSrc']:checked").val(),
 				phy_store: $("#phy").attr('checked'),

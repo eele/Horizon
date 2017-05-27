@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var num = 0;
 	$.ajax({
 		type: "get",
-		url: "/Horizon/admin/category_product/GetCategoryListCtrl",
+		url: "/Horizon/category_product/GetCategoryListCtrl",
 		success: function(html) {
 			$(".listContent").html(html);
 			num = $("#getParNum").val() + 1;
@@ -64,7 +64,7 @@ $(document).ready(function(){
 	$(".newProduct").click(function() {
 		$.ajax({
 			type: "get",
-			url: "/Horizon/admin/category_product/FindParentCategoryCtrl",
+			url: "/Horizon/category_product/FindParentCategoryCtrl",
 			success: function(html) {
 				$(".mainArea").html(html);
 			},

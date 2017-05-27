@@ -14,11 +14,11 @@
   
   <body>
 <p class="pLink">
-  <a href="/Horizon/order/OrderManagementCtrl?method=findByStatus&status=1">未付款</a>  | 
-  <a href="/Horizon/order/OrderManagementCtrl?method=findByStatus&status=2">已付款</a>  | 
-  <a href="/Horizon/order/OrderManagementCtrl?method=findByStatus&status=3">已发货</a>  | 
-  <a href="/Horizon/order/OrderManagementCtrl?method=findByStatus&status=4">交易成功</a>  | 
-  <a href="/Horizon/order/OrderManagementCtrl?method=findByStatus&status=5">已取消</a>
+  <a href="javascript:location.href='/Horizon/order/OrderManagementCtrl?method=findByStatus&status=1&shopid='+$('.shopID', window.parent.document).val()">未付款</a>  | 
+  <a href="javascript:location.href='/Horizon/order/OrderManagementCtrl?method=findByStatus&status=2&shopid='+$('.shopID', window.parent.document).val()">已付款</a>  | 
+  <a href="javascript:location.href='/Horizon/order/OrderManagementCtrl?method=findByStatus&status=3&shopid='+$('.shopID', window.parent.document).val()">已发货</a>  | 
+  <a href="javascript:location.href='/Horizon/order/OrderManagementCtrl?method=findByStatus&status=4&shopid='+$('.shopID', window.parent.document).val()">交易成功</a>  | 
+  <a href="javascript:location.href='/Horizon/order/OrderManagementCtrl?method=findByStatus&status=5&shopid='+$('.shopID', window.parent.document).val()">已取消</a>
 </p>
 <div class="divMain">
 	<div class="title">
@@ -46,7 +46,7 @@
 
 
   <c:forEach items="${order.orderItemList }" var="orderItem">
-	    <img border="0" width="70" src="/${orderItem.product.image_b }"/>
+	    <img border="0" width="70" src="${orderItem.product.image_b }"/>
   </c:forEach>
 
 			</td>

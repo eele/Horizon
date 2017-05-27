@@ -3,6 +3,7 @@ package cn.edu.zhk.jsj141.yin.dao.customer;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -10,6 +11,7 @@ import org.apache.commons.dbutils.handlers.MapHandler;
 
 import cn.edu.zhk.jsj141.feng.entity.order.Order;
 import cn.edu.zhk.jsj141.feng.entity.user.User;
+import cn.edu.zhk.jsj141.yin.util.BeanMapUtil;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
 import cn.edu.zhk.jsj144.liao.entity.issue.Issue;
 import cn.edu.zhk.jsj144.liao.entity.ma_customer.Tr_record;
@@ -200,10 +202,28 @@ public class CustomerManagementDao {
 	 * @param loginname
 	 * @throws SQLException
 	 */
-	public void delIssueList(String loginname) throws SQLException {
+	public void delIssueList(String issueid) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql = "delete from `issue` where loginname=?";
-		qr.update(sql, loginname);
+		String sql = "delete from `issue` where issueid=?";
+		qr.update(sql, issueid);
+	}
+
+	/**
+	 * 添加问题反馈记录
+	 * @param issue
+	 * @throws SQLException 
+	 */
+	public void AddIssueFeedback(Issue issue) throws SQLException {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = (Map<String, Object>) BeanMapUtil.beanToMap(issue);
+		map.put("issueid", UUID.randomUUID().toString());
+		String attr = (String) map.keySet().toArray()[0];
+		for (int i = 1; i < 6; i++) {  // 拼接属性字段
+			attr = attr + "," + (String) map.keySet().toArray()[i];
+		}
+
+		String sql = "insert into issue(" + attr + ") values(?,?,?,?,?,?)";
+		qr.update(sql, map.values().toArray());
 	}
 
 }

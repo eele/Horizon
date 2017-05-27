@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$.ajax({
 			async:true,
 			cache:false,
-			url:"/Horizon/admin/category_product/FindChildCategoryCtrl",
+			url:"/Horizon/category_product/FindChildCategoryCtrl",
 			data:{pid:pid},
 			type:"POST",
 			dataType:"json",
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
   
   <body>
-  <div class="topBar">帐号区</div>
+  <div class="topBar"><iframe frameborder="0" scrolling="no" src="<c:url value='/Back_Shop/top.jsp'/>" style="width: 100%;" id="top" name="top"></iframe></div>
   
   <div class="bodyArea">
 	<div class="mallTitle">
@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <div id="show">
 	    <div class="sm">${product.productName }</div>
 	    <img align="top" src="${product.image_w }" class="tp"/>
-	    <div id="book" style="float:left;">
+	    <div id="Product" style="float:left;">
 		    <ul class="ulStyle">
 		    	<li class="liStyle" >商品编号：${product.productid }</li>
 		    	<li class="liStyle" >促销价：<span class="price_n">&yen;${product.currPrice }</span></li>
@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						一级分类：<select name="pid" id="pid" onchange="loadChildren()">
 							<option value="">==请选择1级分类==</option>
 	<c:forEach items="${parents }" var="parent">
-	  <option value="${parent.cid }" <%//<c:if test="${product.category.parent.cid eq parent.cid }">selected="selected"</c:if>%>>${parent.cname }</option>
+	  <option value="${parent.cid }" <c:if test="${product.category.parent.cid eq parent.cid }">selected="selected"</c:if>>${parent.cname }</option>
 	</c:forEach>
 						</select>
 					</td>
@@ -155,15 +155,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						二级分类：<select name="cid" id="cid">
 							<option value="">==请选择2级分类==</option>
 	<c:forEach items="${children }" var="child">
-	  <option value="${child.cid }" <%//<c:if test="${product.category.cid eq child.cid }">selected="selected"</c:if>%>>${child.cname }</option>
+	  <option value="${child.cid }" <c:if test="${product.category.cid eq child.cid }">selected="selected"</c:if>>${child.cname }</option>
 	</c:forEach>
 						</select>
 					</td>
 					<tr>
 						<td colspan="4">商品说明：　　<textarea name="productDesc" id="productDesc" style="margin: 0px; width: 602px; height: 148px;">${product.productDesc }</textarea></td>
 					</tr>
-					<td></td>
-				</tr>
 				<tr>
 					<td colspan="2">
 						<input onclick="editForm()" type="button" name="method" id="editBtn" class="btn" value="编　　辑">
