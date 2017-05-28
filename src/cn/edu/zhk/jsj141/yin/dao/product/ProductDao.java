@@ -228,6 +228,19 @@ public class ProductDao {
 		return findByCriteria(exprList, pc);
 	}
 	
+	/**
+	 *  查找特定商品的shopid！！
+	 * @param productid
+	 * @return
+	 * @throws SQLException
+	 */
+	public String findShopid(String productid) throws SQLException{
+		String sql = "select shopid from product where productid = ?";
+		Map<String,Object> map = qr.query(sql, new MapHandler(), productid);
+		return (String)map.get("shopid");
+	}
+	
+	
 	
 	/**
 	 * 按productid查询
