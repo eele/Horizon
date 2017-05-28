@@ -87,7 +87,7 @@ private OrderDao orderDao = new OrderDao();
 	public PageBean2<Order> myOrders(String uid, int pc, String shopid) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean2<Order> pb = orderDao.findByUser(uid, pc, shopid);
+			PageBean2<Order> pb = orderDao.findByUser(uid, pc);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {
@@ -107,7 +107,7 @@ private OrderDao orderDao = new OrderDao();
 	public PageBean2<Order> findByStatus(int status, int pc, String shopid) {
 		try {
 			JDBCUtils.beginTransaction();
-			PageBean2<Order> pb = orderDao.findByStatus(status, pc, shopid);
+			PageBean2<Order> pb = orderDao.findByStatus(status, pc,shopid);
 			JDBCUtils.commitTransaction();
 			return pb;
 		} catch (SQLException e) {

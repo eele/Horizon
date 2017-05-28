@@ -4,11 +4,16 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.junit.Test;
 
 import cn.edu.zhk.jsj141.feng.commons.CommonUtils;
 import cn.edu.zhk.jsj141.feng.entity.CartItem;
@@ -16,6 +21,7 @@ import cn.edu.zhk.jsj141.feng.service.shoppingCart.CartItemService;
 import cn.edu.zhk.jsj141.feng.entity.order.Order;
 import cn.edu.zhk.jsj141.feng.entity.order.OrderItem;
 import cn.edu.zhk.jsj141.feng.service.order.OrderService;
+import cn.edu.zhk.jsj141.feng.service.shop.ShopService;
 import cn.edu.zhk.jsj141.feng.entity.pager.PageBean2;
 import cn.edu.zhk.jsj141.feng.entity.User;
 import cn.edu.zhk.jsj141.feng.servlet.BaseServlet;
@@ -23,7 +29,8 @@ import cn.edu.zhk.jsj141.feng.servlet.BaseServlet;
 public class OrderServlet extends BaseServlet {
 	private OrderService orderService = new OrderService();
 	private CartItemService cartItemService = new CartItemService();
-
+	private ShopService shopService = new ShopService();
+	
 	/**
 	 * 获取当前页码
 	 * @param req
@@ -200,20 +207,36 @@ public class OrderServlet extends BaseServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
+	@SuppressWarnings("all")
 	public String createOrder(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		/*
 		 * 1. 获取所有购物车条目的id，查询之
 		 */
 		String cartItemIds = req.getParameter("cartItemIds");
+		
+		List<Order> orderL = new ArrayList<Order>();
+		
 		List<CartItem> cartItemList = cartItemService.loadCartItems(cartItemIds);
 		if(cartItemList.size() == 0) {
 			req.setAttribute("code", "error");
 			req.setAttribute("msg", "您没有选择要购买的商品，不能下单！");
 			return "f:/Front/msg2.jsp";
 		}
+		Set set = new LinkedHashSet();
+		for(CartItem cartItem : cartItemList){
+			String Shopname1 = cartItem.getShopName();
+			set.add(Shopname1);
+		}
+		List<String> relist = new ArrayList<String>();
+		Iterator<String> it=set.iterator();
+        while(it.hasNext()){
+        	relist.add(it.next());
+        }
+		int llsize = relist.size();
+		for(int i=0;i<llsize;i++){
 		/*
-		 * 2. 创建Order
+		 * 2. 创建一个Order
 		 */
 		Order order = new Order();
 		order.setOid(CommonUtils.uuid());//设置主键
@@ -222,11 +245,15 @@ public class OrderServlet extends BaseServlet {
 		order.setAddress(req.getParameter("address"));//设置收货地址
 		User owner = (User)req.getSession().getAttribute("sessionUser");
 		order.setOwner(owner);
-		
+		String shopiddd=null;
 		BigDecimal total = new BigDecimal("0");
 		for(CartItem cartItem : cartItemList) {
-			total = total.add(new BigDecimal(cartItem.getSubtotal() + ""));
+			if(cartItem.getShopName().equals(relist.get(i))){
+				shopiddd = cartItem.getProduct().getShopid();
+				total = total.add(new BigDecimal(cartItem.getSubtotal() + ""));
+			}
 		}
+		order.setShopid(shopiddd);
 		order.setTotal(total.doubleValue());//设置总计
 		
 		/*
@@ -235,27 +262,32 @@ public class OrderServlet extends BaseServlet {
 		 */
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		for(CartItem cartItem : cartItemList) {
-			OrderItem orderItem = new OrderItem();
-			orderItem.setOrderItemId(CommonUtils.uuid());//设置主键
-			orderItem.setQuantity(cartItem.getQuantity());
-			orderItem.setSubtotal(cartItem.getSubtotal());
-			orderItem.setProduct(cartItem.getProduct());
-			orderItem.setOrder(order);
-			orderItemList.add(orderItem);
-		}
+			if(cartItem.getShopName().equals(relist.get(i)))
+			{
+		 	 OrderItem orderItem = new OrderItem();
+			 orderItem.setOrderItemId(CommonUtils.uuid());//设置主键
+			 orderItem.setQuantity(cartItem.getQuantity());
+			 orderItem.setSubtotal(cartItem.getSubtotal());
+			 orderItem.setProduct(cartItem.getProduct());
+			 orderItem.setOrder(order);
+			 orderItemList.add(orderItem);
+			}
+		    }
+		
 		order.setOrderItemList(orderItemList);
 		
 		/*
 		 * 4. 调用service完成添加
 		 */
 		orderService.createOrder(order);
-		
+		orderL.add(order);
+		}
 		// 删除购物车条目
 		cartItemService.batchDelete(cartItemIds);
 		/*
 		 * 5. 保存订单，转发到ordersucc.jsp
 		 */
-		req.setAttribute("order", order);
+		req.setAttribute("orderL", orderL);
 		return "f:/Front/order/ordersucc.jsp";
 	}
 	
@@ -286,6 +318,7 @@ public class OrderServlet extends BaseServlet {
 		 * 4. 使用pc和cid调用service#findByCategory得到PageBean
 		 */
 		PageBean2<Order> pb = orderService.myOrders(user.getUid(), pc);
+		
 		/*
 		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/Product/list.jsp
 		 */

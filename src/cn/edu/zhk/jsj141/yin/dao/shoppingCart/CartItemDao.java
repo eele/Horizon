@@ -9,6 +9,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
+import cn.edu.zhk.jsj141.yin.dao.shop.ShopDao;
 import cn.edu.zhk.jsj141.yin.util.JDBCUtils;
 import cn.edu.zhk.jsj141.feng.commons.CommonUtils;
 import cn.edu.zhk.jsj141.feng.entity.CartItem;
@@ -17,6 +18,7 @@ import cn.edu.zhk.jsj141.feng.entity.User;
 
 public class CartItemDao {
 	private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+	private ShopDao shh = new ShopDao();
 	
 	/*
 	 * 用来生成where子句
@@ -47,6 +49,7 @@ public class CartItemDao {
 		/*
 		 * 2. 生成wehre子句
 		 */
+		
 		String whereSql = toWhereSql(cartItemIdArray.length);
 		/*
 		 * 3. 生成sql语句
@@ -125,7 +128,7 @@ public class CartItemDao {
 	/*
 	 * 把一个Map映射成一个Cartitem
 	 */
-	private CartItem toCartItem(Map<String,Object> map) {
+	private CartItem toCartItem(Map<String,Object> map) throws SQLException {
 		if(map == null || map.size() == 0) return null;
 		CartItem cartItem = CommonUtils.toBean(map, CartItem.class);
 		Product product = CommonUtils.toBean(map, Product.class);
@@ -136,12 +139,29 @@ public class CartItemDao {
 	}
 	
 	/*
+	 * 把一个Map映射成一个Cartitem  2222222
+	 */
+	private CartItem toCartItem2(Map<String,Object> map) throws SQLException {
+		if(map == null || map.size() == 0) return null;
+		CartItem cartItem = CommonUtils.toBean(map, CartItem.class);
+		Product product = CommonUtils.toBean(map, Product.class);
+		User user = CommonUtils.toBean(map, User.class);
+		String shoname = shh.getShopName(product.getShopid());
+		cartItem.setProduct(product);
+		cartItem.setShopName(shoname);
+		cartItem.setUser(user);
+		return cartItem;
+	}
+	
+	
+	
+	/*
 	 * 把多个Map(List<Map>)映射成多个CartItem(List<CartItem>)
 	 */
-	private List<CartItem> toCartItemList(List<Map<String,Object>> mapList) {
+	private List<CartItem> toCartItemList(List<Map<String,Object>> mapList) throws SQLException{
 		List<CartItem> cartItemList = new ArrayList<CartItem>();
 		for(Map<String,Object> map : mapList) {
-			CartItem cartItem = toCartItem(map);
+			CartItem cartItem = toCartItem2(map);
 			cartItemList.add(cartItem);
 		}
 		return cartItemList;

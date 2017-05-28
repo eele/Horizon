@@ -20,10 +20,11 @@
   
   <body>
 <div class="div1">
-	<span class="span1">订单已生成</span>
+	<span class="span1">订单已生成(只显示前两个订单)</span>
 </div>
 <div class="div2">
 	<img src="<c:url value='/Front/images/duihao.jpg'/>" class="img"/>
+	<c:forEach items="${orderL}" var="order">
 	<dl>
 		<dt>订单编号</dt>
 		<dd>${order.oid }</dd>
@@ -32,8 +33,9 @@
 		<dt>收货地址</dt>
 		<dd>${order.address }</dd>
 	</dl>
-	<span>Horizon商城感谢您的支持，祝您购物愉快！</span>
-	<a href="<c:url value='/OrderServlet?method=paymentPre&oid=${order.oid }'/>" id="linkPay">支付</a>
+	</c:forEach>
+	<center style="font-size:20px"><span>Horizon商城感谢您的支持，祝您购物愉快！</span>
+	<a href="<c:url value='/OrderServlet?method=myOrders'/>">查看订单</a></center>
 </div>
   </body>
 </html>
