@@ -58,12 +58,15 @@
 <c:forEach items="${cartItemList }" var="cartItem">
 	<tr align="center">
 		<td align="right">
-			<a class="linkImage" href="<c:url value='/ProductServlet?method=load&productid=${cartItem.product.productid }'/>"><img border="0" width="54" align="top" src="${cartItem.product.image_b }"/></a>
-		<!-- href="<c:url value='/jsps/Product/desc.jsp'/>" -->
+		
+			<a class="linkImage" href="<c:url value='/ProductServlet?method=load&productid=${cartItem.product.productid }&shopid=${cartItem.product.shopid }'/>"><img border="0" width="54" align="top" src="${cartItem.product.image_b }"/></a>
+		<%-- href="<c:url value='/jsps/Product/desc.jsp'/>" --%>
 		</td>
 		<td align="center">
-			<a href="<c:url value='/ProductServlet?method=load&productid=${cartItem.product.productid }'/>"><span>${cartItem.product.productName }</span></a>
-			<!-- href="<c:url value='/jsps/Product/desc.jsp'/>" -->
+			所在店铺：<span class="shname">${cartItem.shopName}</span>
+			<input type="hidden" class="count" value="${cartItem.product.shopid }">
+			<a href="<c:url value='/ProductServlet?method=load&productid=${cartItem.product.productid }&shopid=${cartItem.product.shopid }'/>"><span>${cartItem.product.productName }</span></a>
+			<%-- href="<c:url value='/jsps/Product/desc.jsp'/>" --%>
 		</td>
 		<td>&yen;${cartItem.product.currPrice }</td>
 		<td>${cartItem.quantity }</td>

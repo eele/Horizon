@@ -44,4 +44,13 @@ public class ShopService {
 		}
 		return shopInfo;
 	}
+	public String getShopname(String shopid){
+		String shopname=null;
+		try {
+			shopname= shopDao.getShopName(shopid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return shopname;
+	}
 }

@@ -2,6 +2,7 @@ package cn.edu.zhk.jsj141.feng.ctrl.product;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -138,7 +139,9 @@ public class ProductServlet extends BaseServlet {
 		/*
 		 * 3. 获取查询条件，本方法就是cid，即分类的id
 		 */
-		String bname = req.getParameter("productName");
+		String bname1 = req.getParameter("productName");
+		String bname = new String(bname1.getBytes("iso8859-1"),"utf-8");
+		System.out.println(bname);
 		/*
 		 * 4. 使用pc和cid调用service#findByCategory得到PageBean
 		 */
@@ -172,7 +175,9 @@ public class ProductServlet extends BaseServlet {
 		/*
 		 * 3. 获取查询条件，本方法就是cid，即分类的id
 		 */
-		String shopid = req.getParameter("shopid");
+		String shopid1 = req.getParameter("shopid");
+		String shopid = new String(shopid1.getBytes("iso8859-1"),"utf-8");
+		System.out.println(shopid);
 		/*
 		 * 4. 使用pc和cid调用service#findByCategory得到PageBean
 		 */
@@ -242,7 +247,9 @@ public class ProductServlet extends BaseServlet {
 		/*
 		 * 3. 获取查询条件，本方法就是cid，即分类的id
 		 */
-		String shopid = req.getParameter("shopname");
+		String shopid1 = req.getParameter("shopname");
+		String shopid = new String(shopid1.getBytes("iso8859-1"),"utf-8");
+		System.out.println(shopid);
 		/*
 		 * 4. 使用pc和cid调用service#findByCategory得到PageBean
 		 */

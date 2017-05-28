@@ -221,11 +221,11 @@ function jiesuan() {
 			<input value="${cartItem.cartItemId }" type="checkbox" name="checkboxBtn" checked="checked"/>
 		</td>
 		<td align="left" width="70px">
-			<a class="linkImage" href="<c:url value='/ProductServlet?method=load&productid=${cartItem.product.productid }'/>"><img border="0" width="54" align="top" src="${cartItem.product.image_b }"/></a>
+			<a class="linkImage" href="<c:url value='/ProductServlet?method=load&productid=${cartItem.product.productid }&shopid=${cartItem.product.shopid }'/>"><img border="0" width="54" align="top" src="${cartItem.product.image_b }"/></a>
 			<%-- <a class="linkImage" href="<c:url value='/jsps/Product/desc.jsp'/>"><img border="0" width="54" align="top" src="<c:url value='/${cartItem.Product.image_b }'/>"/></a> --%>
 		</td>
 		<td style="padding-left:60px" align="left" width="360px">
-		    <a href="<c:url value='/ProductServlet?method=load&productid=${cartItem.product.productid }'/>"><span>${cartItem.product.productName }</span></a>
+		    <a href="<c:url value='/ProductServlet?method=load&productid=${cartItem.product.productid }&shopid=${cartItem.product.shopid }'/>"><span>${cartItem.product.productName }</span></a>
 		    <%-- <a href="<c:url value='/jsps/Product/desc.jsp'/>"><span>${cartItem.Product.bname }</span></a> --%>
 		</td>
 		<td><span>&yen;<span class="currPrice">${cartItem.product.currPrice }</span></span></td>

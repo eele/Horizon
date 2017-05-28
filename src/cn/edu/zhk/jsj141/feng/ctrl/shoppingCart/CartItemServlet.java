@@ -2,6 +2,8 @@ package cn.edu.zhk.jsj141.feng.ctrl.shoppingCart;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.edu.zhk.jsj141.feng.service.shop.ShopService;
 import cn.edu.zhk.jsj141.feng.commons.CommonUtils;
 import cn.edu.zhk.jsj141.feng.entity.CartItem;
 import cn.edu.zhk.jsj141.feng.service.shoppingCart.CartItemService;
@@ -18,6 +21,7 @@ import cn.edu.zhk.jsj141.feng.servlet.BaseServlet;
 
 public class CartItemServlet extends BaseServlet {
 	private CartItemService cartItemService = new CartItemService();
+	private ShopService shopService = new ShopService();
 	
 	/**
 	 * 加载多个CartItem
@@ -93,7 +97,7 @@ public class CartItemServlet extends BaseServlet {
 	 * @throws IOException
 	 */
 	public String add(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+			throws ServletException, IOException,SQLException {
 		/*
 		 * 1. 封装表单数据到CartItem(productid, quantity)
 		 */
@@ -103,7 +107,6 @@ public class CartItemServlet extends BaseServlet {
 		User user = (User)req.getSession().getAttribute("sessionUser");
 		cartItem.setProduct(product);
 		cartItem.setUser(user);
-		
 		/*
 		 * 2. 调用service完成添加
 		 */
